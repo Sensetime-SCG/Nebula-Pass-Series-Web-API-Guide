@@ -5,6 +5,10 @@
 ## v0.0.7
 *Author: ChenYang*
 
+**Adapted Devices:**
+
+- SensePassS7 *V1.0.7*
+
 **Add:**
 
 - 接口 [GET] `/v1/device/info`
@@ -18,6 +22,7 @@
 - 接口 [POST] `/v1/rule` `/v1/rule/{id}` 中提交数据中的字段`special_period` 更名为`special_days`
 - 接口 [POST] `/v1/rule` `/v1/rule/{id}` 中提交数据中的字段`onset_point``expire_point`限制到 4102415999000 *(2099-12-31 23:59:59)*
 - 接口 [POST] `/v1/device/upgrade` 限制剩余空间必须不少于**600MB**
+
 
 ## v0.0.6
 *Author: ChenYang*
