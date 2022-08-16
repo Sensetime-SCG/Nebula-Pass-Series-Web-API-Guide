@@ -1,2 +1,6 @@
-# Introduction
+# 日本語
+
+## コンセプト
+
+本書は、SenseNebula Passデバイス統合APIインタフェースの使用方法を示すために使用されます。
 
