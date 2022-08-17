@@ -9,7 +9,7 @@
 
 ## 请求方式
 
-> POST
+> PUT
 
 - 请求体: `application/json`
 
