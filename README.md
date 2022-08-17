@@ -12,13 +12,13 @@
 **Add:**
 
 - 接口 [GET] `/v1/device/info`
-- 接口 [GET] `/v1/device/functions`新增`auth_mode`字段用于验证方式
+- 接口 [POST] [GET] `/v1/device/functions`新增`auth_mode`字段用于验证方式
 
 **Fixed &Modify:**
 
 - 接口 [POST] `/v1/device/door` 字段`open_mode`未定义的崩溃修复
-- 接口 [POST] `/v1/group/{id}` 忽略字段`type`
-- 接口 [POST] `/v1/user/{id}` 忽略字段`type`
+- 接口 [PUT] `/v1/group/{id}` 忽略字段`type`
+- 接口 [PUT] `/v1/user/{id}` 忽略字段`type`
 - 接口 [POST] `/v1/rule` `/v1/rule/{id}` 中提交数据中的字段`special_period` 更名为`special_days`
 - 接口 [POST] `/v1/rule` `/v1/rule/{id}` 中提交数据中的字段`onset_point``expire_point`限制到 4102415999000 *(2099-12-31 23:59:59)*
 - 接口 [POST] `/v1/device/upgrade` 限制剩余空间必须不少于**600MB**
