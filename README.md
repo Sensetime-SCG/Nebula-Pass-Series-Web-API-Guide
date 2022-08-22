@@ -2,7 +2,25 @@
 
 ---
 
+## v0.0.8 (2022-08-20)
+
+*Author: LinPeiCai
+
+**Adapted Devices:**
+
+- SensePassS7 *V1.0.8
+
+**Add:**
+
+- 接口  [POST] [GET] `/v1/event/subscribe` 新增第三方服务器推送配置
+- 接口 [POST]  事件推送协议（HTTP/HTTPS）
+
+**Fixed &Modify:**
+
+- 接口 [WSS] `/v1/event/` 事件订阅 修改字段`TrackID` 为`deviceSN` 设备序列号
+
 ## v0.0.7
+
 *Author: ChenYang*
 
 **Adapted Devices:**
