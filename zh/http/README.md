@@ -17,13 +17,13 @@ Web服务接口采用HTTP Restful风格，具体入口地址形式为`https://HO
 
 ### JWT 认证
 
-使用**JSON Web Token[<sup>RFC 7519</sup>](https://datatracker.ietf.org/doc/html/rfc7519)**，须先请求 `/v1/auth/login` 接口获取认证，若账户与密码认证通过则可获取到 *token* ，在后续的业务请求将其放入 Header 的 *Authorization* 字段，格式为 `Bearer token` ，即类似以下格式：
+使用**JSON Web Token**[<sup>RFC 7519</sup>](https://datatracker.ietf.org/doc/html/rfc7519)，须先请求 `/v1/auth/login` 接口获取认证，若账户与密码认证通过则可获取到 *token* ，在后续的业务请求将其放入 Header 的 *Authorization* 字段，格式为 `Bearer token` ，即类似以下格式：
 
 >  Authorization: Bearer xxx.xxx.xxx
 
 ### Basic Authentication
 
-为方便命令行快速调试，亦可使用 **Basic Authentication[<sup>RFC 7617</sup>](https://datatracker.ietf.org/doc/html/rfc7617)**认证方式，但不推荐业务使用该认证，后续该方式默认将置为未启用状态。
+为方便命令行快速调试，亦可使用**Basic Authentication**[<sup>RFC 7617</sup>](https://datatracker.ietf.org/doc/html/rfc7617)认证方式，但不推荐业务使用该认证，后续该方式默认将置为未启用状态。
 
 
 
