@@ -1,44 +1,54 @@
-# 认证接口
+# Authentication Management API
 
-## 获取Token
+## /v1/auth/login Log in
 
-使用 `JWT` 认证方式请求业务接口，需先通过此接口获取 token 值。
+1.  Function description
 
-- 请求路径
+Get JWT token.
 
-> `/v1/auth/login`
+The account password is the login password of the stand-alone mode.
 
-- 请求方式
+2. Request address
 
-> POST
+https://HOST:PORT/v1/auth/login
 
-- 请求体: `application/json`
+3. Request method
 
-| 字段      | 类型   | 必填 | 字段释义                                                    |
-| --------- | ------ | ---- | ----------------------------------------------------------- |
-| username  | string | Y    | 用户名                                                      |
-| password  | string | Y    | 密码                                                        |
-| validTime | int    | N    | token有效期,单位分钟, 范围： 大于 0 小于等于 1440，默认5 |
+POST
 
+4. Request parameters
 
-- 请求示例:
+| Parameter Name | Type   | Required | Description                                                  |
+| -------------- | ------ | -------- | ------------------------------------------------------------ |
+| username       | string | Y        | Account name                                                 |
+| password       | string | Y        | Password                                                     |
+| validTime      | int    | N        | Token validity period, in minutes, the valid value is greater than 0 and less than 1440, the default value is 5 minutes |
 
-```json
+Request example：
+
+```
 {
-  "username": "user",
-  "password": "pwd",
-  "validTime": 5
+"username": "admin",
+"password": "string",
+"validTime": 5
 }
 ```
 
-- 返回示例
+5.  Response parameters
 
-```json
+| Parameter Name | Type   | Description                                                  |
+| -------------- | ------ | ------------------------------------------------------------ |
+| token          | string | The session id, in the form of: "7a4280edd410cc367526e2687d3458ed" This parameter will be used as the AUTH-TOKEN authentication parameter for other subsequent requests. |
+
+Response example：
+
+```
 {
-  "data": {
-    "token": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXUyJ9.eyJleHAiOjE2NjAyMTkwMDcsImlhdCI6MTY2MDIxODcwNywiaXNzIjoiU2Vuc2VUaW1lIiwidXNlcklkIjoiYWRtaW4ifQ.-sRDf6dA6MXW72Ofb-2zGq9NJr0FXoszwWWueWssN70"
-  },
-  "code": 200,
-  "msg": "OK"
+"code":200,
+"msg":"OK",
+"data":{
+	"token":"3eddec1c45d3158e805a172409c881b8"
+}
 }
 ```
+

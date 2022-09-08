@@ -1,45 +1,59 @@
 
-# HTTP API调用规则
+# HTTP API Calling Rules
 
-HTTP API接口只有在设备使用**单机模式**时才能使用全部功能。
+## Instructions for Use
 
-## 接口风格及数据类型说明
-
-Web服务接口采用HTTP Restful风格，具体入口地址形式为`https://HOST:PORT/`，其中HOST为设备IP，PORT 当前默认为**8000**
-
-请求体和返回体数据格式（如不作特殊说明，请求和返回参数采用以下格式；特殊接口，将做额外的说明）: `Content-type: application/json`
+The full functionality of the API is only available when the device is in **stand-alone mode.**
 
 
 
-## 请求认证说明
+## API Type Description
 
-访问业务接口时，需要将认证参数放入 Header 中。目前支持 **JWT** 与 **Basic Auth** 两种认证方式，推荐使用 **JWT** 认证.
+The API is called by HTTP Restful request. The specific entry address is as follows:
 
-### JWT 认证
+https://HOST:PORT/  （The port number is [8000] by default.）
 
-使用**JSON Web Token**[<sup>RFC 7519</sup>](https://datatracker.ietf.org/doc/html/rfc7519)，须先请求 `/v1/auth/login` 接口获取认证，若账户与密码认证通过则可获取到 *token* ，在后续的业务请求将其放入 Header 的 *Authorization* 字段，格式为 `Bearer token` ，即类似以下格式：
+Format of request and return parameters (if no special instructions are given, the request and return parameters are in the following formats; for special interfaces, additional instructions will be given):
 
->  Authorization: Bearer xxx.xxx.xxx
-
-### Basic Authentication
-
-为方便命令行快速调试，亦可使用**Basic Authentication**[<sup>RFC 7617</sup>](https://datatracker.ietf.org/doc/html/rfc7617)认证方式，但不推荐业务使用该认证，后续该方式默认将置为未启用状态。
+Content-type: application/json
 
 
 
-## 响应说明
+## Request Authentication Description
 
-所有响应均包含以下3部分（接口具体响应参数，均为`data`字段的值，且字段内容视对应接口而定，亦可为`null`）：
+When accessing the business interface, you need to put the authentication parameters in the header. Currently, two authentication methods, JWT and Basic Auth, are supported. JWT authentication is recommended.
 
-| **参数名称** | **类型** | **是否必须** | **说明**                 |
-|--------------|----------|--------------|--------------------------|
-| code         | int      | 是           | 响应码，正常为200        |
-| msg          | string   | 是           | 详细描述，正常为OK；     |
-| data         | object   | 否           | 响应消息主体，为json格式 |
+### JWT  Authentication
 
-成功返回示例：
+Request the **/v1/auth/login** interface. If the account and password authentication is passed, the token can be obtained. In subsequent business requests, it will be placed in the Authorization field of the Header in the format Bearer \<token\> , which is similar to the following format:
 
-``` json
+> Authorization: Bearer xxx.xxx.xxx
+
+### Basic Auth Authentication
+
+In order to facilitate the quick debugging of the command line, this authentication method can be used, that is, the username and password after Base64 are added to the Header and placed in the Authorization field, the format is Basic \<token\> , which is similar to the following format:
+
+> Authorization: Basic xxxxxxxxxxx
+
+Curl command quick debugging example:
+
+curl -k -X GET -u username:password https://1.2.3.4:8000/v1/user/id/123
+
+
+
+## Response Description
+
+All responses contain the following three parts (the specific response parameters of the interface are all sub-fields under the data field, and the content of the specific fields in data depends on the corresponding interface and can be null):
+
+| **Parameter name** | **Type** | **Required** | **Description**                       |
+| ------------------ | -------- | ------------ | ------------------------------------- |
+| code               | int      | Y            | Response code, normally 200           |
+| msg                | string   | Y            | Detailed description, normally OK     |
+| data               | object   | N            | Response message body, in json format |
+
+Example of successful return:
+
+```
 {  
 	"code": 200,  
 	"msg": "OK",  
@@ -49,7 +63,8 @@ Web服务接口采用HTTP Restful风格，具体入口地址形式为`https://HO
 
 
 
-## 安全机制
+## Security Mechanism
 
--   设备端Web服务强制使用 HTTPS TLS/1.3加密，保证每次请求数据不会在传输过错中被窃听与篡改。
--   业务API请求需要把相关认证参数放入HTTP的 Header 中。
+-   The device-side web service is forced to use HTTPS TLS/1.3 encryption to ensure that each requested data is not eavesdropped and tampered with.
+-   For business API requests, you need to put the relevant authentication parameters in the HTTP header.
+
