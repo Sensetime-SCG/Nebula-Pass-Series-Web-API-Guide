@@ -1,31 +1,47 @@
-# 获取指定通行组下绑定的人员
+# Get user list of group
 
-获取所有已绑定该`group_id`人员的`user_id`。
+Get user list of group.
 
-## 请求路径
+## Request address
 
 > `/v1/group/id/{id}/users`
 
 
-## 请求方式
+## Request method
 
 > GET
 
-## 请求示例
+## Request parameters
 
-获取所有绑定`group_id`为 1 的人员的`user_id`。
+| Parameter name | Type | Required | Description |
+| -------------- | ---- | -------- | ----------- |
+| id             | int  | Y        | Group id    |
 
-> `/v1/group/id/1/users`
+## Response parameters
 
-```json
+| Parameter name | Type  | Description |
+| -------------- | ----- | ----------- |
+| items          | array | ID list     |
+
+```
 {
-    "data": {
-        "items": [
-            1,
-            2
-        ]
-    },
-    "code": 200,
-    "msg": "OK"
+
+"code": 200,
+
+"msg": "OK",
+
+"data": {
+
+"items":[
+
+110399,
+
+110400
+
+]
+
+}
+
 }
 ```
+

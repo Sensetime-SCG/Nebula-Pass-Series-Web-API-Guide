@@ -1,52 +1,58 @@
-# 新建通行组
+# Create Group
 
-最大可创建100个组。
+Create group, max to 100 groups.
 
-## 请求路径
+## Request address
 
 > `/v1/group`
 
-## 请求方式
+## Request method
 
 > POST
 
-- 请求体: `application/json`
+## Request parameters: 
 
-| 字段     | 类型   | 必填 | 字段释义                                                 |
-| -------- | ------ | ---- | -------------------------------------------------------- |
-| group_id | Int    | Y    | 由提交端设置的唯一标识,不可重复,范围: 大于 0 小于 999999 |
-| name     | String | Y    | 组名称，内容长度1~32字节，不可重                         |
-| type     | Int    | N    | 组类型，1:员工组，2：访客组；默认：1                     |
-| rule_id  | N      |      | 绑定的通行规则id,若该字段不存在或值为0则不绑定通行规则   |
+| Parameter name | Type   | Required | Description                                                  |
+| -------------- | ------ | -------- | ------------------------------------------------------------ |
+| type           | int    | N        | Group type，1:employees，2：visitors；Default：1  </n>Cannot be modified after creation |
+| group_id       | int    | Y        | The unique identifier id set by the submitter, non-repeatable, greater than 0 and less than 999999. |
+| name           | string | Y        | Group name, the length is 1\~32 bytes, non-repeatable, and cannot involve special characters. |
+| rule_id        | int    | N        | The binding rule id, if it is 0, it will not be bound to any rule. |
 
-## 请求示例:
-
-创建一个`name`为`员工组`的通行组，其`group_id`设定为1，`type`为**1(员工组)**,但不绑定策略，即`rule_id`为0。
-
-> `/v1/group`
-
-```json
+```
 {
-  "name": "员工组",
-  "type": 1,
-  "group_id": 1,
-  "rule_id": 0
+
+“group_id”:1,
+"type": 1,
+"name": "GroupA",
+“rule_id”: 1
 }
 ```
 
-## 返回示例
+## Response parameters
 
-```json
+| Parameter name | Type   | Description                                         |
+| -------------- | ------ | --------------------------------------------------- |
+| group_id       | int    | Group id                                            |
+| type           | int    |                                                     |
+| name           | string |                                                     |
+| rule_id        | int    |                                                     |
+| create_at      | int    | Create time (format is Unix, millisecond timestamp) |
+| update_at      | string | Update time(format is Unix, millisecond timestamp)  |
+
+```
 {
-    "data": {
-        "name": "员工组",
-        "type": 1,
-        "group_id": 1,
-        "rule_id": 0,
-        "create_at": 1660284813955,
-        "update_at": 1660284813955
-    },
-    "code": 200,
-    "msg": "OK"
+
+"code": 200,
+"msg": "OK",
+"data": {
+"group_id": 2,
+"type": 1,
+"name": "GroupA"
+"rule_id": 1,
+"create_at": "1658471422626 ",
+"update_at": "1658471422626 ",
+}
 }
 ```
+

@@ -1,35 +1,57 @@
-# 查询通行组的信息
+# Get information of a single group
 
-根据指定的`group_id`获取该通行组信息
+Get the information of a single group.
 
-## 请求路径
+## Request address
 
 > `/v1/group/id/{id}`
 
-## 请求方式
+## Request method
 
 > GET
 
+## Request parameters
 
-## 请求示例
+| Parameter name | Type | Required | Description |
+| -------------- | ---- | -------- | ----------- |
+| None           | None | None     | None        |
 
-获取`group_id`为 1 的通行组信息。
+## Response parameters
 
-> `/v1/group/id/1`
+| Parameter name | Type   | Description                                         |
+| -------------- | ------ | --------------------------------------------------- |
+| group_id       | int    | Group ID                                            |
+| name           | string | Group name                                          |
+| type           | int    | Group type                                          |
+| rule_id        | int    | Rule id                                             |
+| create_at      | int    | Create time (format is Unix, millisecond timestamp) |
+| update_at      | string | Update time(format is Unix, millisecond timestamp)  |
 
-## 返回示例
-
-```json
-{
-    "data": {
-        "name": "员工组",
-        "type": 1,
-        "group_id": 1,
-        "rule_id": 0,
-        "create_at": 1660284813955,
-        "update_at": 1660284813955
-    },
-    "code": 200,
-    "msg": "OK"
-}
 ```
+ {
+
+     "code": 200,
+
+     "msg": "OK"，
+     
+     "data": {
+
+   ​    "name": "xd1ddx111",
+
+   ​    "type": 1,
+
+   ​    "group_id": 2,
+
+   ​    "rule_id": 4,
+
+   ​    "create_at": 1660040788500,
+
+   ​    "update_at": 1660094508689
+
+     }
+
+   }
+```
+
+
+

@@ -1,32 +1,57 @@
-# 更新通行组信息
+# Modify group information
 
-更新通行组信息，其中`group_id`字段值和`type`字段值不可修改。
+Modify group information，`group_id` field and `type` field values cannot be modified。
 
 
-## 请求路径
+## Request address
 
 > `/v1/group/id/{id}`
 
-## 请求方式
+## Request method
 
 > PUT
 
-- 请求体: `application/json`
+## Request parameters
 
-| 字段    | 类型   | 必填 | 字段释义                                               |
-| ------- | ------ | ---- | ------------------------------------------------------ |
-| name    | String | Y    | 组名称，内容长度1~32字节，不可重                       |
-| rule_id | Int    | N    | 绑定的通行规则id,若该字段不存在或值为0则不绑定通行规则 |
+| Parameter name | Type   | Required | Description |
+| -------------- | ------ | -------- | ----------- |
+| name           | string | Y        | Group name  |
+| rule_id        | int    | N        | Rule id     |
 
-## 请求示例:
+## Response parameters
 
-更新`group_id`为 3 的通信组信息，`name`设置为*员工组*；`rule_id`设置为 0 ，即取消绑定。
+| Parameter name | Type   | Description                                         |
+| -------------- | ------ | --------------------------------------------------- |
+| group_id       | int    | Group ID                                            |
+| name           | string | Group name                                          |
+| type           | int    | Group type                                          |
+| rule_id        | int    | Rule id                                             |
+| create_at      | int    | Create time (format is Unix, millisecond timestamp) |
+| update_at      | string | Update time(format is Unix, millisecond timestamp)  |
 
-> `/v1/group/id/3`
-
-```json
+```
 {
-  "name": "员工组",
-  "rule_id": 0
+
+"code": 200,
+
+"msg": "OK",
+
+"data": {
+
+“name”:”A”,
+
+“type”:1,
+
+"group_id": 2,
+
+“rule_id”: 1,
+
+"create_at": "1658471422626 ",
+
+"update_at": "1658471422626 "
+
+}
+
 }
 ```
+

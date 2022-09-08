@@ -1,22 +1,28 @@
-# 删除通行组
+# Delete group
 
-删除已经录入的通行组
+Delete group.
 
-## 请求路径
+## Request address
 
 > `/v1/group/id/{id}`
 
-## 请求方式
+## Request method
 
 > DELETE
 
-## 请求示例:
+## Request parameters
 
-删除`group_id`为1的通行组。
+| Parameter name | Type | Required | Description |
+| -------------- | ---- | -------- | ----------- |
+| None           | None | None     | None        |
 
 > `/v1/group/id/1`
 
-## 返回示例
+## Response parameters
+
+| Parameter name | Type | Description |
+| -------------- | ---- | ----------- |
+| None           | None | None        |
 
 ```json
 {

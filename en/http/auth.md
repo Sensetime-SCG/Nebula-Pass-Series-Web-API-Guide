@@ -1,4 +1,4 @@
-# Authentication Management API
+# Authentication Management
 
 ## /v1/auth/login Log in
 
