@@ -1,80 +1,99 @@
-# 设备自定义配置
+# Custom Parameters
 
-## 提交配置
+## Get device custom parameters
 
-提交并应用新的自定义参数
+Get device custom parameters.
 
-### 请求路径
+### Request address
 
-> `​/v1​/device​/custom`
+https://HOST:PORT/v1/device/custom
 
-### 请求方式
+### Request method
 
-> POST
+GET
 
-- 请求体: `application/json`
+### Request parameters
 
-| 字段                    | 类型    | 必填 | 字段释义                    |
-| ----------------------- | ------- | ---- | --------------------------- |
-| welcome_tip             | String  | N    | 主欢迎语（视频流界面）      |
-| verify_success_tip      | String  | N    | 提示语（验证成功）          |
-| verify_fault_tip        | String  | N    | 提示语（验证失败）          |
-| unauthorized_user_tip   | String  | N    | 重点人名单提示语            |
-| show_custom_logo        | Boolean | N    | 是否展示logo                |
-| custom_picture_for_logo | String  | N    | 自定义logo图片(base64编码)  |
-| custom_picture_for_idle | String  | N    | 自定义待机图片(base64编码)  |
-| voice_broadcast         | Boolean | N    | 语音播报，false：关true：开 |
+| Parameter name | Type | Required | Description |
+| -------------- | ---- | -------- | ----------- |
+| None           | None | None     | None        |
 
-### 请求示例:
+### Response parameters
 
-> `​/v1​/device​/custom`
+| Parameter name          | Type    | Description                              | Remark |
+| ----------------------- | ------- | ---------------------------------------- | ------ |
+| welcome_tip             | String  | Main welcome (video streaming interface) |        |
+| verify_success_tip      | String  | Prompt (verification successful)         |        |
+| verify_fault_tip        | String  | Prompt (verification failed)             |        |
+| unauthorized_user_tip   | String  | Unauthorized user tip                    |        |
+| show_custom_logo        | Boolean | Whether to show logo                     |        |
+| custom_picture_for_logo | String  | Custom logo image (base64 encoding)      |        |
+| custom_picture_for_idle | String  | Custom standby image (base64 encoding)   |        |
+| voice_broadcast         | Boolean | Voice broadcast, false: off true: on     |        |
 
-```json
+Response parameters
+
+```
 {
-    "welcome_tip": "你好",
-    "verify_success_tip": "",
-    "verify_fault_tip": "",
-    "unauthorized_user_tip": "",
-    "show_custom_logo": true,
-    "custom_picture_for_logo": "",
-    "custom_picture_for_idle": "",
-    "voice_broadcast": true
+
+  "code": 200,
+
+  "msg": "OK"，
+  "data": {
+
+​    "welcome_tip": "",
+
+​    "verify_success_tip": "",
+
+​    "verify_fault_tip": "",
+
+​    "unauthorized_user_tip": "",
+
+​    "show_custom_logo": **true**,
+
+​    "custom_picture_for_logo": "",
+
+​    "custom_picture_for_idle": "",
+
+​    "voice_broadcast": **true**
+
+  }
+
 }
 ```
-### 返回示例
 
-```json
-{
-    "data": null,
-    "code": 200,
-    "msg": "OK"
-}
+
+
+## Set device custom parameters
+
+Set device custom parameters
+
+### Request address
+
+https://HOST:PORT/v1/device/custom
+
+### Request method
+
+POST
+
+### Request parameters
+
+| Parameter name          | Type    | Description                              | Remark |
+| ----------------------- | ------- | ---------------------------------------- | ------ |
+| welcome_tip             | String  | Main welcome (video streaming interface) |        |
+| verify_success_tip      | String  | Prompt (verification successful)         |        |
+| verify_fault_tip        | String  | Prompt (verification failed)             |        |
+| unauthorized_user_tip   | String  | Unauthorized user tip                    |        |
+| show_custom_logo        | Boolean | Whether to show logo                     |        |
+| custom_picture_for_logo | String  | Custom logo image (base64 encoding)      |        |
+| custom_picture_for_idle | String  | Custom standby image (base64 encoding)   |        |
+| voice_broadcast         | Boolean | Voice broadcast, false: off true: on     |        |
+
+Request example
+
 ```
-
----
-
-## 获取配置
-
-获取设备自定义参数。
-
-### 请求路径
-
-> `​/v1​/device​/custom`
-
-### 请求方式
-
-> GET
-
-### 请求示例
-
-> `​/v1​/device​/custom`
-
-### 返回示例
-
-```json
 {
-    "data": {
-        "welcome_tip": "你好",
+        "welcome_tip": "welcome",
         "verify_success_tip": "",
         "verify_fault_tip": "",
         "unauthorized_user_tip": "",
@@ -82,9 +101,12 @@
         "custom_picture_for_logo": "",
         "custom_picture_for_idle": "",
         "voice_broadcast": true
-    },
-    "code": 200,
-    "msg": "OK"
-}
+    }
 ```
+
+### Response parameters
+
+| Parameter name | Type | Required | Description |
+| -------------- | ---- | -------- | ----------- |
+| None           | None | None     | None        |
 

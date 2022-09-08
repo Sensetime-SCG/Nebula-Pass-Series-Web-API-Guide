@@ -1,34 +1,38 @@
-# 远程开门
+#  Open the door remotely
 
-调用接口，可以进行实现远程开门等应用。
+Open the door remotely.
 
+## Request address
 
-## 请求路径
+https://HOST:PORT/v1/device/door
 
-> `​/v1​/device​/door`
+## Request method
 
-## 请求方式
+POST
 
-> POST
+## Request parameters
 
-- 请求体: `application/json`
+| Parameter name | Type   | Required | Description                                                  |
+| -------------- | ------ | -------- | ------------------------------------------------------------ |
+| open_mode      | Int    | Y        | mode 0: normal delay closing after opening the door; 1: normally open; 2: normally closed |
+| card_number    | String | N        | Card number                                                  |
 
-| 字段        | 类型   | 必填 | 字段释义                                          |
-|-------------|--------|------|-----------------------------------------------|
-| open_mode   | Int    | Y    | mode 0:开门后正常延时关闭； 1：常开； 2：常关 |
-| card_number | String | N    | 开门卡号                                      |
+Request example
 
-## 请求示例
-
-> `​/v1​/device​/door`
-
-```json
+```
 {
-    "open_mode":0
+    "open_mode" : 0,
+    "card_number" :""
 }
 ```
 
-## 返回示例
+##  Response parameters
+
+| Parameter name | Type | Description |
+| -------------- | ---- | ----------- |
+| None           | None | None        |
+
+Response example：
 
 ```json
 {
