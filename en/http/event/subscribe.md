@@ -1,30 +1,30 @@
-# 第三方服务器推送配置
+# Third-party server push configuration
 
-## 获取配置
-获取第三方服务器推送配置，如第三方服务地址，是否启动推送功能。
+## Get third-party server push configuration
+Get the push configuration of the third-party server, such as the address of the third-party service, whether to enable the push function.
 
-### 请求地址
+### Request address
 
 https://HOST:PORT/v1/event/subscribe
 
-### 请求方式
+### Request method
 
 GET
 
-### 请求参数
+### Request parameters
 
-| 名称 | 类型 | 必填 | 说明 |
-| ---- | ---- | ---- | ---- |
-| 无   | 无   | 无   | 无   |
+| Parameter name | Type | Required | Description |
+| -------------- | ---- | -------- | ----------- |
+| None           | None | None     | None        |
 
-### 响应参数
+### Response parameters
 
-| 名称       | 类型   | 说明                                                         |
-| ---------- | ------ | ------------------------------------------------------------ |
-| event_dest | string | 指定事件接收的地址，采用restful回调模式，支持http和https，样式如下：http://ip:port/eventRcv或者https://ip:port/eventRcv<br/> 不超过1024个字符，事件接收地址由应用方负责按指定的规范提供，事件接收接口不需要认证 |
-| enabled    | boolen | 是否启用                                                     |
+| Parameter name | Type    | Description                                                  |
+| -------------- | ------- | ------------------------------------------------------------ |
+| event_dest     | string  | The address of the specified event receiving, using restful callback mode, supports http and https, the style is as follows: http://ip:port/eventRcv or https://ip:port/eventRcv<br/>The length is no more than 1024 bytes, the event receiving address is provided by the application side according to the specified specification, and the event receiving interface does not require authentication |
+| enabled        | boolean | Whether to enable                                            |
 
-响应示例：
+Response example：
 
 ```
 {
@@ -44,27 +44,27 @@ GET
 
 
 
-## 设置配置
+## Set third-party server push configuration
 
 
-设置第三方服务器推送配置，如第三方服务地址，是否启动推送功能。
+Set the third-party server push configuration, such as the third-party service address, whether to enable the push function.
 
-### 请求地址
+### Request address
 
 https://HOST:PORT/v1/event/subscribe
 
-### 请求方式
+### Request method
 
 POST
 
-### 请求参数
+### Request parameters
 
-| 名称       | 类型   | 必填 | 说明                                                         |
-| ---------- | ------ | ---- | ------------------------------------------------------------ |
-| event_dest | string | Y    | 指定事件接收的地址，采用restful回调模式，支持http和https，样式如下：http://ip:port/eventRcv或者https://ip:port/eventRcv<br/> 不超过1024个字符，事件接收地址由应用方负责按指定的规范提供，事件接收接口不需要认证 |
-| enabled    | boolen | N    | 是否启用                                                     |
+| Parameter name | Type    | Required | Description                                                  |
+| -------------- | ------- | -------- | ------------------------------------------------------------ |
+| event_dest     | string  | Y        | The address of the specified event receiving, using restful callback mode, supports http and https, the style is as follows: http://ip:port/eventRcv or https://ip:port/eventRcv<br/>The length is no more than 1024 bytes, the event receiving address is provided by the application side according to the specified specification, and the event receiving interface does not require authentication |
+| enabled        | boolean | N        | Whether to enable                                            |
 
-请求实例
+Request example:
 
 ```
 {
@@ -73,13 +73,13 @@ POST
 }
 ```
 
-### 响应参数
+### Response parameters
 
-| 名称 | 类型 | 说明 |
-| ---- | ---- | ---- |
-|      |      |      |
+| Parameter name | Type | Description |
+| -------------- | ---- | ----------- |
+| None           | None | None        |
 
-响应示例：
+Response example：
 
 ```
 {
@@ -97,23 +97,25 @@ POST
 
 
 
-## 事件推送协议（HTTP/HTTPS）
 
-### 接收方式
+
+## Event Push Protocol（HTTP/HTTPS）
+
+### Receiving method
 
 POST application/json
 
-### 响应结构
+### Respond structure
 
-| **参数名称**    | **类型** | **是否必填** | **说明**                                                     |
-| --------------- | -------- | ------------ | ------------------------------------------------------------ |
-| **code**        | int      | Y            | 返回码，200表示成功，其它表示失败                            |
-| **message**     | string   | Y            | 返回信息-记录接口执行情况说明信息，success表示成功描述，其他表示失败 |
-| **data**        | Object   | Y            | 其他补充信息                                                 |
-| \|-- pass       | boolean  | Y            | 是否开门                                                     |
-| \|-- customtips | string   | N            | 界面提示的文字(建议内容 0- 10 字符)                          |
+| **Parameter name** | **Type** | **Required** | **Description**                                              |
+| ------------------ | -------- | ------------ | ------------------------------------------------------------ |
+| **code**           | int      | Y            | Return code, 200 means success, other means failure          |
+| **message**        | string   | Y            | Return information - record the description information of the interface implementation, success means successful description, other means failure |
+| **data**           | Object   | Y            | Other information                                            |
+| pass               | boolean  | Y            | Whether to open the door                                     |
+| customtips         | string   | N            | The text of the interface prompt (recommended content 0-10 characters) |
 
-响应示例
+### Response example
 
 ```
 {
@@ -126,25 +128,24 @@ POST application/json
 	"pass": true,
 	"customtips":"Hello World"
 }
-
 }  
 ```
 
-### 事件推送示例
+### Event push example
 
-| **参数名称** | **类型** | **是否必填** | **说明**                         |
-| ------------ | -------- | ------------ | -------------------------------- |
-| **type**     | int      | Y            | 事件类型,当前仅有0，表示识别事件 |
-| **data**     | object   | Y            | 事件对象                         |
+| **Parameter name** | **Type** | **Required** | **Description**                                              |
+| ------------------ | -------- | ------------ | ------------------------------------------------------------ |
+| **type**           | int      | Y            | Event type, currently only including 0, indicating the recognition event |
+| **data**           | object   | Y            | Event object                                                 |
 
-识别记录
+Recognition record
 
 ```
 {
     "type": 0,
     "data": {
         "recognizeStatus": 2,
-        "trackID": 13,
+        "deviceSN":"PS71HD01MC22C00014",
         "recognizeScore": 0.9837480783462524,
         "livenessScore": 0.9073520302772522,
         "mask": 1,
@@ -162,23 +163,21 @@ POST application/json
 
 ```
 
-### 记录事件字段属性
+###  Record event field attributes
 
-| 参数名称        | 类型    | 说明                                                         |
+| Parameter name  | Type    | Description                                                  |
 | --------------- | ------- | ------------------------------------------------------------ |
-| deviceSN        | string  | 设备序列号                                                   |
-| recognizeStatus | int     | 当前画面中人脸的分类： 0：未知 1：非活体 2：库中人 3：陌生人 4：已识别 5：认证通过 6：认证失败 |
-| recognizeScore  | float   | 识别精度分值                                                 |
-| livenessScore   | float   | 活体精度分值                                                 |
-| mask            | int     | 是否佩戴口罩： 0 未启用 1 未戴 2 佩戴                        |
-| mode            | int     | 核验模式: 0：刷脸 1：刷脸或刷卡 2：刷脸或刷卡或刷二维码 3：刷脸且刷卡 4：刷身份证 5：刷脸或刷身份证 6：刷脸且刷身份证 |
-| rgb_image       | string  | Base64 后的jpeg格式的人脸抓拍图                              |
-| pass            | Boolean | 是否允许通行                                                 |
-| timestamp       | int     | 识别时间                                                     |
-| user            | object  | 事件用户对象                                                 |
-| --name          | string  | 用户名称                                                     |
-| --user_id       | int     | 用户id                                                       |
-| --type          | int     | 用户类型                                                     |
-
-
+| deviceSN        | string  | Device SN                                                    |
+| recognizeStatus | int     | Classification of faces in the current screen: 0: Unknown 1: Non-liveness 2: People in the library 3: Strangers 4: Recognized 5: Authentication passed 6: Authentication failed |
+| recognizeScore  | float   | Recognition score                                            |
+| livenessScore   | float   | Liveness score                                               |
+| mask            | int     | Whether to wear a mask: 0 not enabled 1 not worn 2 worn      |
+| mode            | int     | Verification mode: 0: swipe face 1: swipe face or card 2: swipe face or card or swipe QR code 3: swipe face and swipe card 4: swipe ID card 5: swipe face or swipe ID card 6: swipe face and swipe ID card |
+| **rgb_image**   | string  | Snapshot image of face in jpeg format after Base64           |
+| pass            | Boolean | Whether to allow pass                                        |
+| timestamp       | Int     | Recognition time                                             |
+| user            | object  | User object                                                  |
+| --name          | string  | User name                                                    |
+| --user_id       | int     | User id                                                      |
+| --type          | int     | User type                                                    |
 

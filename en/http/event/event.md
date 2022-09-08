@@ -1,45 +1,27 @@
-# 事件订阅
+# Event Subscription( WebSockets)
 
 该接口为 Websocket 接口，由 GET 请求方式升级为 Websocket。
 
-## 请求路径
+## Receiving address
 
-> `​/v1​/event`
+> `wss://HOST:PORT/v1/event/`
 
-## 请求方式
+## Receiving method
 
-> GET => WSS
+> Websockets application/json
 
-## 返回数据字段
+## Respond structure
 
-| 字段 | 类型   | 字段释义                         |
-| ---- | ------ | -------------------------------- |
-| type | Int    | 事件类型,当前仅有0，表示识别事件 |
-| data | Object | 其他补充信息                     |
+| Parameter name | Type   | Description                                                  |
+| -------------- | ------ | ------------------------------------------------------------ |
+| **type**       | int    | Event type, currently only including 0, indicating the recognition event |
+| **data**       | Object | Other information                                            |
 
-### 各 type 的 data 数据字段
+## Receiving example
 
-**识别事件数据**
+Recognition record
 
-| 字段            | 类型    | 字段释义                                                     |
-| --------------- | ------- | ------------------------------------------------------------ |
-| deviceSN        | string  | 设备序列号                                                   |
-| recognizeStatus | Int     | 当前画面中人脸的分类: 0:未知,1:非活体,2:库中人,3:陌生人,4:已识别,5:认证通过,6:认证失败 |
-| recognizeScore  | Float   | 识别精度分值                                                 |
-| livenessScore   | Float   | 活体精度分值                                                 |
-| mask            | Int     | 是否佩戴口罩: 0:未启用,1:未戴,2:佩戴                         |
-| mode            | Int     | 核验模式: 0:刷脸,1:刷脸或刷卡,2:刷脸或刷卡或刷二维码,3:刷脸且刷卡,4:刷身份证,5:刷脸或刷身份证,6:刷脸且刷身份证 |
-| rgb_image       | String  | Base64后的jpeg格式的人脸抓拍图                               |
-| pass            | Boolean | 是否允许通行                                                 |
-| timestamp       | Int     | 识别时间                                                     |
-| user            | Object  | 事件用户对象                                                 |
-| --name          | String  | 用户名称                                                     |
-| --user_id       | Int     | 用户id                                                       |
-| --type          | Int     | 用户类型                                                     |
-
-## 返回示例
-
-```json
+```
 {
     "type": 0,
     "data": {
@@ -59,4 +41,26 @@
         "timestamp": 1660625866
     }
 }
+
 ```
+
+## Recognition event parameter description
+
+| Parameter name  | Type    | Description                                                  |
+| --------------- | ------- | ------------------------------------------------------------ |
+| deviceSN        | string  | Device SN                                                    |
+| recognizeStatus | int     | Classification of faces in the current screen: 0: Unknown 1: Non-liveness 2: People in the library 3: Strangers 4: Recognized 5: Authentication passed 6: Authentication failed |
+| recognizeScore  | float   | Recognition score                                            |
+| livenessScore   | float   | Liveness score                                               |
+| mask            | int     | Whether to wear a mask: 0 not enabled 1 not worn 2 worn      |
+| mode            | int     | Verification mode: 0: swipe face 1: swipe face or card 2: swipe face or card or swipe QR code 3: swipe face and swipe card 4: swipe ID card 5: swipe face or swipe ID card 6: swipe face and swipe ID card |
+| **rgb_image**   | string  | Snapshot image of face in jpeg format after Base64           |
+| pass            | Boolean | Whether to allow pass                                        |
+| timestamp       | Int     | Recognition time                                             |
+| user            | object  | User object                                                  |
+| --name          | string  | User name                                                    |
+| --user_id       | int     | User id                                                      |
+| --type          | int     | User type                                                    |
+
+
+

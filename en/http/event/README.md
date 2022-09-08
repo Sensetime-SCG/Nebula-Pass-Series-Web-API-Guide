@@ -1,3 +1,2 @@
-# 事件订阅接口
+# Event Subscription 
 
-包含识别事件的数据推送。
