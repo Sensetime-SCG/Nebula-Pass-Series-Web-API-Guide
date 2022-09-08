@@ -1,19 +1,27 @@
-# 获取指定策略下绑定的通行组
+# Query the group bound to the specified rule
 
-获取所有已绑定该`rule_id`通行组的`group_id`。
+Query the group bound to the specified rule.
 
-## 请求路径
+## Request address
 
 > `/v1/rule/id/{id}/groups`
 
 
-## 请求方式
+## Request method
 
 > GET
 
-## 请求示例
+## Request parameters
 
-获取所有绑定`rule_id`为 1 的人员的`group_id`。
+| Parameter name | Type | Required | Description |
+| -------------- | ---- | -------- | ----------- |
+| None           | None | None     | None        |
+
+## Response parameters
+
+| Parameter name | Type  | Description |
+| -------------- | ----- | ----------- |
+| items          | array | ID list     |
 
 > `/v1/rule/id/1/groups`
 

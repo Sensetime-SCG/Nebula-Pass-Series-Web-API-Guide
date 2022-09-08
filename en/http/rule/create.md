@@ -1,144 +1,131 @@
-# 新建策略
+# Add a rule
 
-最大可创建20个通行策略。
+Add a rule.
 
-需要注意，如果所有的时刻表都为空，则表示任何时间段都不可通行。
+**Access rules**:
 
-周一到周日时间段每天最多3条；特殊日计划按天设置，最多可以添加31天，每天最多也是3个时间段。
+Rule Interpretation: From Monday to Sunday, there are up to 3 rules per day; the special day plan is set by day, and a maximum of 31 days can be added, and there are up to 3 rules per day.
 
-## 请求路径
+## Request address
 
 > `/v1/rule`
 
-## 请求方式
+## Request method
 
 > POST
 
-- 请求体: `application/json`
+## Request parameters
 
-| 字段     | 类型   | 必填 | 字段释义                                                 |
-| -------- | ------ | ---- | -------------------------------------------------------- |
-| rule_id  | Int    | Y    | 由提交端设置的唯一标识,不可重复,范围: 大于 0 小于 999999 |
-| name     | String | Y    | 策略名称，内容长度1~32字节，不可重                       |
-| schedule | Object | Y    | 通行策略的具体内容                                       |
+| Parameter name | Type   | Required | Description | Remark                                                       |
+| -------------- | ------ | -------- | ----------- | ------------------------------------------------------------ |
+| rule_id        | int    | Y        | Rule id     | The unique identifier id set by the commit side, cannot be repeated, must be greater than 0 and less than 999999 |
+| name           | string | Y        | Rule name   | The length must be greater than 0 and less than or equal to 32 |
+| schedule       | object | Y        | Schedule    |                                                              |
 
-其中`schedule`字段值的具体内容字段如下:
+schedule object field description：
 
-| 字段         | 类型         | 必填 | 字段释义                                                                          |
-| ------------ | ------------ | ---- | --------------------------------------------------------------------------------- |
-| onset_point  | Long          | Y    | 起效时间点,毫秒级Unix时间戳,范围: 大于 0 小于 4102415999000 (2099-12-31 23:59:59) |
-| expire_point | Long          | Y    | 失效时间点,毫秒级Unix时间戳,范围: 大于 0 小于 4102415999000 (2099-12-31 23:59:59) |
-| mon_period   | Object array | N    | 周一时刻表,上限3条;默认空                                                         |
-| the_period   | Object array | N    | 周二时刻表,上限3条;默认空                                                         |
-| wed_period   | Object array | N    | 周三时刻表,上限3条;默认空                                                         |
-| thur_period  | Object array | N    | 周四时刻表,上限3条;默认空                                                         |
-| fri_period   | Object array | N    | 周五时刻表,上限3条;默认空                                                         |
-| sat_period   | Object array | N    | 周六时刻表,上限3条;默认空                                                         |
-| sun_period   | Object array | N    | 周日时刻表,上限3条;默认空                                                         |
-| special_days | Object array | N    | 特殊日期时刻表,上限31条;默认空                                                    |
+| Parameter name | Type   | Description                              |
+| -------------- | ------ | ---------------------------------------- |
+| onset_point    | int    | Onset time, Unix, millisecond timestamp  |
+| expire_point   | int    | Expire time, Unix, millisecond timestamp |
+| mon_period     | object | Monday schedule                          |
+| the_period     | object | Tuesday schedule                         |
+| wed_period     | object | Wednesday schedule                       |
+| thur_period    | object | Thursday schedule                        |
+| fri_period     | object | Friday schedule                          |
+| sat_period     | object | Saturday schedule                        |
+| sun_period     | object | Sunday schedule                          |
+| special_days   | object | Special day schedule                     |
 
-各`period`字段值的具体内容字段如下:
+xxx_period object field description：
 
-| 字段       | 类型   | 必填 | 字段释义            |
-| ---------- | ------ | ---- | ------------------- |
-| start_time | Object | N    | 当日起效时间;默认空 |
-| end_time   | Object | N    | 当日失效时间;默认空 |
+| Parameter name | Type   | Description |
+| -------------- | ------ | ----------- |
+| start_time     | object | Onset time  |
+| end_time       | object | Expire time |
 
-`special_days`字段值的具体内容字段如下：
+special_days object field description：
 
-| 名称         | 类型         | 必填 | 说明                                                     |
-| ------------ | ------------ | ---- | -------------------------------------------------------- |
-| year         | Int          | N    | 起效时间点的年,有效值0~2099，若为0则表示每年都生效;默认0 |
-| month        | Int          | N    | 起效时间点的月,有效值0~12，若为0则表示每月都生效;默认0   |
-| day          | Int          | N    | 起效时间点的日,有效值0~31，若为0则表示每日都生效;默认0   |
-| today_period | Object array | N    | 当日时刻表,上限3条;默认空                                |
+| Parameter name | Type   | Description                                                  |
+| -------------- | ------ | ------------------------------------------------------------ |
+| year           | int    | The year of the onset time point. The valid value is ≥ 0. If it is 0, it means that it will take effect every year. |
+| month          | int    | The month in the onset time point, the valid value is 0\~12, if it is 0, it means it will take effect every month. |
+| day            | int    | The day in the onset time point, the valid value is 0\~31, if it is 0, it means it will take effect every day. |
+| today_period   | object |                                                              |
 
-`start_time`与`end_time`字段值的具体内容如下：
+start_time and end_time object field description：
 
-| 名称 | 类型 | 必填 | 说明                                 |
-| ---- | ---- | ---- | ------------------------------------ |
-| hour | Int  | N    | 起效时间点中的小时，有效值0~23;默认0 |
-| min  | Int  | N    | 起效时间点中的分钟，有效值0~59;默认0 |
-| sec  | Int  | N    | 起效时间点中的秒数，有效值0~59;默认0 |
+| Parameter name | Type | Description                                                  |
+| -------------- | ---- | ------------------------------------------------------------ |
+| hour           | int  | The hour value in the onset time point, the valid value is 0\~23 |
+| min            | int  | The minute value in the onset time point, the valid value is 0~59 |
+| sec            | int  | The second value in the onset time point, the valid value is 0\~59 |
 
+Request example：
 
-## 请求示例:
-
-新建一条策略，策略起效时间为*2022-1-1 0:0:0*，失效时间为*2022-12-31 23:59:59*,可通行的时间段为每周一的*6:30:0*到*12:30:0*与*14:0:0*到*18:30:30*,以及每月的*6:30:0*到*12:30:0*与*14:0:0*到*18:30:30*。
-
-> `/v1/rule`
-
-```json
+```
 {
-    "rule_id": 1,
-    "name": "1",
-    "schedule": {
-        "onset_point": 1640966400000,
-        "expire_point": 1672502399000,
+    "rule_id": 4,
+    "name": "Rule4",
+    "schedule":{
+        "onset_point":1660097956,
+        "expire_point":2543710756,
         "mon_period": [
             {
-                "start_time": {
-                    "hour": 6,
-                    "min": 30,
-                    "sec": 0
-                },
-                "end_time": {
-                    "hour": 12,
-                    "min": 30,
-                    "sec": 0
-                }
+            "start_time":{
+				"hour":0,
+				"min":0,
+				"sec":0
+			},
+			"end_time": {
+				"hour":12,
+				"min":10,
+				"sec":50
+			}
             },
             {
-                "start_time": {
-                    "hour": 14,
-                    "min": 0,
-                    "sec": 0
-                },
-                "end_time": {
-                    "hour": 18,
-                    "min": 30,
-                    "sec": 30
-                }
-            }
+            "start_time":{
+				"hour":13,
+				"min":0,
+				"sec":0
+			},
+			"end_time": {
+				"hour":18,
+				"min":0,
+				"sec":0
+			},
+            "start_time":{
+				"hour":19,
+				"min":0,
+				"sec":0
+			},
+			"end_time": {
+				"hour":23,
+				"min":0,
+				"sec":0
+			}            
+            }            
         ],
-        "special_days": [
-            {
-                "year": 0,
-                "month": 0,
-                "day": 1,
-                "today_period": [
-                    {
-                        "start_time": {
-                            "hour": 6,
-                            "min": 30,
-                            "sec": 0
-                        },
-                        "end_time": {
-                            "hour": 12,
-                            "min": 30,
-                            "sec": 0
-                        }
-                    },
-                    {
-                        "start_time": {
-                            "hour": 14,
-                            "min": 0,
-                            "sec": 0
-                        },
-                        "end_time": {
-                            "hour": 18,
-                            "min": 30,
-                            "sec": 30
-                        }
-                    }
-                ]
-            }
-        ]
+        "the_period": [],
+        "wed_period": [],
+        "thur_period": [],
+        "fri_period": [],
+        "sat_period": [],
+        "sun_period": [],
+        "special_days": []
     }
 }
 ```
 
-## 返回示例
+## Response parameters
+
+| Parameter name | Type                        | Description |
+| -------------- | --------------------------- | ----------- |
+| rule_id        | int                         | Rule ID     |
+| name           | string                      |             |
+| schedule       | object                      |             |
+| create_at      | Unix, millisecond timestamp |             |
+| update_at      | Unix, millisecond timestamp |             |
 
 ```json
 {

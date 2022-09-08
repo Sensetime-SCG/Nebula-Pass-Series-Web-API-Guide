@@ -1,23 +1,32 @@
-# 查询策略信息
+# Query a rule
 
-根据指定的`rule_id`获取该策略信息
+Query a rule.
 
-## 请求路径
+## Request address
 
 > `/v1/rule/id/{id}`
 
-## 请求方式
+## Request method
 
 > GET
 
+## Request parameters
 
-## 请求示例
+| Parameter name | Type | Required | Description |
+| -------------- | ---- | -------- | ----------- |
+| None           | None | None     | None        |
 
-获取`rule_id`为 1 的策略信息。
+## Response parameters
 
-> `/v1/rule/id/1`
+| **Parameter name** | **Type** | **Description**             | **Remark** |
+| ------------------ | -------- | --------------------------- | ---------- |
+| rule_id            | int      | Rule id                     |            |
+| name               | string   | Rule name                   |            |
+| schedule           | object   | Schedule                    |            |
+| create_at          | int      | Unix, millisecond timestamp |            |
+| update_at          | int      | Unix, millisecond timestamp |            |
 
-## 返回示例
+Example of successful return：
 
 ```json
 {

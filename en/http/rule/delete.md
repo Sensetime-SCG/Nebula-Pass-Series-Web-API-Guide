@@ -1,22 +1,32 @@
-# 删除策略
+# Delete a rule
 
-删除已经录入的策略
+Delete a rule.
 
-## 请求路径
+## Request address
 
 > `/v1/rule/id/{id}`
 
-## 请求方式
+## Request method
 
 > DELETE
 
-## 请求示例:
 
-删除`rule_id`为1的策略。
 
-> `/v1/rule/id/1`
+## Request parameters
 
-## 返回示例
+| Parameter name | Type | Required | Description |
+| -------------- | ---- | -------- | ----------- |
+| None           | None | None     | None        |
+
+Request example：
+
+https://10.9.66.104:80/v1/ rule/id /2
+
+## Response parameters
+
+| Parameter name | Type | Description |
+| -------------- | ---- | ----------- |
+| None           | None | None        |
 
 ```json
 {

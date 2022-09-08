@@ -1,33 +1,40 @@
-# 批量获取策略信息
+# Query rule list
 
-根据指定的`offset`与`limit`获取策略信息。要求 `offset`值范围是 0 到 100000；`limit`值范围是 0 到 10。
+Query rule list.
 
-## 请求路径
+## Request address
 
 > `/v1/rule/offset/{offset}/limit/{limit}`
 
-## 请求方式
+## Request method
 
 > GET
 
+## Request parameters
 
-## 响应参数
+| Parameter name | Type | Required | Description                                                  |
+| -------------- | ---- | -------- | ------------------------------------------------------------ |
+| offset         | int  | Y        | The data offset of the current page, which must be greater than or equal to 0 and less than 100000 |
+| limit          | int  | Y        | The data item limit of the current page must be greater than 0 and less than or equal to 10 |
 
-| 字段   | 类型         | 释义                   |
-| ------ | ------------ | ---------------------- |
-| offset | int          | 当前数据条目请求偏移量 |
-| limit  | int          | 当前数据条目获取上限   |
-| count  | int          | 当前获取数据条目数量   |
-| total  | int          | 数据条目总量           |
-| items  | object array | 数据条目               |
+## Response parameters
 
-## 请求示例
+| Parameter name | Type  | Description                     |
+| -------------- | ----- | ------------------------------- |
+| offset         | int   | The current offset              |
+| limit          | int   | The current data item limit     |
+| total          | int   | The total item number           |
+| items          | array | The currently fetched data item |
 
-获取起始偏移为0，当前获取数据条目上限为10，其中`count`字段表示为当前获取到的数据条目量，`total`字段表示数据库中的总条目数。
+Description of each element field in items:
 
-> `/v1/rule/offset/0/limit/10`
+| **Parameter name** | **Type** | **Description** | **Remark** |
+| ------------------ | -------- | --------------- | ---------- |
+| rule_id            | int      | Rule id         |            |
+| name               | string   | Rule name       |            |
+| schedule           | object   | Schedule        |            |
 
-## 返回示例
+Response example：
 
 ```json
 {
