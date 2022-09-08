@@ -1,83 +1,107 @@
-# 设备门禁配置
+# Access Parameters
 
-## 提交配置
+## Get device access parameters
 
-提交并应用新的门禁参数。
+Get device access control configuration.
 
-### 请求路径
+### Request address
 
-> `​/v1​/device​/access`
+https://HOST:PORT/v1/device/access
 
-### 请求方式
+### Request method
 
-> POST
+GET
 
-- 请求体: `application/json`
+### Request parameters
 
-| 字段                    | 类型    | 必填 | 字段释义                                                                                                                      |
-| ----------------------- | ------- | ---- | ----------------------------------------------------------------------------------------------------------------------------- |
-| open_door_type          | Int     | Y    | 开门方式,0:本地继电器,1:网络继电器,2：韦根接口26(24), 3:韦根接口26(8+16), 4:韦根接口32, 5:韦根接口34, 6:本地继电器+韦根接口34 |
-| keep_door_open_duration | Int     | N    | 保持开门状态的时长，即从发出开门命令到发出关门命令的时间间隔（单位：s）取值范围：【1，30】，默认6s                            |
-| gpio_a                  | Int     | N    | GPIO A-输出口，1-无，2-门铃，3-报警器                                                                                         |
-| gpio_b                  | Int     | Y    | GPIO B-输入口，1-无，2-门磁，3-出门按钮，4-消防信号                                                                           |
-| gpio_c                  | Int     | Y    | GPIO C-输入口，1-无，2-门磁，3-出门按钮，4-消防信号                                                                           |
-| wigan_input             | Int     | Y    | 韦根输入口， 1-无，2：韦根26(8+16bit ID）；3：韦根26 （24bit ID）;4：韦根32；5：韦根34；                                      |
-| tamper                  | Boolean | Y    | 设备防拆报警开关，false：关，true：开                                                                                         |
-| force_open              | Boolean | Y    | 强制开门告警开关                                                                                                              |
-| network_relay_address   | String  | Y    | 网络继电器ip地址                                                                                                              |
-| door_sensor_timeout     | Int     | Y    | 门磁超时时长(单位s)                                                                                                           |
+| Parameter name | Type | Required | Description |
+| -------------- | ---- | -------- | ----------- |
+| None           | None | None     | None        |
 
-### 请求示例:
+### Response parameters
 
-> `​/v1​/device​/access`
+| Parameter name          | Type    | Description                                                  | Remark     |
+| ----------------------- | ------- | ------------------------------------------------------------ | ---------- |
+| open_door_type          | Int     | Door opening mode, 0: Local relay, 1: Network relay, 2: Wiegand port 26(24) 3: Wiegand port 26(8+16), 4: Wiegand port 32, 5: Wiegand port 34, 6: Local relay + Wiegand port 34 |            |
+| keep_door_open_duration | Int     | The duration of keeping the door open, that is, the time interval from issuing the door opening command to issuing the door closing command (unit: s) Value range: [1, 30], default 6s |            |
+| gpio_a                  | Int     | GPIO A-output port, 1-None, 2-Doorbell, 3-Alarm              |            |
+| gpio_b                  | Int     | GPIO B-input port, 1-None, 2-Door sensor, 3-Exit button, 4-Fire signal |            |
+| gpio_c                  | Int     | GPIO C-input port, 1-None, 2-Door sensor, 3-Exit button, 4-Fire signal |            |
+| wigan_input             | Int     | Wiegand input port, 1-None, 2: Wiegand 26 (8+16bit ID); 3: Wiegand 26 (24bit ID); 4: Wiegand 32; 5: Wiegand 34; |            |
+| tamper                  | Boolean | Device tamper alarm switch, false: off, true: on             |            |
+| force_open              | Boolean | Forced door open alarm switch                                |            |
+| network_relay_address   | String  | Network delay IP address                                     |            |
+| door_sensor_timeout     | Int     | Door sensor timeout duration (unit: s)                       | Default：3 |
 
-```json
+Response example
+
+```
 {
-    "open_door_type": 0,
-    "keep_door_open_duration": 6,
-    "gpio_a": 1,
-    "gpio_b": 1,
-    "gpio_c": 1,
-    "wigan_input": 4,
-    "tamper": true,
-    "force_open": true,
-    "network_relay_address": "127.0.0.1",
-    "door_sensor_timeout": 3
+
+  "code": 200,
+
+  "msg": "OK"，
+
+  "data": {
+
+​    "open_door_type": 0,
+
+​    "keep_door_open_duration": 6,
+
+​    "gpio_a": 1,
+
+​    "gpio_b": 1,
+
+​    "gpio_c": 1,
+
+​    "wigan_input": 4,
+
+​    "tamper": **true**,
+
+​    "force_open": **true**,
+
+​    "network_relay_address": "127.0.0.1",
+
+​    "door_sensor_timeout": 3
+
+  }
+
 }
 ```
-### 返回示例
 
-```json
-{
-    "data": null,
-    "code": 200,
-    "msg": "OK"
-}
+
+
+##  Set device access parameters
+
+Get device access Parameters.
+
+### Request address
+
+https://HOST:PORT/v1/device/access
+
+### Request method
+
+POST
+
+### Request parameters
+
+| Parameter name          | Type    | Description                                                  | Remark     |
+| ----------------------- | ------- | ------------------------------------------------------------ | ---------- |
+| open_door_type          | Int     | Door opening mode, 0: Local relay, 1: Network relay, 2: Wiegand port 26(24) 3: Wiegand port 26(8+16), 4: Wiegand port 32, 5: Wiegand port 34, 6: Local relay + Wiegand port 34 |            |
+| keep_door_open_duration | Int     | The duration of keeping the door open, that is, the time interval from issuing the door opening command to issuing the door closing command (unit: s) Value range: [1, 30], default 6s |            |
+| gpio_a                  | Int     | GPIO A-output port, 1-None, 2-Doorbell, 3-Alarm              |            |
+| gpio_b                  | Int     | GPIO B-input port, 1-None, 2-Door sensor, 3-Exit button, 4-Fire signal |            |
+| gpio_c                  | Int     | GPIO C-input port, 1-None, 2-Door sensor, 3-Exit button, 4-Fire signal |            |
+| wigan_input             | Int     | Wiegand input port, 1-None, 2: Wiegand 26 (8+16bit ID); 3: Wiegand 26 (24bit ID); 4: Wiegand 32; 5: Wiegand 34; |            |
+| tamper                  | Boolean | Device tamper alarm switch, false: off, true: on             |            |
+| force_open              | Boolean | Forced door open alarm switch                                |            |
+| network_relay_address   | String  | Network delay IP address                                     |            |
+| door_sensor_timeout     | Int     | Door sensor timeout duration (unit: s)                       | Default：3 |
+
+Request example
+
 ```
-
----
-
-## 获取配置
-
-获取设备门禁参数。
-
-### 请求路径
-
-> `​/v1​/device​/access`
-
-### 请求方式
-
-> GET
-
-### 请求示例
-
-> `​/v1​/device​/access`
-
-### 返回示例
-
-```json
 {
-    "data": {
         "open_door_type": 0,
         "keep_door_open_duration": 6,
         "gpio_a": 1,
@@ -88,9 +112,12 @@
         "force_open": true,
         "network_relay_address": "127.0.0.1",
         "door_sensor_timeout": 3
-    },
-    "code": 200,
-    "msg": "OK"
-}
+    }
 ```
+
+### Response parameters
+
+| Parameter name | Type | Required | Description |
+| -------------- | ---- | -------- | ----------- |
+| None           | None | None     | None        |
 

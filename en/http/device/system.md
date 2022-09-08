@@ -1,89 +1,121 @@
-# 设备系统参数
+# System Parameters
 
-## 提交配置
+##  Get device system parameters
 
+Get device system parameters.
 
-### 请求路径
+### Request address
 
-> `​/v1​/device​/system`
+https://HOST:PORT/v1/device/system
 
-### 请求方式
+### Request method
 
-> POST
+GET
 
-- 请求体: `application/json`
+### Request parameters
 
-| 字段                          | 类型    | 必填 | 字段释义                                            |
-| ----------------------------- | ------- | ---- | --------------------------------------------------- |
-| language_type                 | Int     | N    | 多语言，1：简体中文2：英文，3,繁体中文              |
-| sound_volume                  | Int     | N    | 系统音量，范围：0~100; 默认: 80                     |
-| screen_brightness             | Int     | N    | 屏幕亮度，范围：0~100; 默认: 80                     |
-| auto_reboot                   | Boolean | N    | 自动重启，false：关true：开; 默认: true             |
-| reboot_time                   | String  | N    | 自动重启时间; 默认: "02:00:00"                      |
-| standby_open                  | Boolean | N    | 是否开启待机，false:关闭,true:开启; 默认：true      |
-| standby_touch_wakeup          | Boolean | N    | 待机触摸唤醒, false:关闭,true:开启; 默认：false     |
-| wait_time                     | Int     | N    | 待机时间,单位：分钟,范围：1~10; 默认: 1             |
-| sleep_time                    | Int     | N    | 休眠时间,单位：分钟,范围：3~30; 默认: 3             |
-| touch_recognition             | Boolean | N    | 触摸识别开关，false:关闭，true:开启; 默认: false    |
-| touch_recognition_return_time | Int     | N    | 触摸识别完成返回时间，单位：秒，范围：3~30；默认: 5 |
-| touch_recognition_timeout     | Int     | N    | 触摸识别超时时间，单位：秒，范围：3~30; 默认: 5     |
-| short_exposure                | Int     | N    | 防闪烁， 0:无;  50:50hz;  60:60hz; 默认：0          |
+| Parameter name | Type | Required | Description |
+| -------------- | ---- | -------- | ----------- |
+| None           | None | None     | None        |
 
-### 请求示例:
+### Response parameters
 
-> `​/v1​/device​/system`
+| Parameter name       | Type    | Description                                                  | Remark |
+| -------------------- | ------- | ------------------------------------------------------------ | ------ |
+| language_type        | Int     | 1: Simplified Chinese 2：English，3：Traditional Chinese     |        |
+| sound_volume         | Int     | System volume（0-100）                                       |        |
+| screen_brightness    | Int     | Screen brightness（0-100）                                   |        |
+| auto_reboot          | Boolean | Auto reboot switch, false: off true: on                      |        |
+| reboot_time          | String  | Auto reboot time                                             |        |
+| standby_open         | Boolean | Whether the standby is enabled, false-not enabled, true-enabled |        |
+| standby_touch_wakeup | Boolean | Whether to enable standby touch wake-up, false-not enabled, true-enabled |        |
+| wait_time            | Int     | Standby time (unit: minutes) value [1-10], default 1         |        |
+| sleep_time           | Int     | Sleep time (unit: minutes) value [3-30], default 3           |        |
+| touch_recognition    | Boolean | Touch recognition switch, false-not enabled, true-enabled    |        |
+| return_time          | Int     | Touch recognition completion return time (s) Value [3-30], default 5 |        |
+| timeout              | Int     | Touch recognition timeout time (s) Value [3-30], default 5   |        |
+| short_exposure       | Int     | Anti-flicker, 0:None; 50:50hz; 60:60hz                       |        |
 
-```json
+Response example
+
+```
 {
-    "language_type": 1,
-    "sound_volume": 80,
-    "screen_brightness": 80,
-    "auto_reboot": true,
-    "reboot_time": "02:00:00",
-    "standby_open": true,
-    "standby_touch_wakeup": false,
-    "wait_time": 1,
-    "sleep_time": 3,
-    "touch_recognition": false,
-    "touch_recognition_return_time": 5,
-    "touch_recognition_timeout": 5,
-    "short_exposure": 0
+  "code": 200,
+
+  "msg": "OK"，
+
+  "data": {
+
+​    "language_type": 1,
+
+​    "sound_volume": 100,
+
+​    "screen_brightness": 100,
+
+​    "auto_reboot": **true**,
+
+​    "reboot_time": "02:00:00",
+
+​    "standby_open": **true**,
+
+​    "standby_touch_wakeup": **false**,
+
+​    "wait_time": 1,
+
+​    "sleep_time": 3,
+
+​    "touch_recognition": **false**,
+
+​    "touch_recognition_return_time": 5,
+
+​    "touch_recognition_timeout": 5,
+
+​    "short_exposure": 0
+
+  }
+
 }
 ```
-### 返回示例
 
-```json
-{
-    "data": null,
-    "code": 200,
-    "msg": "OK"
-}
+
+
+## Set device system parameters
+
+Set device system parameters.
+
+### Request address
+
+https://HOST:PORT/v1/device/system
+
+### Request method
+
+POST
+
+### Request parameters
+
+| Parameter name       | Type    | Description                                                  | Remark |
+| -------------------- | ------- | ------------------------------------------------------------ | ------ |
+| language_type        | Int     | 1: Simplified Chinese 2：English，3：Traditional Chinese     |        |
+| sound_volume         | Int     | System volume（0-100）                                       |        |
+| screen_brightness    | Int     | Screen brightness（0-100）                                   |        |
+| auto_reboot          | Boolean | Auto reboot switch, false: off true: on                      |        |
+| reboot_time          | String  | Auto reboot time                                             |        |
+| standby_open         | Boolean | Whether the standby is enabled, false-not enabled, true-enabled |        |
+| standby_touch_wakeup | Boolean | Whether to enable standby touch wake-up, false-not enabled, true-enabled |        |
+| wait_time            | Int     | Standby time (unit: minutes) value [1-10], default 1         |        |
+| sleep_time           | Int     | Sleep time (unit: minutes) value [3-30], default 3           |        |
+| touch_recognition    | Boolean | Touch recognition switch, false-not enabled, true-enabled    |        |
+| return_time          | Int     | Touch recognition completion return time (s) Value [3-30], default 5 |        |
+| timeout              | Int     | Touch recognition timeout time (s) Value [3-30], default 5   |        |
+| short_exposure       | Int     | Anti-flicker, 0:None; 50:50hz; 60:60hz                       |        |
+
+Request example
+
 ```
-
----
-
-## 获取配置
-
-### 请求路径
-
-> `​/v1​/device​/system`
-
-### 请求方式
-
-> GET
-
-### 请求示例
-
-> `​/v1​/device​/system`
-
-### 返回示例
-
-```json
 {
-    "data": {
         "language_type": 1,
-        "sound_volume": 80,
-        "screen_brightness": 80,
+        "sound_volume": 100,
+        "screen_brightness": 100,
         "auto_reboot": true,
         "reboot_time": "02:00:00",
         "standby_open": true,
@@ -94,9 +126,12 @@
         "touch_recognition_return_time": 5,
         "touch_recognition_timeout": 5,
         "short_exposure": 0
-    },
-    "code": 200,
-    "msg": "OK"
-}
+    }
 ```
+
+### Response parameters
+
+| Parameter name | Type | Required | Description |
+| -------------- | ---- | -------- | ----------- |
+| None           | None | None     | None        |
 

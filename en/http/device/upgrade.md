@@ -1,20 +1,36 @@
-# 固件升级
+# Upgrade
 
-## 请求路径
+Upload the file to the device and upgrade.
 
-> `/v1/device/upgrade`
+## Request address
 
-## 请求方式
+https://HOST:PORT/v1/device/upgrade
 
-> POST
+## Request method
 
-- 请求体: `multipart/form-data`
+POST
 
-| 字段     | 类型 | 必填 | 字段释义                                               |
-| -------- | ---- | ---- | ------------------------------------------------------ |
-| firmware | File | Y    | 固件数据,固件不可大于512MB,且设备剩余空间不应小于600MB |
+## Request parameters
 
-### 返回示例
+The request body adopts the form style, and the Content-Type parameter of the request header is set as follows:
+
+Content-Type: multipart/form-data
+
+In the request body, submit the firmware data:
+
+firmware: firmware data;
+
+| Parameter name | Type             | Required | Description                                                  |
+| -------------- | ---------------- | -------- | ------------------------------------------------------------ |
+| firmware       | firmware（file） | Y        | OTA upgrade package of the corresponding product (eg: SensePassS7_V1.0.5_20220801_update.tgz) |
+
+![image-20220810112950439](C:\Users\linpeicai\AppData\Roaming\Typora\typora-user-images\image-20220810112950439.png)
+
+## Response parameters
+
+| Parameter name | Type | Description |
+| -------------- | ---- | ----------- |
+| None           | None | None        |
 
 ```json
 {

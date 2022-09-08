@@ -1,75 +1,93 @@
-# 设备时间参数
+# Time Parameters
 
-## 提交配置
+##  Get device time
 
+Get device time.
 
-### 请求路径
+### Request address
 
-> `​/v1​/device​/time`
+https://HOST:PORT/v1/device/time
 
-### 请求方式
+### Request method
 
-> POST
+GET
 
-- 请求体: `application/json`
+### Request parameters
 
-| 字段           | 类型    | 是否必须 | 说明                                                          |
-| -------------- | ------- | -------- | ------------------------------------------------------------- |
-| local_time     | Long    | N        | 设备当前时间，毫秒级Unix时间戳                                |
-| manual_mode    | Boolean | N        | 是否手动设置时间，false:自动获取， ture: 手动修改; 默认:false |
-| time_zone      | String  | N        | 设备时区,范围：-11~12; 默认: 8                                |
-| server_address | String  | N        | NTP 服务器地址                                                |
+| Parameter name | Type | Required | Description |
+| -------------- | ---- | -------- | ----------- |
+| None           | None | None     | None        |
 
+### Response parameters
 
-### 请求示例:
+| Parameter name | Type    | Description                                                  | Remark                                                       |
+| -------------- | ------- | ------------------------------------------------------------ | ------------------------------------------------------------ |
+| local_time     | String  | Local time, unix timestamp (ms), 13 bits                     |                                                              |
+| manual_mode    | Boolean | Whether to manually set the time false: get the time automatically true: manually modify the time | Default false; non-manual mode is automatically configured through ntp |
+| time_zone      | String  | Device timezone, {-11, 12}                                   | Default 8                                                    |
+| server_address | String  | ntp server address                                           | Need to specify http or https                                |
 
-> `​/v1​/device​/time`
+Response example：
 
-```json
+```
 {
-    "manual_mode": false,
-    "time_zone": 8,
-    "server_address": "ntp.aliyun.com"
+
+  "code": 200,
+
+  "msg": "OK"，
+  
+  "data": {
+
+​    "local_time": 1660038271259,
+
+​    "manual_mode": **false**,
+
+​    "time_zone": 8,
+
+​    "server_address": "https://link.bi.sensetime.com/sl"
+
+  },
+
 }
 ```
-### 返回示例
 
-```json
-{
-    "data": null,
-    "code": 200,
-    "msg": "OK"
-}
+
+
+##  Set device time
+
+Set device time.
+
+### Request address
+
+https://HOST:PORT/v1/device/time
+
+### Request method
+
+POST
+
+### Request parameters
+
+| Parameter name | Type    | Description                                                  | Remark                                                       |
+| -------------- | ------- | ------------------------------------------------------------ | ------------------------------------------------------------ |
+| local_time     | String  | Local time, unix timestamp (ms), 13 bits                     |                                                              |
+| manual_mode    | Boolean | Whether to manually set the time false: get the time automatically true: manually modify the time | Default false; non-manual mode is automatically configured through ntp |
+| time_zone      | String  | Device timezone, {-11, 12}                                   | Default 8                                                    |
+| server_address | String  | ntp server address                                           | Need to specify http or https                                |
+
+Request example
+
 ```
-
----
-
-## 获取配置
-
-### 请求路径
-
-> `​/v1​/device​/time`
-
-### 请求方式
-
-> GET
-
-### 请求示例
-
-> `​/v1​/device​/time`
-
-### 返回示例
-
-```json
 {
-    "data": {
-        "local_time": 1660310557866,
+        "local_time": 1660038297736,
         "manual_mode": false,
         "time_zone": 8,
-        "server_address": "ntp.aliyun.com"
-    },
-    "code": 200,
-    "msg": "OK"
-}
+        "server_address": "https://link.bi.sensetime.com/sl"
+    }
 ```
+
+### Response parameters
+
+| Parameter name | Type | Required | Description |
+| -------------- | ---- | -------- | ----------- |
+| None           | None | None     | None        |
 

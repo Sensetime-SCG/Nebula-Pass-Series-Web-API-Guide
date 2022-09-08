@@ -1,25 +1,40 @@
-# 重启设备
+# Reboot device remotely
 
-RT
+Reboot device remotely.
 
-## 请求路径
+## Request address
 
-> `​/v1​/device​/reboot`
+https://HOST:PORT/v1/device/reboot
 
-## 请求方式
+## Request method
 
-> GET
+GET
 
-## 请求示例
+## Request parameters
 
-> `​/v1​/device​/reboot`
+| Parameter name | Type | Required | Description |
+| -------------- | ---- | -------- | ----------- |
+| None           | None | None     | None        |
 
-## 返回示例
+##  Response parameters
 
-```json
+| Parameter name | Type | Description |
+| -------------- | ---- | ----------- |
+| None           | None | None        |
+
+Response example：
+
+```
 {
-    "data": null,
-    "code": 200,
-    "msg": "OK"
+
+"code": 200,
+
+"msg": "OK",
+
+"data": {
+
+}
+
 }
 ```
+

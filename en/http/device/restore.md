@@ -1,25 +1,42 @@
-# 还原设备
+# Factory reset remotely
 
-RT
+Factory reset remotely.
 
-## 请求路径
+## Request address
 
-> `​/v1​/device​/restore`
+https://HOST:PORT/v1/device/restore
 
-## 请求方式
+## Request method
 
-> GET
+GET
 
-## 请求示例
+## Request parameters
 
-> `​/v1​/device​/restore`
+| Parameter name | Type | Required | Description |
+| -------------- | ---- | -------- | ----------- |
+| None           | None | None     | None        |
 
-## 返回示例
+## Response parameters
 
-```json
+| Parameter name | Type | Description |
+| -------------- | ---- | ----------- |
+| None           | None | None        |
+
+Response example：
+
+```
 {
-    "data": null,
-    "code": 200,
-    "msg": "OK"
+
+"code": 200,
+
+"msg": "OK",
+
+"data": {
+
+}
+
 }
 ```
+
+
+
