@@ -2,6 +2,23 @@
 
 ---
 
+## V1.0.0 (2022-09-08)
+
+*Author: Wuyi
+
+**Adapted Devices:**
+
+- SenseNebula Pass S7 *V1.0.8
+- SensePass CS  *V3.3.6
+
+**Add:**
+
+- 新增英文接口文档
+
+**Fixed &Modify:**
+
+- 
+
 ## v0.0.8 (2022-08-20)
 
 *Author: LinPeiCai
