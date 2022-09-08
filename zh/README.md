@@ -24,6 +24,7 @@
 
 | 产品 | 固件版本 |
 | --- |  --- |
-| SenseNubula Pass S7 | V1.0.5 及以上 |
+| SenseNubula Pass S7 | V1.0.8 |
+| SensePass CS | V3.3.6 |
 
 ---
