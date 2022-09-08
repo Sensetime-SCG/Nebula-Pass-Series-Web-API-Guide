@@ -1,41 +1,84 @@
-# 查询用户的信息
+# Query user information
 
-根据指定的`user_id`获取该人员信息
+Query user information.
 
-## 请求路径
+## Request address
 
 > `/v1/user/id/{id}`
 
-## 请求方式
+## Request method
 
 > GET
 
+## Request parameters
 
-## 请求示例
+| Parameter name | Type | Required | Description |
+| -------------- | ---- | -------- | ----------- |
+| None           | None | None     | None        |
 
-获取`user_id`为*3*的人员信息。
+## Response parameters
 
-> `/v1/user/id/3`
+| Parameter name   | Type    | Description                                        |
+| ---------------- | ------- | -------------------------------------------------- |
+| name             | string  | User name                                          |
+| user_id          | int     | The unique id set by the commit side               |
+| type             | int     | 1：employee 2：visitor                             |
+| avatar           | string  | Person avatar, basemap                             |
+| feature          | string  | Feature value                                      |
+| ic_number        | string  | IC number                                          |
+| id_number        | string  | ID number                                          |
+| job_number       | string  | Job number                                         |
+| guest_time_start | int     | Visit start time, Unix, timestamp in milliseconds. |
+| guest_time_end   | int     | Visit end time, Unix, timestamp in milliseconds.   |
+| groups           | int []  | List of binding groups                             |
+| is_admin         | boolean | Whether to enable administrator privileges         |
+| remark           | string  | Remark                                             |
+| create_at        |         |                                                    |
+| update_at        |         |                                                    |
 
-## 返回示例
+Example of successful return：
 
-```json
+```
 {
-  "data": {
-        "user_id":3,
-        "name": "张三",
-        "avatar": "/9j/2wCEAAoHBwgHBgoICAgLCgoLDhgQDg0NDh0VFhEYIx8lJCIfIiEmKzcvJik0KSEiMEExNDk7Pj4",
-        "type": 1,
-        "ic_number":"",
-        "job_number":"",
-        "id_number":"",
-        "groups": [1,2],
-        "is_admin":false,
-        "remark":"",
-        "create_at": 1660222970940,
-        "update_at": 1660222970940
-  },
-  "code": 200,
-  "msg": "OK"
+
+"code": 200,
+
+"msg": "OK",
+
+"data": {
+
+“user_id”:1,
+
+"avatar": "",
+
+"feature": "",
+
+"type": 1,
+
+"remark": "",
+
+"name": "",
+
+"ic_number": "",
+
+"id_number": "",
+
+"guest_time_start": 1606123080000,
+
+"guest_time_end": 1606123099000,
+
+"groups": [],
+
+" is_admin ": false,
+
+“create_at”:”1658471422626”,
+
+“update_at”:”1658471422626”
+
+}
+
 }
 ```
+
+
+

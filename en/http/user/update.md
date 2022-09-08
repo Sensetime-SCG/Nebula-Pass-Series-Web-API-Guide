@@ -1,53 +1,71 @@
-# 更新人员信息
+# Update user  
 
-更新人员信息，其中`user_id`字段值和`type`字段值不可修改。
+Update a user’s information.
 
-## 请求路径
+## Request address
 
 > `/v1/user/id/{id}`
 
-## 请求方式
+## Request method
 
 > PUT
 
-- 请求体: `application/json`
+## Request parameters
 
-| 字段             | 类型      | 必填 | 字段释义                                                                         |
-| ---------------- | --------- | ---- | -------------------------------------------------------------------------------- |
-| name             | String    | Y    | 人员名称,内容长度1~32字节，不可重                                                |
-| avatar           | String    | N    | 人员头像,要求base64编码,上限10MB;存在feature时,该字段可不填                      |
-| feature          | String    | N    | 人员特征值,上限10KB,存在avatar时,该字段可不填,avatar与feature同时有值优先feature |
-| ic_number        | String    | N    | IC卡号,上限45字节                                                                |
-| id_number        | String    | N    | 身份证号,上限45字节                                                              |
-| job_number       | String    | N    | 工号,上限45字节                                                                  |
-| guest_time_start | Int       | N    | 访客开始时间，毫秒级Unix时间戳                                                   |
-| guest_time_end   | Int       | N    | 访客结束时间，毫秒级Unix时间戳                                                   |
-| groups           | Int array | N    | 绑定人员组的列表, 绑定的组类型不可互斥                                           |
-| is_admin         | boolean   | N    | 是否启用管理员权限，用于设备管理界面的刷脸认证,默认false                         |
-| remark           | String    | N    | 备注,上限128字节                                                                 |
+| Parameter name   | Type    | Required                                     | Description                                        | Remark                                                       |
+| ---------------- | ------- | -------------------------------------------- | -------------------------------------------------- | ------------------------------------------------------------ |
+| name             | string  | Y                                            | User name                                          | The length should be greater than 0 and less than or equal to 32 |
+| avatar           | string  | Y (When feature has a value, it can be null) | Person avatar, basemap                             | base64 encoding, limited to 10MB                             |
+| feature          | string  | N                                            | Feature value                                      | When avatar and feature have values at the same time, the feature shall prevail, and the limit is less than 10KB |
+| ic_number        | string  | N                                            | IC number                                          | The length limit is 45 bytes                                 |
+| id_number        | string  | N                                            | ID number                                          | The length limit is 45 bytes                                 |
+| job_number       | string  | N                                            | Job number                                         | The length limit is 45 bytes                                 |
+| guest_time_start | int     | N                                            | Visit start time, Unix, timestamp in milliseconds. |                                                              |
+| guest_time_end   | int     | N                                            | Visit end time, Unix, timestamp in milliseconds.   |                                                              |
+| groups           | int []  | N                                            | List of binding groups                             | Min: 1 Max: 100 Binding group types are not mutually exclusive |
+| is_admin         | boolean | Y                                            | Whether to enable administrator privileges         | Face-swiping authentication on user device management interface |
+| remark           | string  | N                                            | Remark                                             | Cannot exceed 128 bytes                                      |
 
-## 请求示例:
+## Response parameters
 
-更新`user_id`为*3*的人员信息。
+| Parameter name   | Type    | Description                                        |
+| ---------------- | ------- | -------------------------------------------------- |
+| name             | string  | User name                                          |
+| user_id          | int     | The unique id set by the commit side               |
+| type             | int     | 1：employee 2：visitor                             |
+| avatar           | string  | Person avatar, basemap                             |
+| feature          | string  | Feature value                                      |
+| ic_number        | string  | IC number                                          |
+| id_number        | string  | ID number                                          |
+| job_number       | string  | Job number                                         |
+| guest_time_start | int     | Visit start time, Unix, timestamp in milliseconds. |
+| guest_time_end   | int     | Visit end time, Unix, timestamp in milliseconds.   |
+| groups           | int []  | List of binding groups                             |
+| is_admin         | boolean | Whether to enable administrator privileges         |
+| remark           | string  | Remark                                             |
+| create_at        |         |                                                    |
+| update_at        |         |                                                    |
+
+Example Request 
 
 > `/v1/user/id/3`
 
 ```json
 {
-  "name": "张三",
+  "name": "SAN",
   "avatar": "/9j/2wCEAAoHBwgHBgoICAgLCgoLDhgQDg0NDh0VFhEYIx8lJCIfIiEmKzcvJik0KSEiMEExNDk7Pj4",
   "groups": [1],
   "is_admin":true
 }
 ```
 
-## 返回示例
+Example response
 
 ```json
 {
   "data": {
         "user_id":3,
-        "name": "张三",
+        "name": "SAN",
         "avatar": "/9j/2wCEAAoHBwgHBgoICAgLCgoLDhgQDg0NDh0VFhEYIx8lJCIfIiEmKzcvJik0KSEiMEExNDk7Pj4",
         "type": 1,
         "ic_number":"",

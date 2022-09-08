@@ -1,33 +1,49 @@
-# 批量获取用户的信息
+# Query list of user information
 
-根据指定的`offset`与`limit`获取人员信息。要求 `offset`值范围是 0 到 100000；`limit`值范围是 0 到 10。
+Query list of user information.
 
-## 请求路径
+## Request address
 
 > `/v1/user/offset/{offset}/limit/{limit}`
 
-## 请求方式
+## Request method
 
 > GET
 
+## Request parameters
 
-## 响应参数
+| Parameter name | Type | Required | Description                                                  |
+| -------------- | ---- | -------- | ------------------------------------------------------------ |
+| offset         | int  | Y        | The data offset of the current page, which must be greater than or equal to 0 and less than 100000 |
+| limit          | int  | Y        | The data item limit of the current page must be greater than 0 and less than or equal to 10 |
 
-| 字段   | 类型         | 释义                   |
-| ------ | ------------ | ---------------------- |
-| offset | int          | 当前数据条目请求偏移量 |
-| limit  | int          | 当前数据条目获取上限   |
-| count  | int          | 当前获取数据条目数量   |
-| total  | int          | 数据条目总量           |
-| items  | object array | 数据条目               |
+## Response parameters
 
-## 请求示例
+| Parameter name | Type  | Description                                                |
+| -------------- | ----- | ---------------------------------------------------------- |
+| items          | Array | List of user information retrieved from request parameters |
 
-获取起始偏移为0，当前获取数据条目上限为2，其中`count`字段表示为当前获取到的数据条目量，`total`字段表示数据库中的总条目数。
+**Description of each element field in items**
 
-> `/v1/user/offset/0/limit/2`
+| Parameter name   | Type    | Description                                        |
+| ---------------- | ------- | -------------------------------------------------- |
+| name             | string  | User name                                          |
+| user_id          | int     | The unique id set by the commit side               |
+| type             | int     | 1：employee 2：visitor                             |
+| avatar           | string  | Person avatar, basemap                             |
+| feature          | string  | Feature value                                      |
+| ic_number        | string  | IC number                                          |
+| id_number        | string  | ID number                                          |
+| job_number       | string  | Job number                                         |
+| guest_time_start | int     | Visit start time, Unix, timestamp in milliseconds. |
+| guest_time_end   | int     | Visit end time, Unix, timestamp in milliseconds.   |
+| groups           | int []  | List of binding groups                             |
+| is_admin         | boolean | Whether to enable administrator privileges         |
+| remark           | string  | Remark                                             |
+| create_at        |         |                                                    |
+| update_at        |         |                                                    |
 
-## 返回示例
+Response example：
 
 ```json
 {
