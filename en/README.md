@@ -22,7 +22,7 @@ In the process of using this product, you may collect personal information such 
 
 **Version requirements**
 
-| **Product**         | Software version | **Model version**                                            |
+| **Product**         | Software version (Minimum requirements) | **Model version**                                            |
 | ------------------- | ---------------- | ------------------------------------------------------------ |
 | SenseNebula Pass S7 | V1.0.8           | KM_feature_Feature_R50_BGR_Surveillance_nnie_nart_hisvp-nnie12-int8_b8_4.20.2.model |
 | SensePass CS        | V3.3.6           | KM_feature_Feature_R50_BGR_Surveillance_rv0522_nart_rv-rknn-uint8_b1_4.16.3_a41f243f_20210607.model |

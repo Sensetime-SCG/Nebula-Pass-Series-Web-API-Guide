@@ -2,26 +2,55 @@
 
 ---
 
-## V1.0.0 (2022-09-08)
+## v1.1.0 (2022-09-16)
 
-*Author: Wuyi
+*Author: ChenYang*
 
 **Adapted Devices:**
 
-- SenseNebula Pass S7 *V1.0.8
-- SensePass CS  *V3.3.6
+- SenseNebula Pass S7 *V1.1.8*
+
+**Add:**
+
+- 接口 [POST] `/v1/ai/recognitionquality` ，具体内容查看该接口描述
+- 接口 [POST] `/v1/ai/feature` ，具体内容查看该接口描述
+
+**Fixed & Modify:**
+
+- 接口 [POST]  [GET] `/v1/device/functions`
+  - 字段 `auth_mode` 值支持添加 2 和 3 ，具体释义查看该接口描述
+  - 新增 `auth_event_address` : 当 `auth_mode` 取值为 0 时，可设置该地址让设备主动推送事件。取值非 0 时，则该地址不可空，且作为服务器识别对象
+  
+- 接口 [POST]  [GET] `/v1/event/subscribe` 该接口将弃用， 未来会移除。该功能已迁移到`/v1/device/functions` 接口
+  - 字段 `enabled` 已删除，推送信息是否生效将取决于`event_dest`字段是否存在值
+  - 字段 `event_dest`与接口 `/v1/device/functions`的`auth_event_address` 同义，但不可通过该接口置空
+  
+- 修复首次启动后设置单机模式下， Web 功能未启用
+
+- 添加事件主动推送的HTTP请求Header中对Body类型描述为`json`
+
+  
+
+## V1.0.0 (2022-09-08)
+
+*Author: WuYi*
+
+**Adapted Devices:**
+
+- SenseNebula Pass S7 *V1.0.8*
+- SensePass CS  *V3.3.6*
 
 **Add:**
 
 - 新增英文接口文档
 
-**Fixed &Modify:**
+**Fixed & Modify:**
 
 - 
 
 ## v0.0.8 (2022-08-20)
 
-*Author: LinPeiCai
+*Author: LinPeiCai*
 
 **Adapted Devices:**
 
@@ -29,10 +58,10 @@
 
 **Add:**
 
-- 接口  [POST] [GET] `/v1/event/subscribe` 新增第三方服务器推送配置
+- 接口  [POST]  [GET] `/v1/event/subscribe` 新增第三方服务器推送配置
 - 接口 [POST]  事件推送协议（HTTP/HTTPS）
 
-**Fixed &Modify:**
+**Fixed & Modify:**
 
 - 接口 [WSS] `/v1/event/` 事件订阅 修改字段`TrackID` 为`deviceSN` 设备序列号
 
@@ -47,9 +76,9 @@
 **Add:**
 
 - 接口 [GET] `/v1/device/info`
-- 接口 [POST] [GET] `/v1/device/functions`新增`auth_mode`字段用于验证方式
+- 接口 [POST]  [GET] `/v1/device/functions`新增`auth_mode`字段用于验证方式
 
-**Fixed &Modify:**
+**Fixed & Modify:**
 
 - 接口 [POST] `/v1/device/door` 字段`open_mode`未定义的崩溃修复
 - 接口 [PUT] `/v1/group/{id}` 忽略字段`type`
@@ -106,18 +135,18 @@
 - 移除接口 [GET] `/v1/user/all`
 
 **Add:**
-- 接口 [POST] [GET] `/v1/device/access`
-- 接口 [POST] [GET] `/v1/device/functions`
-- 接口 [POST] [GET] `/v1/device/system`
-- 接口 [POST] [GET] `/v1/device/custom`
-- 接口 [POST] [GET] `/v1/device/time`
+- 接口 [POST]  [GET] `/v1/device/access`
+- 接口 [POST]  [GET] `/v1/device/functions`
+- 接口 [POST]  [GET] `/v1/device/system`
+- 接口 [POST]  [GET] `/v1/device/custom`
+- 接口 [POST]  [GET] `/v1/device/time`
 - 接口 [POST] `/v1/device/door`
 - 接口 [POST] `/v1/group`
-- 接口 [GET] [PUT] [DELETE] `/v1/group/id/{id}`
+- 接口 [GET]  [PUT]  [DELETE] `/v1/group/id/{id}`
 - 接口 [GET] `/v1/group/id/{id}/users`
 - 接口 [GET] `/v1/group/offset/{offset}/limit/{limit}`
 - 接口 [POST] `/v1/rule`
-- 接口 [GET] [PUT] [DELETE] `/v1/rule/id/{id}`
+- 接口 [GET]  [PUT]  [DELETE] `/v1/rule/id/{id}`
 - 接口 [GET] `/v1/rule/id/{id}/groups`
 - 接口 [GET] `/v1/rule/offset/{offset}/limit/{limit}`
 

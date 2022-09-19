@@ -1,4 +1,6 @@
-# 第三方服务器推送配置
+# 第三方服务器推送配置[Deprecated]
+
+该接口的功能已经整合到 `/v1/device/functions/`接口中的`auth_mode`与`auth_event_address`字段，后续该接口将会移除。
 
 ## 获取配置
 获取第三方服务器推送配置，如第三方服务地址，是否启动推送功能。
@@ -22,21 +24,16 @@ GET
 | 名称       | 类型   | 说明                                                         |
 | ---------- | ------ | ------------------------------------------------------------ |
 | event_dest | string | 指定事件接收的地址，采用restful回调模式，支持http和https，样式如下：http://ip:port/eventRcv或者https://ip:port/eventRcv<br/> 不超过1024个字符，事件接收地址由应用方负责按指定的规范提供，事件接收接口不需要认证 |
-| enabled    | boolen | 是否启用                                                     |
+
 
 响应示例：
 
 ```
 {
 
-"code": 200,
-
-"msg": "OK",
-
-"data": {
-
-}
-
+    "code": 200,
+    "msg": "OK",
+    "data":null
 }
 ```
 
@@ -62,14 +59,13 @@ POST
 | 名称       | 类型   | 必填 | 说明                                                         |
 | ---------- | ------ | ---- | ------------------------------------------------------------ |
 | event_dest | string | Y    | 指定事件接收的地址，采用restful回调模式，支持http和https，样式如下：http://ip:port/eventRcv或者https://ip:port/eventRcv<br/> 不超过1024个字符，事件接收地址由应用方负责按指定的规范提供，事件接收接口不需要认证 |
-| enabled    | boolen | N    | 是否启用                                                     |
+
 
 请求实例
 
 ```
 {
-    "event_dest" : "http://ip:port/eventRcv",
-    "enabled" :true
+    "event_dest" : "http://ip:port/eventRcv"
 }
 ```
 
@@ -117,16 +113,12 @@ POST application/json
 
 ```
 {
-
-"code": 200,
-
-"msg": "success",
-
-"data": {
-	"pass": true,
-	"customtips":"Hello World"
-}
-
+    "code": 200,
+    "msg": "success",
+    "data": {
+        "pass": true,
+        "customtips":"Hello World"
+    }
 }  
 ```
 
