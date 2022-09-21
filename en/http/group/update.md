@@ -11,6 +11,8 @@ Modify group information，`group_id` field and `type` field values cannot be mo
 
 > PUT
 
+- Body Type: `application/json`
+
 ## Request parameters
 
 | Parameter name | Type   | Required | Description |
@@ -18,40 +20,15 @@ Modify group information，`group_id` field and `type` field values cannot be mo
 | name           | string | Y        | Group name  |
 | rule_id        | int    | N        | Rule id     |
 
-## Response parameters
+## 请求示例:
 
-| Parameter name | Type   | Description                                         |
-| -------------- | ------ | --------------------------------------------------- |
-| group_id       | int    | Group ID                                            |
-| name           | string | Group name                                          |
-| type           | int    | Group type                                          |
-| rule_id        | int    | Rule id                                             |
-| create_at      | int    | Create time (format is Unix, millisecond timestamp) |
-| update_at      | string | Update time(format is Unix, millisecond timestamp)  |
+update group infomation which `group_id` is 3.
 
-```
+> `/v1/group/id/3`
+
+```json
 {
-
-"code": 200,
-
-"msg": "OK",
-
-"data": {
-
-“name”:”A”,
-
-“type”:1,
-
-"group_id": 2,
-
-“rule_id”: 1,
-
-"create_at": "1658471422626 ",
-
-"update_at": "1658471422626 "
-
-}
-
+  "name": "员工组",
+  "rule_id": 0
 }
 ```
-

@@ -24,7 +24,8 @@
 
 ```json
 {
-    "open_mode":0
+    "open_mode":0,
+    "card_number":""
 }
 ```
 

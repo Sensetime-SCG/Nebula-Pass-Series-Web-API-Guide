@@ -10,31 +10,13 @@ Query rule list.
 
 > GET
 
-## Request parameters
+## 请求示例
 
-| Parameter name | Type | Required | Description                                                  |
-| -------------- | ---- | -------- | ------------------------------------------------------------ |
-| offset         | int  | Y        | The data offset of the current page, which must be greater than or equal to 0 and less than 100000 |
-| limit          | int  | Y        | The data item limit of the current page must be greater than 0 and less than or equal to 10 |
+The starting offset of acquisition is 0, and the upper limit of currently acquired data items is 10, where the `count` field represents the number of currently acquired data items, and the `total` field represents the total number of entries in the database.
 
-## Response parameters
+> `/v1/rule/offset/0/limit/10`
 
-| Parameter name | Type  | Description                     |
-| -------------- | ----- | ------------------------------- |
-| offset         | int   | The current offset              |
-| limit          | int   | The current data item limit     |
-| total          | int   | The total item number           |
-| items          | array | The currently fetched data item |
-
-Description of each element field in items:
-
-| **Parameter name** | **Type** | **Description** | **Remark** |
-| ------------------ | -------- | --------------- | ---------- |
-| rule_id            | int      | Rule id         |            |
-| name               | string   | Rule name       |            |
-| schedule           | object   | Schedule        |            |
-
-Response example：
+## 返回示例
 
 ```json
 {

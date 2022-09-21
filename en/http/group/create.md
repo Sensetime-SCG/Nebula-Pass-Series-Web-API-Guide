@@ -10,6 +10,8 @@ Create group, max to 100 groups.
 
 > POST
 
+- Body Type: `application/json`
+
 ## Request parameters: 
 
 | Parameter name | Type   | Required | Description                                                  |
@@ -19,40 +21,26 @@ Create group, max to 100 groups.
 | name           | string | Y        | Group name, the length is 1\~32 bytes, non-repeatable, and cannot involve special characters. |
 | rule_id        | int    | N        | The binding rule id, if it is 0, it will not be bound to any rule. |
 
-```
+```json
 {
-
-“group_id”:1,
-"type": 1,
-"name": "GroupA",
-“rule_id”: 1
+  "name": "员工组",
+  "type": 1,
+  "group_id": 1,
+  "rule_id": 0
 }
 ```
+## Response example
 
-## Response parameters
-
-| Parameter name | Type   | Description                                         |
-| -------------- | ------ | --------------------------------------------------- |
-| group_id       | int    | Group id                                            |
-| type           | int    |                                                     |
-| name           | string |                                                     |
-| rule_id        | int    |                                                     |
-| create_at      | int    | Create time (format is Unix, millisecond timestamp) |
-| update_at      | string | Update time(format is Unix, millisecond timestamp)  |
-
-```
+```json
 {
-
-"code": 200,
-"msg": "OK",
-"data": {
-"group_id": 2,
-"type": 1,
-"name": "GroupA"
-"rule_id": 1,
-"create_at": "1658471422626 ",
-"update_at": "1658471422626 ",
+    "data": {
+        "name": "员工组",
+        "type": 1,
+        "group_id": 1,
+        "rule_id": 0,
+        "create_at": 1660284813955,
+        "update_at": 1660284813955
+    },
+    "code": 200,
+    "msg": "OK"
 }
-}
-```
-

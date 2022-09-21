@@ -10,23 +10,13 @@ Delete a rule.
 
 > DELETE
 
+## Request example：
 
+delete a rule which `rule_id` is 1
 
-## Request parameters
+> `/v1/rule/id/1`
 
-| Parameter name | Type | Required | Description |
-| -------------- | ---- | -------- | ----------- |
-| None           | None | None     | None        |
-
-Request example：
-
-https://10.9.66.104:80/v1/ rule/id /2
-
-## Response parameters
-
-| Parameter name | Type | Description |
-| -------------- | ---- | ----------- |
-| None           | None | None        |
+## Response examplee
 
 ```json
 {

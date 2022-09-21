@@ -10,75 +10,32 @@ Query user information.
 
 > GET
 
-## Request parameters
 
-| Parameter name | Type | Required | Description |
-| -------------- | ---- | -------- | ----------- |
-| None           | None | None     | None        |
+## Request example
 
-## Response parameters
+get a user infomation which `user_id` is 3
 
-| Parameter name   | Type    | Description                                        |
-| ---------------- | ------- | -------------------------------------------------- |
-| name             | string  | User name                                          |
-| user_id          | int     | The unique id set by the commit side               |
-| type             | int     | 1：employee 2：visitor                             |
-| avatar           | string  | Person avatar, basemap                             |
-| feature          | string  | Feature value                                      |
-| ic_number        | string  | IC number                                          |
-| id_number        | string  | ID number                                          |
-| job_number       | string  | Job number                                         |
-| guest_time_start | int     | Visit start time, Unix, timestamp in milliseconds. |
-| guest_time_end   | int     | Visit end time, Unix, timestamp in milliseconds.   |
-| groups           | int []  | List of binding groups                             |
-| is_admin         | boolean | Whether to enable administrator privileges         |
-| remark           | string  | Remark                                             |
-| create_at        |         |                                                    |
-| update_at        |         |                                                    |
+> `/v1/user/id/3`
 
-Example of successful return：
+## 返回示例
 
-```
+```json
 {
-
-"code": 200,
-
-"msg": "OK",
-
-"data": {
-
-“user_id”:1,
-
-"avatar": "",
-
-"feature": "",
-
-"type": 1,
-
-"remark": "",
-
-"name": "",
-
-"ic_number": "",
-
-"id_number": "",
-
-"guest_time_start": 1606123080000,
-
-"guest_time_end": 1606123099000,
-
-"groups": [],
-
-" is_admin ": false,
-
-“create_at”:”1658471422626”,
-
-“update_at”:”1658471422626”
-
-}
-
+  "data": {
+        "user_id":3,
+        "name": "张三",
+        "avatar": "/9j/2wCEAAoHBwgHBgoICAgLCgoLDhgQDg0NDh0VFhEYIx8lJCIfIiEmKzcvJik0KSEiMEExNDk7Pj4",
+        "type": 1,
+        "ic_number":"",
+        "job_number":"",
+        "id_number":"",
+        "groups": [1,2],
+        "is_admin":false,
+        "remark":"",
+        "create_at": 1660222970940,
+        "update_at": 1660222970940
+  },
+  "code": 200,
+  "msg": "OK"
 }
 ```
-
-
-

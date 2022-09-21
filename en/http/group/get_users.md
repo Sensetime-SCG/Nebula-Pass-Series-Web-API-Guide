@@ -13,35 +13,20 @@ Get user list of group.
 
 ## Request parameters
 
-| Parameter name | Type | Required | Description |
-| -------------- | ---- | -------- | ----------- |
-| id             | int  | Y        | Group id    |
+Get all `user_id` which `group_id` is 1
 
-## Response parameters
+> `/v1/group/id/1/users`
 
-| Parameter name | Type  | Description |
-| -------------- | ----- | ----------- |
-| items          | array | ID list     |
-
-```
+```json
 {
-
-"code": 200,
-
-"msg": "OK",
-
-"data": {
-
-"items":[
-
-110399,
-
-110400
-
-]
-
-}
-
+    "data": {
+        "items": [
+            1,
+            2
+        ]
+    },
+    "code": 200,
+    "msg": "OK"
 }
 ```
 

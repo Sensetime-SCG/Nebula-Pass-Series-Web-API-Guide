@@ -1,23 +1,23 @@
-# 获取图片中人脸的特征值
+# Get face eigenvalues value
 
-获取图片中人脸的特征值
-注: 不可提交存在多人脸的图像,否则大概率返回失败
+Get the eigenvalues ​​of the face in the picture
+Note: Do not submit images with multiple faces, otherwise there is a high probability of failure to return
 
-## 请求路径
+## Request address
 
 > `/v1/ai/feature`
 
-## 请求方式
+## Request method
 
 > POST
 
-- 请求体: `multipart/form-data`
+- Body Type: `multipart/form-data`
 
-| 字段  | 类型 | 必填 | 字段释义                    |
+| Parameter name  | Type | Required | Description                    |
 | ----- | ---- | ---- | --------------------------- |
-| image | File | Y    | JPEG 图像,文件不可大于 4 MB |
+| image | File | Y    | JPEG format image,file size should be less thann 4 MB |
 
-### 返回示例
+### Response example
 
 ```json
 {

@@ -4,11 +4,13 @@ Upload the file to the device and upgrade.
 
 ## Request address
 
-https://HOST:PORT/v1/device/upgrade
+> `/v1/device/upgrade`
 
 ## Request method
 
-POST
+> POST
+
+- Body Type: `multipart/form-data`
 
 ## Request parameters
 
@@ -22,15 +24,8 @@ firmware: firmware data;
 
 | Parameter name | Type             | Required | Description                                                  |
 | -------------- | ---------------- | -------- | ------------------------------------------------------------ |
-| firmware       | firmware（file） | Y        | OTA upgrade package of the corresponding product (eg: SensePassS7_V1.0.5_20220801_update.tgz) |
+| firmware       | File | Y        | OTA upgrade package of the corresponding product,the file size should be less than 600MB |
 
-![image-20220810112950439](C:\Users\linpeicai\AppData\Roaming\Typora\typora-user-images\image-20220810112950439.png)
-
-## Response parameters
-
-| Parameter name | Type | Description |
-| -------------- | ---- | ----------- |
-| None           | None | None        |
 
 ```json
 {

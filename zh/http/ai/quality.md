@@ -38,7 +38,7 @@
 | left  | int  | 人脸左边框到Y轴距离 |
 | right | int  | 人脸右边框到Y轴距离 |
 | top   | int  | 人脸上边框到X轴距离 |
-| left  | int  | 人脸下边框到Y轴距离 |
+| bottom  | int  | 人脸下边框到X轴距离 |
 
 #### result
 

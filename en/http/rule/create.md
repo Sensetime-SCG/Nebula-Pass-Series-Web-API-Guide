@@ -14,6 +14,8 @@ Rule Interpretation: From Monday to Sunday, there are up to 3 rules per day; the
 
 > POST
 
+- Body Type: `application/json`
+
 ## Request parameters
 
 | Parameter name | Type   | Required | Description | Remark                                                       |
@@ -22,20 +24,20 @@ Rule Interpretation: From Monday to Sunday, there are up to 3 rules per day; the
 | name           | string | Y        | Rule name   | The length must be greater than 0 and less than or equal to 32 |
 | schedule       | object | Y        | Schedule    |                                                              |
 
-schedule object field description：
+`schedule` object field description：
 
 | Parameter name | Type   | Description                              |
 | -------------- | ------ | ---------------------------------------- |
 | onset_point    | int    | Onset time, Unix, millisecond timestamp  |
 | expire_point   | int    | Expire time, Unix, millisecond timestamp |
-| mon_period     | object | Monday schedule                          |
-| the_period     | object | Tuesday schedule                         |
-| wed_period     | object | Wednesday schedule                       |
-| thur_period    | object | Thursday schedule                        |
-| fri_period     | object | Friday schedule                          |
-| sat_period     | object | Saturday schedule                        |
-| sun_period     | object | Sunday schedule                          |
-| special_days   | object | Special day schedule                     |
+| mon_period     | object array | Monday schedule                          |
+| the_period     | object array| Tuesday schedule                         |
+| wed_period     | object array| Wednesday schedule                       |
+| thur_period    | object array| Thursday schedule                        |
+| fri_period     | object array| Friday schedule                          |
+| sat_period     | object array| Saturday schedule                        |
+| sun_period     | object array| Sunday schedule                          |
+| special_days   | object array| Special day schedule                     |
 
 xxx_period object field description：
 
@@ -44,7 +46,7 @@ xxx_period object field description：
 | start_time     | object | Onset time  |
 | end_time       | object | Expire time |
 
-special_days object field description：
+`special_days` object field description：
 
 | Parameter name | Type   | Description                                                  |
 | -------------- | ------ | ------------------------------------------------------------ |
@@ -53,7 +55,7 @@ special_days object field description：
 | day            | int    | The day in the onset time point, the valid value is 0\~31, if it is 0, it means it will take effect every day. |
 | today_period   | object |                                                              |
 
-start_time and end_time object field description：
+`start_time` and `end_time` object field description：
 
 | Parameter name | Type | Description                                                  |
 | -------------- | ---- | ------------------------------------------------------------ |
@@ -61,71 +63,79 @@ start_time and end_time object field description：
 | min            | int  | The minute value in the onset time point, the valid value is 0~59 |
 | sec            | int  | The second value in the onset time point, the valid value is 0\~59 |
 
-Request example：
+## Request example：
 
-```
+```json
 {
-    "rule_id": 4,
-    "name": "Rule4",
-    "schedule":{
-        "onset_point":1660097956,
-        "expire_point":2543710756,
+    "rule_id": 1,
+    "name": "1",
+    "schedule": {
+        "onset_point": 1640966400000,
+        "expire_point": 1672502399000,
         "mon_period": [
             {
-            "start_time":{
-				"hour":0,
-				"min":0,
-				"sec":0
-			},
-			"end_time": {
-				"hour":12,
-				"min":10,
-				"sec":50
-			}
+                "start_time": {
+                    "hour": 6,
+                    "min": 30,
+                    "sec": 0
+                },
+                "end_time": {
+                    "hour": 12,
+                    "min": 30,
+                    "sec": 0
+                }
             },
             {
-            "start_time":{
-				"hour":13,
-				"min":0,
-				"sec":0
-			},
-			"end_time": {
-				"hour":18,
-				"min":0,
-				"sec":0
-			},
-            "start_time":{
-				"hour":19,
-				"min":0,
-				"sec":0
-			},
-			"end_time": {
-				"hour":23,
-				"min":0,
-				"sec":0
-			}            
-            }            
+                "start_time": {
+                    "hour": 14,
+                    "min": 0,
+                    "sec": 0
+                },
+                "end_time": {
+                    "hour": 18,
+                    "min": 30,
+                    "sec": 30
+                }
+            }
         ],
-        "the_period": [],
-        "wed_period": [],
-        "thur_period": [],
-        "fri_period": [],
-        "sat_period": [],
-        "sun_period": [],
-        "special_days": []
+        "special_days": [
+            {
+                "year": 0,
+                "month": 0,
+                "day": 1,
+                "today_period": [
+                    {
+                        "start_time": {
+                            "hour": 6,
+                            "min": 30,
+                            "sec": 0
+                        },
+                        "end_time": {
+                            "hour": 12,
+                            "min": 30,
+                            "sec": 0
+                        }
+                    },
+                    {
+                        "start_time": {
+                            "hour": 14,
+                            "min": 0,
+                            "sec": 0
+                        },
+                        "end_time": {
+                            "hour": 18,
+                            "min": 30,
+                            "sec": 30
+                        }
+                    }
+                ]
+            }
+        ]
     }
 }
 ```
 
-## Response parameters
-
-| Parameter name | Type                        | Description |
-| -------------- | --------------------------- | ----------- |
-| rule_id        | int                         | Rule ID     |
-| name           | string                      |             |
-| schedule       | object                      |             |
-| create_at      | Unix, millisecond timestamp |             |
-| update_at      | Unix, millisecond timestamp |             |
+## Response example
 
 ```json
 {

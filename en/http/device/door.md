@@ -8,7 +8,9 @@ https://HOST:PORT/v1/device/door
 
 ## Request method
 
-POST
+> POST
+
+- Body Type: `application/json`
 
 ## Request parameters
 
@@ -17,22 +19,16 @@ POST
 | open_mode      | Int    | Y        | mode 0: normal delay closing after opening the door; 1: normally open; 2: normally closed |
 | card_number    | String | N        | Card number                                                  |
 
-Request example
+## Request example
 
-```
+```json
 {
     "open_mode" : 0,
     "card_number" :""
 }
 ```
 
-##  Response parameters
-
-| Parameter name | Type | Description |
-| -------------- | ---- | ----------- |
-| None           | None | None        |
-
-Response example：
+## Response example：
 
 ```json
 {

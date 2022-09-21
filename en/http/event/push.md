@@ -9,7 +9,7 @@ https://HOST:PORT/v1/event/subscribe
 
 ### Request method
 
-GET
+> GET
 
 ### Request parameters
 
@@ -22,21 +22,15 @@ GET
 | Parameter name | Type    | Description                                                  |
 | -------------- | ------- | ------------------------------------------------------------ |
 | event_dest     | string  | The address of the specified event receiving, using restful callback mode, supports http and https, the style is as follows: http://ip:port/eventRcv or https://ip:port/eventRcv<br/>The length is no more than 1024 bytes, the event receiving address is provided by the application side according to the specified specification, and the event receiving interface does not require authentication |
-| enabled        | boolean | Whether to enable                                            |
 
 Response example：
 
-```
+```json
 {
 
-"code": 200,
-
-"msg": "OK",
-
-"data": {
-
-}
-
+    "code": 200,
+    "msg": "OK",
+    "data": null
 }
 ```
 
@@ -62,14 +56,12 @@ POST
 | Parameter name | Type    | Required | Description                                                  |
 | -------------- | ------- | -------- | ------------------------------------------------------------ |
 | event_dest     | string  | Y        | The address of the specified event receiving, using restful callback mode, supports http and https, the style is as follows: http://ip:port/eventRcv or https://ip:port/eventRcv<br/>The length is no more than 1024 bytes, the event receiving address is provided by the application side according to the specified specification, and the event receiving interface does not require authentication |
-| enabled        | boolean | N        | Whether to enable                                            |
 
 Request example:
 
-```
+```json
 {
-    "event_dest" : "http://ip:port/eventRcv",
-    "enabled" :true
+    "event_dest" : "http://ip:port/eventRcv"
 }
 ```
 
@@ -81,22 +73,13 @@ Request example:
 
 Response example：
 
-```
+```json
 {
-
-"code": 200,
-
-"msg": "OK",
-
-"data": {
-
-}
-
+    "code": 200,
+    "msg": "OK",
+    "data": null
 }
 ```
-
-
-
 
 
 ## Event Push Protocol（HTTP/HTTPS）
@@ -117,17 +100,14 @@ POST application/json
 
 ### Response example
 
-```
+```json
 {
-
-"code": 200,
-
-"msg": "success",
-
-"data": {
-	"pass": true,
-	"customtips":"Hello World"
-}
+    "code": 200,
+    "msg": "success",
+    "data": {
+        "pass": true,
+        "customtips":"Hello World"
+    }
 }  
 ```
 
@@ -135,12 +115,12 @@ POST application/json
 
 | **Parameter name** | **Type** | **Required** | **Description**                                              |
 | ------------------ | -------- | ------------ | ------------------------------------------------------------ |
-| **type**           | int      | Y            | Event type, currently only including 0, indicating the recognition event |
-| **data**           | object   | Y            | Event object                                                 |
+| type           | int      | Y            | Event type, currently only including 0, indicating the recognition event |
+| data           | object   | Y            | Event object                                                 |
 
 Recognition record
 
-```
+```json
 {
     "type": 0,
     "data": {
@@ -173,7 +153,7 @@ Recognition record
 | livenessScore   | float   | Liveness score                                               |
 | mask            | int     | Whether to wear a mask: 0 not enabled 1 not worn 2 worn      |
 | mode            | int     | Verification mode: 0: swipe face 1: swipe face or card 2: swipe face or card or swipe QR code 3: swipe face and swipe card 4: swipe ID card 5: swipe face or swipe ID card 6: swipe face and swipe ID card |
-| **rgb_image**   | string  | Snapshot image of face in jpeg format after Base64           |
+| rgb_image   | string  | Snapshot image of face in jpeg format after Base64           |
 | pass            | Boolean | Whether to allow pass                                        |
 | timestamp       | Int     | Recognition time                                             |
 | user            | object  | User object                                                  |

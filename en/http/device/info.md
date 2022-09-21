@@ -8,13 +8,7 @@ Obtain basic information about the device, such as product name, product model, 
 
 ## Request method
 
-GET
-
-## Request parameters
-
-| Parameter name | Type | Required | Description |
-| -------------- | ---- | -------- | ----------- |
-| None           | None | None     | None        |
+> GET
 
 ## Response parameters
 
@@ -27,27 +21,22 @@ GET
 | sw_ver         | string | ROM version          |
 | hw_ver         | string | Hardware version     |
 | app_ver        | string | APP version          |
-|                |        |                      |
 
-Response example：
+## Response example
 
-```
+```json
 {
-
-"code": 200,
-
-"msg": "OK",
-
-"data": {
-        "model": "SPSC700C0HD01",
-        "device_sn": "PS71HD01MC22C00014",
-        "mac_wired": "AC:1D:DF:6A:9F:D5",
+    "data": {
+        "model": "SPS31HD12",
+        "device_sn": "xxxx",
+        "mac_wired": "11:11:11:11:11:11",
         "mac_wlan": "",
-        "sw_ver": "V1.0.6",
-        "hw_ver": "V1",
-        "app_ver": "v3.4(122)"
-}
-
+        "sw_ver": "V3.0.10",
+        "hw_ver": "PassCV1",
+        "app_ver": "v3.0(122)"
+    },
+    "code": 200,
+    "msg": "OK"
 }
 ```
 

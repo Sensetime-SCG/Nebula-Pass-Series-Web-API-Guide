@@ -11,17 +11,9 @@ Query the group bound to the specified rule.
 
 > GET
 
-## Request parameters
+## Response example
 
-| Parameter name | Type | Required | Description |
-| -------------- | ---- | -------- | ----------- |
-| None           | None | None     | None        |
-
-## Response parameters
-
-| Parameter name | Type  | Description |
-| -------------- | ----- | ----------- |
-| items          | array | ID list     |
+get all group which bind `rule_id` is 1
 
 > `/v1/rule/id/1/groups`
 

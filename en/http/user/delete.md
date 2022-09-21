@@ -10,21 +10,13 @@ Delete a user.
 
 > DELETE
 
-## Request parameters
+## 请求示例:
 
-| Parameter name | Type | Required | Description |
-| -------------- | ---- | -------- | ----------- |
-| None           | None | None     | None        |
+delete a user which `user_id` is 3
 
-Request example：
+> `/v1/user/id/3`
 
-https://10.9.66.104:80/v1/user/id/111
-
-## Response parameters
-
-| Parameter name | Type | Description |
-| -------------- | ---- | ----------- |
-| None           | None | None        |
+## 返回示例
 
 ```json
 {

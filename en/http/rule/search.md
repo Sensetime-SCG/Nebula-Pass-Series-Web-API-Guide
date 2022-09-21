@@ -10,23 +10,13 @@ Query a rule.
 
 > GET
 
-## Request parameters
+## 请求示例
 
-| Parameter name | Type | Required | Description |
-| -------------- | ---- | -------- | ----------- |
-| None           | None | None     | None        |
+get a rule infomation which `rule_id` is 1.
 
-## Response parameters
+> `/v1/rule/id/1`
 
-| **Parameter name** | **Type** | **Description**             | **Remark** |
-| ------------------ | -------- | --------------------------- | ---------- |
-| rule_id            | int      | Rule id                     |            |
-| name               | string   | Rule name                   |            |
-| schedule           | object   | Schedule                    |            |
-| create_at          | int      | Unix, millisecond timestamp |            |
-| update_at          | int      | Unix, millisecond timestamp |            |
-
-Example of successful return：
+## 返回示例
 
 ```json
 {

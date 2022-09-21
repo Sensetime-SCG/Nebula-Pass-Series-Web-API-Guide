@@ -27,9 +27,10 @@
 
 ```json
 {
+    "local_time": 1660038297736,
     "manual_mode": false,
     "time_zone": 8,
-    "server_address": "ntp.aliyun.com"
+    "server_address": "https://link.bi.sensetime.com/sl"
 }
 ```
 ### 返回示例

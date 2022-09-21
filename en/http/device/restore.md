@@ -4,37 +4,19 @@ Factory reset remotely.
 
 ## Request address
 
-https://HOST:PORT/v1/device/restore
+> `​/v1​/device​/restore`
 
 ## Request method
 
-GET
+> GET
 
-## Request parameters
+## Response example：
 
-| Parameter name | Type | Required | Description |
-| -------------- | ---- | -------- | ----------- |
-| None           | None | None     | None        |
-
-## Response parameters
-
-| Parameter name | Type | Description |
-| -------------- | ---- | ----------- |
-| None           | None | None        |
-
-Response example：
-
-```
+```json
 {
-
-"code": 200,
-
-"msg": "OK",
-
-"data": {
-
-}
-
+    "data": null,
+    "code": 200,
+    "msg": "OK"
 }
 ```
 

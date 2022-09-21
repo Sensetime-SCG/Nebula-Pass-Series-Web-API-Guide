@@ -1,0 +1,15 @@
+# 这个是 mdbook 的配置文件,不明其意切勿修改
+
+[book]
+title = "Nebula Pass Web API Guide"
+authors = ["ChenYang","LinPeicai","WuYi"]
+language = "zh-CN"
+multilingual = false
+src = "./"
+
+[build]
+build-dir = "__book"
+
+[output.html]
+
+[output.pdf]

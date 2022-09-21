@@ -10,19 +10,13 @@ Delete group.
 
 > DELETE
 
-## Request parameters
+## Request example
 
-| Parameter name | Type | Required | Description |
-| -------------- | ---- | -------- | ----------- |
-| None           | None | None     | None        |
+delete a group which `groud_id` is 1
 
 > `/v1/group/id/1`
 
-## Response parameters
-
-| Parameter name | Type | Description |
-| -------------- | ---- | ----------- |
-| None           | None | None        |
+## Response example
 
 ```json
 {

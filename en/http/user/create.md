@@ -10,6 +10,8 @@ Add a user.
 
 > POST
 
+- Body Type: `application/json`
+
 ## Request parameters
 
 | Parameter name   | Type    | Required                                     | Description                                        | Remark                                                       |
@@ -28,68 +30,40 @@ Add a user.
 | is_admin         | boolean | Y                                            | Whether to enable administrator privileges         | Face-swiping authentication on user device management interface |
 | remark           | string  | N                                            | Remark                                             | Cannot exceed 128 bytes                                      |
 
-Request example：
+## Request example：
 
-```
+add a user, this user `user_id` is `3`, `name` is `Jack`, `type` is `1`, and bind group `1` and `2`
+
+```json
 {
   "user_id":3,
-  "name": "ddd1",
+  "name": "Jack",
   "avatar": "/9j/2wCEAAoHBwgHBgoICAgLCgoLDhgQDg0NDh0VFhEYIx8lJCIfIiEmKzcvJik0KSEiMEExNDk7Pj4",
   "type": 1,
-  "ic_number":"",
-  "job_number":"",
-  "id_number":"",
-  "groups": [2],
-  "is_admin":false,
-  "remark":""
-
+  "groups": [1,2]
 }
 ```
 
-## Response parameters
 
-| Parameter name   | Type    | Description                                        |
-| ---------------- | ------- | -------------------------------------------------- |
-| name             | string  | User name                                          |
-| user_id          | int     | The unique id set by the commit side               |
-| type             | int     | 1：employee 2：visitor                             |
-| avatar           | string  | Person avatar, basemap                             |
-| feature          | string  | Feature value                                      |
-| ic_number        | string  | IC number                                          |
-| id_number        | string  | ID number                                          |
-| job_number       | string  | Job number                                         |
-| guest_time_start | int     | Visit start time, Unix, timestamp in milliseconds. |
-| guest_time_end   | int     | Visit end time, Unix, timestamp in milliseconds.   |
-| groups           | int []  | List of binding groups                             |
-| is_admin         | boolean | Whether to enable administrator privileges         |
-| remark           | string  | Remark                                             |
-| create_at        |         |                                                    |
-| update_at        |         |                                                    |
+## Response example
 
-```
+```json
 {
-
-"code": 200,
-
-“msg”:””,
-
-"data": {
-        "user_id": 2,
-        "name": "ddd1",
+  "data": {
+        "user_id":3,
+        "name": "张三",
+        "avatar": "/9j/2wCEAAoHBwgHBgoICAgLCgoLDhgQDg0NDh0VFhEYIx8lJCIfIiEmKzcvJik0KSEiMEExNDk7Pj4",
         "type": 1,
-        "avatar": "/9j/2wCEAAoHB7rgcg+lacSkj0qXYADipA8i1bSrrS7kxzxcfwuOje4qK2le1cM0efrT5mgmTg/cbHBFZtDR/9k=",
-        "feature": "EqQAAAAAAAAMBAAAoaAgvYGAgDyBgAA9mZgYvsLAwL25uDi+sbCwPfLw8L3i4GA9kZAQvqGgID",
-        "ic_number": "",
-        "id_number": "",
-        "job_number": "",
-        "guest_time_start": 0,
-        "guest_time_end": 0,
-        "groups": [],
-        "is_admin": false,
-        "remark": "",
-        "create_at": 1660095423671,
-        "update_at": 1660095423964
-}
+        "ic_number":"",
+        "job_number":"",
+        "id_number":"",
+        "groups": [1,2],
+        "is_admin":false,
+        "remark":"",
+        "create_at": 1660222970940,
+        "update_at": 1660222970940
+  },
+  "code": 200,
+  "msg": "OK"
 }
 ```
-

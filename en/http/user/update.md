@@ -10,6 +10,8 @@ Update a user’s information.
 
 > PUT
 
+- Body Type: `application/json`
+
 ## Request parameters
 
 | Parameter name   | Type    | Required                                     | Description                                        | Remark                                                       |
@@ -26,46 +28,28 @@ Update a user’s information.
 | is_admin         | boolean | Y                                            | Whether to enable administrator privileges         | Face-swiping authentication on user device management interface |
 | remark           | string  | N                                            | Remark                                             | Cannot exceed 128 bytes                                      |
 
-## Response parameters
+## Request example:
 
-| Parameter name   | Type    | Description                                        |
-| ---------------- | ------- | -------------------------------------------------- |
-| name             | string  | User name                                          |
-| user_id          | int     | The unique id set by the commit side               |
-| type             | int     | 1：employee 2：visitor                             |
-| avatar           | string  | Person avatar, basemap                             |
-| feature          | string  | Feature value                                      |
-| ic_number        | string  | IC number                                          |
-| id_number        | string  | ID number                                          |
-| job_number       | string  | Job number                                         |
-| guest_time_start | int     | Visit start time, Unix, timestamp in milliseconds. |
-| guest_time_end   | int     | Visit end time, Unix, timestamp in milliseconds.   |
-| groups           | int []  | List of binding groups                             |
-| is_admin         | boolean | Whether to enable administrator privileges         |
-| remark           | string  | Remark                                             |
-| create_at        |         |                                                    |
-| update_at        |         |                                                    |
-
-Example Request 
+update a user infomation which `user_id` is 3
 
 > `/v1/user/id/3`
 
 ```json
 {
-  "name": "SAN",
+  "name": "张三",
   "avatar": "/9j/2wCEAAoHBwgHBgoICAgLCgoLDhgQDg0NDh0VFhEYIx8lJCIfIiEmKzcvJik0KSEiMEExNDk7Pj4",
   "groups": [1],
   "is_admin":true
 }
 ```
 
-Example response
+## Response example
 
 ```json
 {
   "data": {
         "user_id":3,
-        "name": "SAN",
+        "name": "张三",
         "avatar": "/9j/2wCEAAoHBwgHBgoICAgLCgoLDhgQDg0NDh0VFhEYIx8lJCIfIiEmKzcvJik0KSEiMEExNDk7Pj4",
         "type": 1,
         "ic_number":"",
