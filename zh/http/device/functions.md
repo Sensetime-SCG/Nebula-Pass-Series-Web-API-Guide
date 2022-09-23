@@ -1,4 +1,4 @@
-# 设备功能参数配置
+# 设备功能参数
 
 ## 提交配置
 
@@ -23,7 +23,7 @@
 | record_image    | Boolean | Y    | 事件记录图片存储开关，false：关；true：开                    |
 | alarm_record    | Boolean | Y    | 告警记录存储开关，false：关；true：开                        |
 | auth_mode       | Int     | Y    | 认证类型：0: 本地认证, 1: 本地认证+远程开门, 2: 服务器认证, 3: 本地认证+服务器认证(本地认证结果为陌生人时) |
-| auth_event_address | String | N | 指定事件接收的地址,采用restful请求模式，支持http和https,例：http://host:port/eventRcv 或者 https://host:port/eventRcv ,当auth_mode为0时，只需返回响应码；而非0时，须返回指定格式的 Body，如下**远程服务器响应Body格式**所示. |
+| remote_authentication_address | String | N | 当auth_mode非0时启用,采用restful请求模式，支持http和https,例：http://host:port/auth 或者 https://host:port/auth ,当auth_mode非0时，须返回指定格式的 Body，如下**远程服务器响应Body格式**所示. |
 
 ### 请求示例:
 
@@ -40,7 +40,7 @@
     "record_image": true,
     "alarm_record": true,
     "auth_mode": 0,
-    "auth_event_address": "http://1.2.3.4:4321/record/"
+    "remote_authentication_address": "http://1.2.3.4:4321/record/"
 }
 ```
 ### 返回示例
@@ -83,7 +83,7 @@
         "record_image": true,
         "alarm_record": true,
         "auth_mode": 0,
-        "auth_event_address": "http://1.2.3.4:4321/record/"
+        "remote_authentication_address": "http://1.2.3.4:4321/record/"
     },
     "code": 200,
     "msg": "OK"
@@ -98,26 +98,14 @@
 
 注: body 内容为json格式
 
-| 参数名称 | 类型   | 是否必填 | 说明                             |
-| -------- | ------ | -------- | -------------------------------- |
-| type     | Int    | Y        | 事件类型,当前仅有0，表示识别事件 |
-| data     | Object | Y        | 事件对象                         |
-
-
-
-**事件data字段具体属性**
-
 | 参数名称        | 类型    | 说明                                                         |
 | --------------- | ------- | ------------------------------------------------------------ |
 | deviceSN        | String  | 设备序列号                                                   |
-| recognizeStatus | Int    | 当前画面中人脸的分类： 0：未知 1：非活体 2：库中人 3：陌生人 4：已识别 5：认证通过 6：认证失败 |
-| recognizeScore  | Float  | 识别精度分值                                                 |
-| livenessScore   | Float  | 活体精度分值                                                 |
+| recognizeStatus | Int    | 当前画面中人脸的分类： 0：未知 1：库中人 2：陌生人 |
 | mask            | Int   | 是否佩戴口罩： 0 未启用 1 未戴 2 佩戴                        |
-| mode            | Int    | 核验模式: 0：刷脸 1：刷脸或刷卡 2：刷脸或刷卡或刷二维码 3：刷脸且刷卡 4：刷身份证 5：刷脸或刷身份证 6：刷脸且刷身份证 |
 | rgb_image       | String | Base64 后的jpeg格式的人脸抓拍图                              |
-| pass            | Boolean | 是否允许通行                                                 |
 | timestamp       | Int    | 识别时间                                                     |
+| bodyTemperature       | double     | 体温                                                    |
 | user            | Object | 事件用户对象                                                 |
 | --name          | String | 用户名称                                                     |
 | --user_id       | Int    | 用户id                                                       |
@@ -127,31 +115,24 @@
 
 ``` json
 {
-    "type": 0,
-    "data": {
-        "recognizeStatus": 2,
-        "trackID": 13,
+        "recognizeStatus": 1,
         "deviceSN":"PS71HD01MC22C00114",
-        "recognizeScore": 0.9837480783462524,
-        "livenessScore": 0.9073520302772522,
         "mask": 1,
         "rgb_image": "xxxxxxxxxxxxxx=",
-        "pass": true,
-        "mode": 0,
         "user": {
             "name": "Q",
             "user_id": 1,
             "type": 1
         },
-        "timestamp": 1660625866
-    }
+        "timestamp": 1660625866,
+        "bodyTemperature": 36.53308868408203
 }
 
 ```
 
 ### 远程服务器响应Body格式
 
-当字段`auth_mode`为0时，只需返回响应码；而非0时，须返回如下格式的 Body。
+当字段`auth_mode`为非0时，须返回如下格式的 Body。
 
 
 | 字段           | 类型    | 必填 | 字段释义                                                     |

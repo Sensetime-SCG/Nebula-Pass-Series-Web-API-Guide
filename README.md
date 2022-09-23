@@ -8,27 +8,34 @@
 
 **Adapted Devices:**
 
-- SenseNebula Pass S7 *V1.1.8*
+- SenseNebula Pass S7 *V1.1.0*
+- SenseNebula Pass S8 *V1.1.2*
 
 **Add:**
 
 - 接口 [POST] `/v1/ai/recognitionquality` ，具体内容查看该接口描述
 - 接口 [POST] `/v1/ai/feature` ，具体内容查看该接口描述
+- 接口 [POST] `/v1/device/antiepidemice` ，具体内容查看该接口描述
 
 **Fixed & Modify:**
 
 - 接口 [POST]  [GET] `/v1/device/functions`
   - 字段 `auth_mode` 值支持添加 2 和 3 ，具体释义查看该接口描述
-  - 新增 `auth_event_address` : 当 `auth_mode` 取值为 0 时，可设置该地址让设备主动推送事件。取值非 0 时，则该地址不可空，且作为服务器识别对象
+  - 新增 `remote_authentication_address` : 当 `auth_mode` 取值非 0 时，则该地址不可空，且作为服务器识别对象
+  - 新增事件推送与远程服务器响应参数与示例
   
-- 接口 [POST]  [GET] `/v1/event/subscribe` 该接口将弃用， 未来会移除。该功能已迁移到`/v1/device/functions` 接口
-  - 字段 `enabled` 已删除，推送信息是否生效将取决于`event_dest`字段是否存在值
-  - 字段 `event_dest`与接口 `/v1/device/functions`的`auth_event_address` 同义，但不可通过该接口置空
+- 接口 [POST]  [GET] `/v1/event/subscribe` 该接口的功能可用于识别记录上传功能，当接收服务器断开，网络异常或者没收到请求应答，设备将缓存该记录，待网络状态恢复后上传识别记录
+
+- 接口 [POST] `/v1/user` user_id max调整为99999999 （8个9）
+- 接口 [POST] `/v1/user` 人员类型新增黑名单类型 type 为 3
+- 接口 [POST] `/v1/group` 人员组类型新增黑名单组类型 type 为 3
+- 接口 [WSS] `/v1/event` & [POST]`第三方服务器推送配置` 识别记录事件中新增体温`bodyTemperature`字段，删除活体精度分值`livenessScore`字段
+- 接口 [GET] `/v1​/device​/info` 获取设备基本信息`api_ver`，`model_ver`字段
   
 - 修复首次启动后设置单机模式下， Web 功能未启用
 
 - 添加事件主动推送的HTTP请求Header中对Body类型描述为`json`
-
+  
   
 
 ## V1.0.0 (2022-09-08)

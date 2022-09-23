@@ -32,6 +32,7 @@
       - [系统配置](./zh/http/device/system.md)
       - [时间配置](./zh/http/device/time.md)
       - [自定义配置](./zh/http/device/custom.md)
+      - [防疫测温配置](./zh/http/device/antiepidemic.md)
       - [远程开门](./zh/http/device/door.md)
       - [设备信息](./zh/http/device/info.md)
       - [设备重启](./zh/http/device/reboot.md)
