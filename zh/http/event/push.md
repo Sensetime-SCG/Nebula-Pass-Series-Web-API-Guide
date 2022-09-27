@@ -16,13 +16,13 @@
 
 | 名称       | 类型   | 说明                                                         |
 | ---------- | ------ | ------------------------------------------------------------ |
-| event_dest | string | 指定事件接收的地址，采用restful回调模式，支持http和https，样式如下：http://ip:port/eventRcv或者https://ip:port/eventRcv<br/> 不超过1024个字符，事件接收地址由应用方负责按指定的规范提供，事件接收接口不需要认证 |
+| event_dest | string | 指定事件接收的地址，采用restful回调模式，支持http和https，样式如下：http://ip:port/Record或者https://ip:port/Reocrd<br/> 不超过1024个字符，事件接收地址由应用方负责按指定的规范提供，事件接收接口不需要认证 |Record
 | enabled    | boolen | 是否启用，HTTP事件推送服务                                                    |
 
 ### 请求示例:
 ```json
 {
-    "event_dest" : "http://ip:port/eventRcv",
+    "event_dest" : "http://ip:port/Record",
     "enabled" :true
 }
 ```
@@ -104,7 +104,7 @@ POST application/json
 {
     "type": 0,
     "data": {
-        "recognizeStatus": 2,
+        "recognitionType": 1,
         "deviceSN":"PS71HD01MC22C00014",
         "recognizeScore": 0.9837480783462524,
         "mask": 1,
@@ -127,7 +127,7 @@ POST application/json
 | 参数名称        | 类型    | 说明                                                         |
 | --------------- | ------- | ------------------------------------------------------------ |
 | deviceSN        | string  | 设备序列号                                                   |
-| recognizeStatus | int     | 当前画面中人脸的分类： 0：未知 1：非活体 2：库中人 3：陌生人 4：已识别 5：认证通过 6：认证失败 |
+| recognitionType | Int     | 识别类型: 1:员工,2:访客,3:陌生人,4:非活体,5:黑名单 |
 | recognizeScore  | float   | 识别精度分值                                                 |
 | mask            | int     | 是否佩戴口罩： 0 未启用 1 未戴 2 佩戴                        |
 | mode            | int     | 核验模式: 0：刷脸 1：刷脸或刷卡 2：刷脸或刷卡或刷二维码 3：刷脸且刷卡 4：刷身份证 5：刷脸或刷身份证 6：刷脸且刷身份证 |

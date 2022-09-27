@@ -80,7 +80,7 @@
 
 ### 请求示例
 
-> `​/v1​/device​/time`
+> `​/v1​/device​/antiepidemic`
 
 ### 返回示例
 

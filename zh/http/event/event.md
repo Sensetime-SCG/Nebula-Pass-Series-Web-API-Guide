@@ -1,6 +1,6 @@
 # 事件订阅
 
-该接口为 Websocket 接口，由 GET 请求方式升级为 Websocket。
+该接口为 Websocket 接口，由 GET 请求方式升级为 Websocket。<br>Websocket接口最大支持三个客户端连接
 
 ## 请求路径
 
@@ -24,7 +24,7 @@
 | 字段            | 类型    | 字段释义                                                     |
 | --------------- | ------- | ------------------------------------------------------------ |
 | deviceSN        | string  | 设备序列号                                                   |
-| recognizeStatus | Int     | 当前画面中人脸的分类: 0:未知,1:非活体,2:库中人,3:陌生人,4:已识别,5:认证通过,6:认证失败 |
+| recognitionType | Int     | 识别类型: 1:员工,2:访客,3:陌生人,4:非活体,5:黑名单 |
 | recognizeScore  | Float   | 识别精度分值                                                 |
 | mask            | Int     | 是否佩戴口罩: 0:未启用,1:未戴,2:佩戴                         |
 | mode            | Int     | 核验模式: 0:刷脸,1:刷脸或刷卡,2:刷脸或刷卡或刷二维码,3:刷脸且刷卡,4:刷身份证,5:刷脸或刷身份证,6:刷脸且刷身份证 |
@@ -43,7 +43,7 @@
 {
     "type": 0,
     "data": {
-        "recognizeStatus": 2,
+        "recognitionType": 1,
         "deviceSN":"PS71HD01MC22C00014",
         "recognizeScore": 0.9837480783462524,
         "mask": 1,

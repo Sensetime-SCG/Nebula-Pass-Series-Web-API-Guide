@@ -1,4 +1,5 @@
 # 设备时间参数
+配置设备当前时间，当manual_mode为flase，时间由NTP获取；manual_mode为true，需配置local_time
 
 ## 提交配置
 

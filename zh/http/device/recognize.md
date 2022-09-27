@@ -18,16 +18,16 @@ use_mode使用模式为多人模式时，设备功能参数 mode中的“人脸�
 
 | 字段                   | 类型    | 必填 | 字段释义                                    |
 | ---------------------- | ------- | ---- | ------------------------------------------- |
-| use_mode               | Int     | N    | 使用模式, 3:单人模式，4:多人模式; 默认:3        |
+| use_mode               | Int     | Y    | 使用模式, 3:单人模式，4:多人模式; 默认:3        |
 | multi_auth_mode        | Boolean | N    | 多重认证开关，false:关，true:开; 默认:false            |
 | multi_auth_timeout     | Int     | N    | 多重认证间隔(s); 默认:3                             |
-| liveness               | Boolean | N    | 活体检测，false:关，true:开; 默认:true                 |
-| liveness_threshold     | Float   | N    | 活体检测阈值,范围: 0 < x < 1; 默认:0.995 |
-| verify_threshold       | Float   | N    | 活体检测阈值,范围: 0 < x < 1; 默认:0.90    |
-| certificate_threshold  | Float   | N    | 认证对比阈值,范围: 0 < x < 1; 默认:0.6     |
-| recognition_distance   | Int     | N    | 人脸识别距离,单位：米,范围: 0.5 < x < 3; 默认:2  |
-| open_interval          | Int     | N    | 同一个人员再次识别间隔(s); 默认: 5                             |
-| mask_detect            | Boolean | N    | 人员口罩检测开关, false：关；true：开          |
+| liveness               | Boolean | Y    | 活体检测，false:关，true:开; 默认:true                 |
+| liveness_threshold     | Float   | Y   | 活体检测阈值,范围: 0 < x < 1; 默认:0.995 |
+| verify_threshold       | Float   | Y    | 活体检测阈值,范围: 0 < x < 1; 默认:0.90    |
+| certificate_threshold  | Float   | Y    | 认证对比阈值,范围: 0 < x < 1; 默认:0.6     |
+| recognition_distance   | Int     | Y    | 人脸识别距离,单位：米,范围: 0.5 < x < 2; 默认:2  |
+| open_interval          | Int     | Y    | 同一个人员再次识别间隔(s); 默认: 5                             |
+| mask_detect            | Boolean | Y    | 人员口罩检测开关, false：关；true：开          |
 | no_access_without_mask | Boolean | N    | 人员未带口罩不允许通行开关，false：关；true：开;为true时,mask_detect 须为 true，且 no_access_with_mask 为 false |
 | no_access_with_mask    | Boolean | N    | 人员带口罩不允许通行开关，false：关；true：开;为true时,mask_detect 须为 true，且 no_access_without_mask 为 false   |
 

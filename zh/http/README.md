@@ -53,3 +53,4 @@ Web服务接口采用HTTP Restful风格，具体入口地址形式为`https://HO
 
 -   设备端Web服务强制使用 HTTPS TLS/1.3加密，保证每次请求数据不会在传输过错中被窃听与篡改。
 -   业务API请求需要把相关认证参数放入HTTP的 Header 中。
+
