@@ -25,8 +25,6 @@
 | yaw       | float   | 姿态-偏航角 注:   -20 < 有效范围 < 20                        |
 | pitch     | float   | 姿态-俯仰角 注:   -20 < 有效范围 < 20                        |
 | roll      | float   | 姿态-横滚角 注:   -20 < 有效范围 < 20                        |
-| hasMask   | int     | 0:未戴口罩, 2: 已戴口罩 注意: 该字段结果目前无效             |
-| hasHelmet | boolean | 是否佩戴帽子 注意: 该字段结果目前无效                        |
 | result    | Object  | 判断结果                                                     |
 
 #### rect
@@ -65,8 +63,6 @@
       "yaw": -5.201200008392334,
       "pitch": 10.41426372528076,
       "roll": 0.2670194208621979,
-      "hasMask": 0,
-      "hasHelmet": false,
       "result": {
         "code": 0,
         "info": "PASS"

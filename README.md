@@ -15,7 +15,7 @@
 
 - 接口 [POST] `/v1/ai/recognitionquality` ，具体内容查看该接口描述
 - 接口 [POST] `/v1/ai/feature` ，具体内容查看该接口描述
-- 接口 [POST] `/v1/device/antiepidemice` ，具体内容查看该接口描述
+- 接口 [POST] `/v1/device/antiepidemic` ，具体内容查看该接口描述
 
 **Fixed & Modify:**
 
@@ -23,13 +23,14 @@
   - 字段 `auth_mode` 值支持添加 2 和 3 ，具体释义查看该接口描述
   - 新增 `remote_authentication_address` : 当 `auth_mode` 取值非 0 时，则该地址不可空，且作为服务器识别对象
   - 新增事件推送与远程服务器响应参数与示例
+  - 字段 `mode` 核验模式文档修改：2：刷脸且刷卡 3：刷脸或刷卡或刷二维码
   
 - 接口 [POST]  [GET] `/v1/event/subscribe` 该接口的功能可用于识别记录上传功能，当接收服务器断开，网络异常或者没收到请求应答，设备将缓存该记录，待网络状态恢复后上传识别记录
+- 接口 [WSS] `/v1/event` & [POST]`第三方服务器推送配置` 识别记录事件中<br>新增体温`bodyTemperature`字段,消息类型`recognitionType`字段，<br>删除活体精度分值`livenessScore`字段，识别状态`recognizeStatus`字段
 
 - 接口 [POST] `/v1/user` user_id max调整为99999999 （8个9）
 - 接口 [POST] `/v1/user` 人员类型新增黑名单类型 type 为 3
 - 接口 [POST] `/v1/group` 人员组类型新增黑名单组类型 type 为 3
-- 接口 [WSS] `/v1/event` & [POST]`第三方服务器推送配置` 识别记录事件中新增体温`bodyTemperature`字段，删除活体精度分值`livenessScore`字段
 - 接口 [GET] `/v1​/device​/info` 获取设备基本信息`api_ver`，`model_ver`字段
   
 - 修复首次启动后设置单机模式下， Web 功能未启用

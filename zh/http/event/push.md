@@ -16,7 +16,7 @@
 
 | 名称       | 类型   | 说明                                                         |
 | ---------- | ------ | ------------------------------------------------------------ |
-| event_dest | string | 指定事件接收的地址，采用restful回调模式，支持http和https，样式如下：http://ip:port/Record或者https://ip:port/Reocrd<br/> 不超过1024个字符，事件接收地址由应用方负责按指定的规范提供，事件接收接口不需要认证 |Record
+| event_dest | string | 指定事件接收的地址，采用restful回调模式，支持http和https，样式如下：http://ip:port/Record或者https://ip:port/Reocrd<br/> 不超过1024个字符，事件接收地址由应用方负责按指定的规范提供，事件接收接口不需要认证 |
 | enabled    | boolen | 是否启用，HTTP事件推送服务                                                    |
 
 ### 请求示例:
