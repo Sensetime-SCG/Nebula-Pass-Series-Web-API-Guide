@@ -16,7 +16,7 @@
 - 接口 [POST] `/v1/ai/recognitionquality` ，具体内容查看该接口描述
 - 接口 [POST] `/v1/ai/feature` ，具体内容查看该接口描述
 - 接口 [POST] `/v1/device/antiepidemic` ，具体内容查看该接口描述
-- 接口 [GET] `/v1/auth/errors` ，获取所以已记录的错误码信息
+- 接口 [GET] `/v1/auth/errors` ，获取错误码信息表
 
 **Fixed & Modify:**
 
