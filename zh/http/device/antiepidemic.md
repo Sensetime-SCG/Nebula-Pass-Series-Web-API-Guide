@@ -17,7 +17,7 @@
 | 字段           | 类型    | 是否必须 | 说明                                                         |
 | -------------- | ------- | -------- | ------------------------------------------------------------ |
 | temperature_detect     | bool   | Y        | 是否开启测温，默认关                                         |
-| fever_temperature      | float  | Y        | 通行依据，体温小于多少度允许通行，默认37.3；范围36.0°C - 40°C |
+| fever_temperature      | float  | Y        | 通行依据，体温小于多少度允许通行，默认37.3；范围36.0°C - 40.0°C |
 | fast_measurement       | bool   | N        | 是否开启快速测温，默认关;启动快速测试则只进行测温检测                                     |
 | measurement_range      | int    | N        | 测温环境 0 : 常用 ， 1：夏季                                 |
 | health_code_mode       | bool   | Y        | 健康码模式，是否开启健康码，默认关                           |
@@ -29,8 +29,8 @@
 | show_vaccine           | bool   | N        | 结果显示，是否显示疫苗：默认是                               |
 | show_antigen           | bool   | N        | 结果显示，是否显示抗原：默认是                               |
 | identify_popup_timeout | int    | N        | 结果显示保留时间2-15 秒，默认2秒                             |
-| show_ mode_button      | bool   | N        | 按钮展示，是否允许快速通行模式切换                           |
-| nuclein_strategy       | int    | N        | 通行依据，核酸检测多少小时阴性允许通行：<br>0：无(不检测核酸结果 )，1：24小时内有效，2：48小时内有效，3：2:小时内有效。|
+| show_mode_button      | bool   | N        | 按钮展示，是否允许快速通行模式切换                           |
+| nuclein_strategy       | int    | N        | 通行依据，核酸检测多少小时阴性允许通行：<br>0：无(不检测核酸有效期 )，1：24小时内有效，2：48小时内有效，3：72:小时内有效。|
 
 
 ### 请求示例:

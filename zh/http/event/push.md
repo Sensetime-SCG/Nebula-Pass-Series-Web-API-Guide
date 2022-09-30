@@ -130,7 +130,7 @@ POST application/json
 | recognitionType | Int     | 识别类型: 1:员工,2:访客,3:陌生人,4:非活体,5:黑名单 |
 | recognizeScore  | float   | 识别精度分值                                                 |
 | mask            | int     | 是否佩戴口罩： 0 未启用 1 未戴 2 佩戴                        |
-| mode            | int     | 核验模式: 0：刷脸 1：刷脸或刷卡 2：刷脸或刷卡或刷二维码 3：刷脸且刷卡 4：刷身份证 5：刷脸或刷身份证 6：刷脸且刷身份证 |
+| mode            | int     | 核验模式: 0：刷脸 1：刷脸或刷卡 2：刷脸且刷卡 3：刷脸或刷卡或刷二维码 4：刷身份证 5：刷脸或刷身份证 6：刷脸且刷身份证 |
 | rgb_image       | string  | Base64 后的jpeg格式的人脸抓拍图                              |
 | pass            | Boolean | 是否允许通行                                                 |
 | timestamp       | int     | 识别时间                                                     |
