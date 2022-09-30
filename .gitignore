@@ -1,4 +1,6 @@
 __book/
 _book/
 .vscode/
-2pdf/
+output/
+.venv/
+venv/
