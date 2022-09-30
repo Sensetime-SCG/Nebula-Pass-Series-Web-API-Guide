@@ -4,3 +4,4 @@ _book/
 output/
 .venv/
 venv/
+__pycache__
