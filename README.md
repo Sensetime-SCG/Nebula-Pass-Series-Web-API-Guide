@@ -2,7 +2,7 @@
 
 ---
 
-## v1.1.0 (2022-09-16)
+## v1.1.0 (2022-10-10)
 
 *Author: ChenYang*
 
@@ -32,6 +32,8 @@
 - 接口 [POST] `/v1/user` user_id max调整为99999999 （8个9）
 - 接口 [POST] `/v1/user` 人员类型新增黑名单类型 type 为 3
 - 接口 [POST] `/v1/group` 人员组类型新增黑名单组类型 type 为 3
+- 接口 [POST] `/v1/group` group_id max调整为99999999 （8个9）
+- 接口 [POST] `/v1/rule`  rule_id max调整为99999999 （8个9）
 - 接口 [GET] `/v1​/device​/info` 获取设备基本信息`api_ver`，`model_ver`字段
   
 - 修复首次启动后设置单机模式下， Web 功能未启用
