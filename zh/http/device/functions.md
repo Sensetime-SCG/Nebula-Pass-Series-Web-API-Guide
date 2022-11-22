@@ -112,6 +112,9 @@
 | --type          | Int    | 用户类型                                                     |
 | --ic_number          | String    | IC 卡号                                                   |
 | --job_number          | String    | 工号                                                     |
+| --remark          | String    | 备注                                                     |
+| --guest_time_start          | Int    | 访客开始时间                                                     |
+| --guest_time_end          | Int    | 访客结束时间                                                     |
 
 示例：
 
@@ -126,7 +129,10 @@
             "user_id": 1,
             "type": 1,
             "ic_number":"d144d33z95x",
-            "job_number":"9833"
+            "job_number":"9833",
+            "remark":"this is Q",
+            "guest_time_start":0,
+            "guest_time_end":0
         },
         "timestamp": 1660625866,
         "bodyTemperature": 36.53308868408203
