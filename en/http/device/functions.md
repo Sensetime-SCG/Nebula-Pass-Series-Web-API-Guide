@@ -91,4 +91,3 @@ Get device function parameters.
 }
 ```
 
-

@@ -2,6 +2,26 @@
 
 ---
 
+## v1.2.0
+
+*Author: LinPeicai, ChenYang*
+
+**Adapted Devices:**
+
+- SenseNebula Pass S7 *V1.2.0*
+
+**Modify:**
+
+- 接口 [POST]  `/v1/user` 字段`name`,`ic_number`,`id_number`,`job_number`长度限制改为128字节, 即最长42个中文字符, `remark`字段长度限制改为256字节.
+- 接口 [POST] `/v1/group` 字段`name`长度限制改为128字节, 即最长42个中文字符.
+- 接口 [POST] `/v1/rule` 字段`name`长度限制改为128字节, 即最长42个中文字符.
+- 接口 [PUT]  `/v1/user/id/{id}` 字段`name`,`ic_number`,`id_number`,`job_number`长度限制改为128字节, 即最长42个中文字符, `remark`字段长度限制改为256字节.
+- 接口 [PUT]  `/v1/group/id/{id}` 字段`name`长度限制改为128字节, 即最长42个中文字符.
+- 接口 [PUT]  `/v1/rule/id/{id}` 字段`name`长度限制改为128字节, 即最长42个中文字符.
+- 接口 [WSS] `v1/event` 以及事件订阅接口新增`ic_number`,`job_number`字段.
+- 远程服务器认证推送数据新增`ic_number`,`job_number`字段.
+
+
 ## v1.1.0 (2022-10-10)
 
 *Author: ChenYang*

@@ -135,7 +135,9 @@ Recognition record
         "user": {
             "name": "Q",
             "user_id": 1,
-            "type": 1
+            "type": 1,
+            "ic_number":"111",
+            "job_number":"2222"
         },
         "timestamp": 1660625866
     }
@@ -160,4 +162,5 @@ Recognition record
 | --name          | string  | User name                                                    |
 | --user_id       | int     | User id                                                      |
 | --type          | int     | User type                                                    |
-
+| --ic_number          | int     | IC Card number                                                   |
+| --job_number          | int     | Job Card number                                                    |

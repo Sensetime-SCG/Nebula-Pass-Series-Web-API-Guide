@@ -114,7 +114,9 @@ POST application/json
         "user": {
             "name": "Q",
             "user_id": 1,
-            "type": 1
+            "type": 1,
+            "ic_number":"d144d33z95x",
+            "job_number":"9833"
         },
         "timestamp": 1660625866,
         "bodyTemperature": 36.53308868408203
@@ -139,6 +141,8 @@ POST application/json
 | --name          | string  | 用户名称                                                     |
 | --user_id       | int     | 用户id                                                       |
 | --type          | int     | 用户类型                                                     |
+| --ic_number          | String     | IC 卡号                                                  |
+| --job_number          | String     | 工号                                                   |
 
 
 

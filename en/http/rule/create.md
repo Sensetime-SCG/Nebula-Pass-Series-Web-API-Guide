@@ -21,7 +21,7 @@ Rule Interpretation: From Monday to Sunday, there are up to 3 rules per day; the
 | Parameter name | Type   | Required | Description | Remark                                                       |
 | -------------- | ------ | -------- | ----------- | ------------------------------------------------------------ |
 | rule_id        | int    | Y        | Rule id     | The unique identifier id set by the commit side, cannot be repeated, must be greater than 0 and less than 999999 |
-| name           | string | Y        | Rule name   | The length must be greater than 0 and less than or equal to 32 |
+| name           | string | Y        | Rule name   | The length must be greater than 0 and less than or equal to 128 |
 | schedule       | object | Y        | Schedule    |                                                              |
 
 `schedule` object field description：
