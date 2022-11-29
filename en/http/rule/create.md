@@ -4,7 +4,7 @@ Add a rule.
 
 **Access rules**:
 
-Rule Interpretation: From Monday to Sunday, there are up to 3 rules per day; the special day plan is set by day, and a maximum of 31 days can be added, and there are up to 3 rules per day.
+Rule Interpretation: From Monday to Sunday, there are up to 12 rules per day; the special day plan is set by day, and a maximum of 31 days can be added, and there are up to 12 rules per day.
 
 ## Request address
 

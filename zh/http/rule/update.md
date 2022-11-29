@@ -20,18 +20,18 @@
 
 其中`schedule`字段值的具体内容字段如下:
 
-| 字段         | 类型         | 必填 | 字段释义                                                                          |
-| ------------ | ------------ | ---- | --------------------------------------------------------------------------------- |
+| 字段         | 类型         | 必填 | 字段释义                                                     |
+| ------------ | ------------ | ---- | ------------------------------------------------------------ |
 | onset_point  | Int          | Y    | 起效时间点,毫秒级Unix时间戳,范围: 大于 0 小于 4102415999000 (2099-12-31 23:59:59) |
 | expire_point | Int          | Y    | 失效时间点,毫秒级Unix时间戳,范围: 大于 0 小于 4102415999000 (2099-12-31 23:59:59) |
-| mon_period   | Object array | N    | 周一时刻表,上限3条;默认空                                                         |
-| the_period   | Object array | N    | 周二时刻表,上限3条;默认空                                                         |
-| wed_period   | Object array | N    | 周三时刻表,上限3条;默认空                                                         |
-| thur_period  | Object array | N    | 周四时刻表,上限3条;默认空                                                         |
-| fri_period   | Object array | N    | 周五时刻表,上限3条;默认空                                                         |
-| sat_period   | Object array | N    | 周六时刻表,上限3条;默认空                                                         |
-| sun_period   | Object array | N    | 周日时刻表,上限3条;默认空                                                         |
-| special_days | Object array | N    | 特殊日期时刻表,上限31条;默认空                                                    |
+| mon_period   | Object array | N    | 周一时刻表,上限12条;默认空                                   |
+| the_period   | Object array | N    | 周二时刻表,上限12条;默认空                                   |
+| wed_period   | Object array | N    | 周三时刻表,上限12条;默认空                                   |
+| thur_period  | Object array | N    | 周四时刻表,上限12条;默认空                                   |
+| fri_period   | Object array | N    | 周五时刻表,上限12条;默认空                                   |
+| sat_period   | Object array | N    | 周六时刻表,上限12条;默认空                                   |
+| sun_period   | Object array | N    | 周日时刻表,上限12条;默认空                                   |
+| special_days | Object array | N    | 特殊日期时刻表,上限31条;默认空                               |
 
 各`period`字段值的具体内容字段如下:
 
@@ -47,7 +47,7 @@
 | year         | Int          | N    | 起效时间点的年,有效值0~2099，若为0则表示每年都生效;默认0 |
 | month        | Int          | N    | 起效时间点的月,有效值0~12，若为0则表示每月都生效;默认0   |
 | day          | Int          | N    | 起效时间点的日,有效值0~31，若为0则表示每日都生效;默认0   |
-| today_period | Object array | N    | 当日时刻表,上限3条;默认空                                |
+| today_period | Object array | N    | 当日时刻表,上限12条;默认空                               |
 
 `start_time`与`end_time`字段值的具体内容如下：
 
