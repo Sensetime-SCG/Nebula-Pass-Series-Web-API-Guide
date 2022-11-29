@@ -4,11 +4,11 @@
 
 该接口可以通过起止时间, user_id, job_number, ic_number 等相关过滤条件获取通行记录.
 
-**## 请求路径**
+## 请求路径
 
 > `/v1/event/history`
 
-**## 请求方式**
+## 请求方式
 
 > POST
 
