@@ -17,16 +17,16 @@ Set device custom parameters
 
 ### Request parameters
 
-| Parameter name          | Type    | Description                              | Remark |
-| ----------------------- | ------- | ---------------------------------------- | ------ |
-| welcome_tip             | String  | Main welcome (video streaming interface) |        |
-| verify_success_tip      | String  | Prompt (verification successful)         |        |
-| verify_fault_tip        | String  | Prompt (verification failed)             |        |
-| unauthorized_user_tip   | String  | Unauthorized user tip                    |        |
-| show_custom_logo        | Boolean | Whether to show logo                     |        |
-| custom_picture_for_logo | String  | Custom logo image (base64 encoding)      |        |
-| custom_picture_for_idle | String  | Custom standby image (base64 encoding)   |        |
-| voice_broadcast         | Boolean | Voice broadcast, false: off true: on     |        |
+| Parameter name          | Type    | Description                                                  | Remark |
+| ----------------------- | ------- | ------------------------------------------------------------ | ------ |
+| welcome_tip             | String  | Main welcome (video streaming interface), Upper limit 64 bytes |        |
+| verify_success_tip      | String  | Prompt (verification successful), Upper limit 64 bytes       |        |
+| verify_fault_tip        | String  | Prompt (verification failed), Upper limit 64 bytes           |        |
+| unauthorized_user_tip   | String  | Unauthorized user tip, Upper limit 64 bytes                  |        |
+| show_custom_logo        | Boolean | Whether to show logo                                         |        |
+| custom_picture_for_logo | String  | Custom logo image (base64 encoding), Upper limit 4MB         |        |
+| custom_picture_for_idle | String  | Custom standby image (base64 encoding) , Upper limit 4MB     |        |
+| voice_broadcast         | Boolean | Voice broadcast, false: off true: on                         |        |
 
 Request example
 
@@ -85,5 +85,4 @@ Get device custom parameters.
     "msg": "OK"
 }
 ```
-
 

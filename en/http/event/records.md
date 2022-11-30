@@ -6,7 +6,7 @@ This API can be accessed by begin and ending time, user_ id, job_ number, ic_num
 
 ## Request address
 
-> `/v1/event/history`
+> `/v1/event/records`
 
 ## Request method
 

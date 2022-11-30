@@ -15,7 +15,7 @@ This is  Websocket API, upgrade Websocket from GET method.
 | Parameter name | Type   | Description                                                  |
 | -------------- | ------ | ------------------------------------------------------------ |
 | type     | int    | Event type, currently only including 0, indicating the recognition event |
-| data       | Object | Other information                                            |
+| data       | Object | Recognition event parameter                |
 
 
 ## Recognition event parameter description

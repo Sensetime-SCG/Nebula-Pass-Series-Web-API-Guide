@@ -15,16 +15,16 @@
 
 - 请求体: `application/json`
 
-| 字段                    | 类型    | 必填 | 字段释义                    |
-| ----------------------- | ------- | ---- | --------------------------- |
-| welcome_tip             | String  | N    | 主欢迎语（视频流界面）      |
-| verify_success_tip      | String  | N    | 提示语（验证成功）          |
-| verify_fault_tip        | String  | N    | 提示语（验证失败）          |
-| unauthorized_user_tip   | String  | N    | 重点人名单提示语            |
-| show_custom_logo        | Boolean | N    | 是否展示logo                |
-| custom_picture_for_logo | String  | N    | 自定义logo图片(base64编码)  |
-| custom_picture_for_idle | String  | N    | 自定义待机图片(base64编码)  |
-| voice_broadcast         | Boolean | N    | 语音播报，false：关true：开 |
+| 字段                    | 类型    | 必填 | 字段释义                           |
+| ----------------------- | ------- | ---- | ---------------------------------- |
+| welcome_tip             | String  | N    | 主欢迎语（视频流界面）最大64字节   |
+| verify_success_tip      | String  | N    | 提示语（验证成功）最大64字节       |
+| verify_fault_tip        | String  | N    | 提示语（验证失败）最大64字节       |
+| unauthorized_user_tip   | String  | N    | 重点人名单提示语 最大64字节        |
+| show_custom_logo        | Boolean | N    | 是否展示logo                       |
+| custom_picture_for_logo | String  | N    | 自定义logo图片(base64编码) 最大4MB |
+| custom_picture_for_idle | String  | N    | 自定义待机图片(base64编码) 最大4MB |
+| voice_broadcast         | Boolean | N    | 语音播报，false：关true：开        |
 
 ### 请求示例:
 
