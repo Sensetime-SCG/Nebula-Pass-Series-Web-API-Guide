@@ -11,7 +11,7 @@
 - SenseNebula Pass S7 *V1.2.1*
 
 **Add:**
-- 接口 [POST]: `/v1//event/history/` 支持事件历史记录搜索.
+- 接口 [POST]: `/v1/event/history/` 支持事件历史记录搜索.
 
 **Modify:**
 

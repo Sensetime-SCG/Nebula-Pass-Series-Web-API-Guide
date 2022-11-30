@@ -29,6 +29,7 @@
         "ic_number":"",
         "job_number":"",
         "id_number":"",
+        "pin":"",
         "groups": [1,2],
         "is_admin":false,
         "remark":"",

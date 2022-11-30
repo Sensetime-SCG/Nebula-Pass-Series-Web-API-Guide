@@ -22,6 +22,7 @@
 | ic_number        | String    | N    | IC卡号,上限128字节                                           |
 | id_number        | String    | N    | 身份证号,上限128字节                                         |
 | job_number       | String    | N    | 工号,上限128字节                                             |
+| pin       | String    | N    | pin code,上限128字节                                             |
 | guest_time_start | Int       | N    | 访客开始时间，毫秒级Unix时间戳                               |
 | guest_time_end   | Int       | N    | 访客结束时间，毫秒级Unix时间戳                               |
 | groups           | Int array | N    | 绑定人员组的列表, 绑定的组类型不可互斥                       |
@@ -56,6 +57,7 @@
         "ic_number":"",
         "job_number":"",
         "id_number":"",
+        "pin":"",
         "groups": [1,2],
         "is_admin":false,
         "remark":"",

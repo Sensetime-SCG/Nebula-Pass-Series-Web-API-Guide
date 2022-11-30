@@ -15,15 +15,15 @@
 | 字段            | 类型    | 必填 | 字段释义                                                     |
 | --------------- | ------- | ---- | ------------------------------------------------------------ |
 | device_run_type | Int     | N    | 设备运行状态配置， 1：运行；2：停机                          |
-| mode            | Int     | Y    | 核验模式: 0：刷脸 1：刷脸或刷卡 2：刷脸且刷卡 3：刷脸或刷卡或刷二维码 4：刷身份证 5：刷脸或刷身份证 6：刷脸且刷身份证 |
+| mode            | Int     | Y    | 核验模式: <br/>0：刷脸 <br/>1：刷脸或刷卡 <br/>2：刷脸且刷卡 <br/>3：刷脸或刷卡或刷二维码 <br/>4：刷身份证 <br/>5：刷脸或刷身份证 <br/>6：刷脸且刷身份证 <br/>7：刷脸且输PIN <br/>8：刷脸且刷卡且输PIN <br/>默认 0<br/>注:7与8模式暂不支持与远程服务器验证 |
 | strong_hint     | Boolean | N    | 炫酷模式开关，false：关；true：开                            |
-| avatar_status   | Int     | Y    | 展示头像 0：不展示头像 1：展示头像 2.展示个性化头像 ；默认 1 |
-| name_status     | Int     | Y    | 展示姓名： 0：不展示姓名 1：展示姓名 2：展示加密姓名 ； 默认 1 |
+| avatar_status   | Int     | Y    | 头像展示模式: <br/>0：不展示头像 <br/>1：展示头像 <br/>2：展示个性化头像 <br/>默认 1 |
+| name_status     | Int     | Y    | 展示姓名模式： <br/>0：不展示姓名 <br/>1：展示姓名 <br/>2：展示加密姓名 <br/>默认 1 |
 | record          | Boolean | Y    | 事件记录存储开关，false：关；true：开                        |
 | record_image    | Boolean | Y    | 事件记录图片存储开关，false：关；true：开                    |
 | alarm_record    | Boolean | Y    | 告警记录存储开关，false：关；true：开                        |
-| auth_mode       | Int     | Y    | 认证类型：0: 本地认证, 1: 本地认证+远程开门, 2: 服务器认证, 3: 本地认证+服务器认证(本地认证结果为陌生人时) |
-| remote_authentication_address | String | N | 当auth_mode非0时启用,采用restful请求模式，支持http和https,例：http://host:port/auth 或者 https://host:port/auth ,当auth_mode非0时，须返回指定格式的 Body，如下**远程服务器响应Body格式**所示. |
+| auth_mode       | Int     | Y    | 认证类型：<br/>0: 本地认证, <br/>1: 本地认证+远程开门, <br/>2: 服务器认证, <br/>3: 本地认证+服务器认证(本地认证结果为陌生人时) <br/>默认 0|
+| remote_authentication_address | String | N | 当auth_mode非0时启用,启用服务器认证<br/>请求支持http和https,例：`http://host:port/you_auth_uri` 或者 `https://host:port/you_auth_uri` <br/>且须返回指定格式的 Body，如下[远程服务器认证响应Body格式](https://webapi.gitbook.io/nebula-pass-web-api-guide/zh/http/device/functions#jump-request-body)所示. |
 
 ### 请求示例:
 
@@ -94,7 +94,7 @@
 
 ## 事件推送与远程服务器响应
 
-**事件推送时，请求的body内容如下**
+### 事件推送的请求body内容
 
 注: body 内容为json格式
 
@@ -116,7 +116,7 @@
 | --guest_time_start          | Int    | 访客开始时间                                                     |
 | --guest_time_end          | Int    | 访客结束时间                                                     |
 
-示例：
+**请求示例：**
 
 ``` json
 {
@@ -140,7 +140,7 @@
 
 ```
 
-### 远程服务器响应Body格式
+### 远程服务器认证响应Body格式 {#jump-request-body}
 
 当字段`auth_mode`为非0时，须返回如下格式的 Body。
 
@@ -159,6 +159,7 @@
 | --verify_code  | Int     | N    | 识别状态码， 1：未激活，2：识别成功，3：没有权限，4：匹配失败，5：不在可通行时间范围内 |
 
 
+**返回示例:**
 ```json
 {
     "code": 200,
