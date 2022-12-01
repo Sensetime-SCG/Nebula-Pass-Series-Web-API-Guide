@@ -17,7 +17,7 @@ This API can be accessed by begin and ending time, user_ id, job_ number, ic_num
 | Parameter   name    | Type   | Required | Description                                                     |
 | ---------- | ------ | ---- | ------------------------------------------------------------ |
 | begin_time | Int    | N    | begin time,Unix timestamp(second)                          |
-| type       | Int    | N    | end time,Unix timestamp(second) |
+| end_time       | Int    | N    | end time,Unix timestamp(second) |
 | user_id    | Int    | N    | Range:  0 ~ 99999999                 |
 | job_number | String | N    |                                                        
 | ic_number  | String | N    |                                                        |
