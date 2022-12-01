@@ -8,6 +8,8 @@
 
 如果是自用或测试，可以通过该地址的脚本生成自签名证书:  [gen_ssl_key.sh](https://gist.github.com/idoop/f1f2e9725cd1934ec7eb6602f7b0bd61)
 
+提交成功后，须重启设备新证书才会应用生效。
+
 ### 请求路径
 
 > `/v1/auth/certificate`
