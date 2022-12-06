@@ -13,7 +13,7 @@
 **Add:**
 - 接口 [POST]: `/v1/event/records/` 支持事件历史记录搜索.
 - 接口 [POST]  [GET]: `/v1/auth/certificate` 支持获取与配置Web服务的证书.
-- 支持设备发现机制，使用mDNS协议广播,服务名称`sensetime`, `text-record` 条目包括`sn`与`model`.
+- 支持设备广播，使用mDNS协议广播,服务名称`sensetime`, `text-record` 条目包括`sn`与`model`.
 
 **Modify:**
 
