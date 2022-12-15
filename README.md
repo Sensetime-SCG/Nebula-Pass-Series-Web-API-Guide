@@ -11,6 +11,9 @@
 - SenseNebula Pass S7 *V1.2.1*
 
 **Add:**
+
+- 接口 [POST] [GET] : `/v1/device/functions` 新增`remote_auth_timeout_to_local_auth`字段，用以支持远程认证服务器不可达时自动切换回本地认证.
+
 - 接口 [POST]: `/v1/event/records/` 支持事件历史记录搜索.
 - 接口 [POST]  [GET]: `/v1/auth/certificate` 支持获取与配置Web服务的证书.
 - 支持设备广播, 使用 *mDNS* 协议, 广播周期3秒, 服务名称`sensetime`,  `text-record` 条目包括`sn`与`model`.

@@ -15,15 +15,16 @@
 | 字段            | 类型    | 必填 | 字段释义                                                     |
 | --------------- | ------- | ---- | ------------------------------------------------------------ |
 | device_run_type | Int     | N    | 设备运行状态配置， 1：运行；2：停机                          |
-| mode            | Int     | Y    | 核验模式: <br/>0：刷脸 <br/>1：刷脸或刷卡 <br/>2：刷脸且刷卡 <br/>3：刷脸或刷卡或刷二维码 <br/>4：刷身份证 <br/>5：刷脸或刷身份证 <br/>6：刷脸且刷身份证 <br/>7：刷脸且输PIN <br/>8：刷脸且刷卡且输PIN <br/>默认 0<br/>注:7与8模式暂不支持与远程服务器验证 |
+| mode            | Int     | N    | 核验模式: <br/>0：刷脸 <br/>1：刷脸或刷卡 <br/>2：刷脸且刷卡 <br/>3：刷脸或刷卡或刷二维码 <br/>4：刷身份证 <br/>5：刷脸或刷身份证 <br/>6：刷脸且刷身份证 <br/>7：刷脸且输PIN <br/>8：刷脸且刷卡且输PIN <br/>默认 0<br/>注:7与8模式暂不支持与远程服务器验证 |
 | strong_hint     | Boolean | N    | 炫酷模式开关，false：关；true：开                            |
-| avatar_status   | Int     | Y    | 头像展示模式: <br/>0：不展示头像 <br/>1：展示头像 <br/>2：展示个性化头像 <br/>默认 1 |
-| name_status     | Int     | Y    | 展示姓名模式： <br/>0：不展示姓名 <br/>1：展示姓名 <br/>2：展示加密姓名 <br/>默认 1 |
+| avatar_status   | Int     | N    | 头像展示模式: <br/>0：不展示头像 <br/>1：展示头像 <br/>2：展示个性化头像 <br/>默认 1 |
+| name_status     | Int     | N    | 展示姓名模式： <br/>0：不展示姓名 <br/>1：展示姓名 <br/>2：展示加密姓名 <br/>默认 1 |
 | record          | Boolean | Y    | 事件记录存储开关，false：关；true：开                        |
 | record_image    | Boolean | Y    | 事件记录图片存储开关，false：关；true：开                    |
 | alarm_record    | Boolean | Y    | 告警记录存储开关，false：关；true：开                        |
-| auth_mode       | Int     | Y    | 认证类型：<br/>0: 本地认证, <br/>1: 本地认证+远程开门, <br/>2: 服务器认证, <br/>3: 本地认证+服务器认证(本地认证结果为陌生人时) <br/>默认 0|
+| auth_mode       | Int     | N    | 认证类型：<br/>0: 本地认证, <br/>1: 本地认证+远程开门, <br/>2: 服务器认证, <br/>3: 本地认证+服务器认证(本地认证结果为陌生人时) <br/>默认 0|
 | remote_authentication_address | String | N | 当auth_mode非0时启用,启用服务器认证<br/>请求支持http和https,例：`http://host:port/you_auth_uri` 或者 `https://host:port/you_auth_uri` <br/>且须返回指定格式的 Body，如下[远程服务器认证响应Body格式](https://webapi.gitbook.io/nebula-pass-web-api-guide/zh/http/device/functions#jump-request-body)所示. |
+| remote_auth_timeout_to_local_auth    | Int | N    | 当auth_mode值非0时，该字段值则用于远程服务器不可达后的指定时间段后自动切换auth_mode为0(本地认证)模式.<br/>取值范围:0~60,单位分钟.<br/>默认: 0<br/>注: 远程认证服务需要实现`remote_authentication_address`同请求路径的`GET`请求方法,返回状态码`200`即可作为心跳判断,设备会每隔30秒请求一次 |
 
 ### 请求示例:
 
@@ -40,7 +41,8 @@
     "record_image": true,
     "alarm_record": true,
     "auth_mode": 0,
-    "remote_authentication_address": "http://1.2.3.4:4321/record/"
+    "remote_authentication_address": "http://1.2.3.4:4321/auth/",
+    "remote_auth_timeout_to_local_auth": 0
 }
 ```
 ### 返回示例
@@ -83,7 +85,8 @@
         "record_image": true,
         "alarm_record": true,
         "auth_mode": 0,
-        "remote_authentication_address": "http://1.2.3.4:4321/record/"
+        "remote_authentication_address": "http://1.2.3.4:4321/auth/",
+        "remote_auth_timeout_to_local_auth": 0
     },
     "code": 200,
     "msg": "OK"

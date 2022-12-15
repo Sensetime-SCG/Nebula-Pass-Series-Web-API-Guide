@@ -27,7 +27,9 @@ Set device function parameters
 | record_image    | Boolean | Event record picture storage switch, false: off; true: on    |
 | alarm_record    | Boolean | Alarm record storage switch, false: off; true: on            |
 | auth_mode       | Int     | Authentication type: 0: local authentication 1: local authentication + remote door opening |
-|auth_event_address | String | The address of the specified event receiving, using restful callback mode, supports http and https, the style is as follows: http://ip:port/eventRcv or https://ip:port/eventRcv<br/>The length is no more than 1024 bytes, the event receiving address is provided by the application side according to the specified specification, and the event receiving interface does not require authentication | |
+|remote_authentication_address | String | The address of the specified event receiving, using restful callback mode, supports http and https, the style is as follows: http://ip:port/eventRcv or https://ip:port/eventRcv<br/>The length is no more than 1024 bytes, the event receiving address is provided by the application side according to the specified specification, and the event receiving interface does not require authentication |
+| remote_auth_timeout_to_local_auth    | Int |  when `auth_mode` value is not 0，该字段值则用于远程服务器不可达后的指定时间段后自动切换auth_mode为0(本地认证)模式.<br/>取值范围:0~60,单位分钟.<br/>默认: 0<br/>注: 远程认证服务需要实现`remote_authentication_address`同请求路径的`GET`请求方法,返回状态码`200`即可作为心跳判断,设备会每隔30秒请求一次 |
+
 
 ## Request example
 
@@ -42,7 +44,8 @@ Set device function parameters
     "record_image": true,
     "alarm_record": true,
     "auth_mode": 0,
-    "auth_event_address": "http://1.2.3.4:4321/record/"
+    "remote_authentication_address": "http://1.2.3.4:4321/auth/",
+    "remote_auth_timeout_to_local_auth": 0
 }
 ```
 
@@ -84,7 +87,8 @@ Get device function parameters.
         "record_image": true,
         "alarm_record": true,
         "auth_mode": 0,
-        "auth_event_address": "http://1.2.3.4:4321/record/"
+        "remote_authentication_address": "http://1.2.3.4:4321/auth/",
+        "remote_auth_timeout_to_local_auth": 0
     },
     "code": 200,
     "msg": "OK"
