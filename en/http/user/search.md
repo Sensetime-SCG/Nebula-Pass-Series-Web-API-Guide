@@ -1,6 +1,7 @@
-# Query user information
+# Search
 
-Query user information.
+Search the 'id' list of related objects according to the specified fields.
+
 
 ## Request address
 
@@ -8,34 +9,41 @@ Query user information.
 
 ## Request method
 
-> GET
+> POST
 
+- Body Type: `application/json`
 
-## Request example
+## Request parameters
+|  Parameter name       | Type   | Required | Description               |
+| ---------- | ------ | ---- | ---------------------- |
+| name       | String | N    | Search related objects according to this field |
+| ic_number  | String | N    | Search related objects according to this field |
+| job_number | String | N    | Search related objects according to this field |
 
-get a user infomation which `user_id` is 3
+> Note: The `name` / `ic_number` / `job_number`  fields cannot be searched by filling in values at the same time. If there are two or more values,then the filter conditions are obtained according to this priority : `name` > `ic_number` > `job_number`
 
-> `/v1/user/id/3`
+## Request example:
 
-## 返回示例
+> `/v1/user/search`
 
 ```json
 {
-  "data": {
-        "user_id":3,
-        "name": "张三",
-        "avatar": "/9j/2wCEAAoHBwgHBgoICAgLCgoLDhgQDg0NDh0VFhEYIx8lJCIfIiEmKzcvJik0KSEiMEExNDk7Pj4",
-        "type": 1,
-        "ic_number":"",
-        "job_number":"",
-        "id_number":"",
-        "groups": [1,2],
-        "is_admin":false,
-        "remark":"",
-        "create_at": 1660222970940,
-        "update_at": 1660222970940
-  },
-  "code": 200,
-  "msg": "OK"
+    "name":"A"
+}
+```
+
+## Response example
+
+```json
+{
+    "data": {
+        "items": [
+            2,
+            55,
+            117
+        ]
+    },
+    "code": 200,
+    "msg": "OK"
 }
 ```

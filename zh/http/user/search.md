@@ -1,42 +1,47 @@
-# 查询人员的信息
+# 查询人员
 
-根据指定的`user_id`获取该人员信息
+根据指定的字段搜索相关对象的`id`列表.
 
 ## 请求路径
 
-> `/v1/user/id/{id}`
+> `/v1/user/search`
 
 ## 请求方式
 
-> GET
+> POST
 
+| 字段       | 类型   | 必填 | 字段释义               |
+| ---------- | ------ | ---- | ---------------------- |
+| name       | String | N    | 根据该字段搜索相关对象 |
+| ic_number  | String | N    | 根据该字段搜索相关对象 |
+| job_number | String | N    | 根据该字段搜索相关对象 |
+
+> 注: 不支持`name`,`ic_number`,`job_number`同时填值搜索,若存在两者及以上的值,则按照此优先级取过滤条件 : `name` > `ic_number` > `job_number`
 
 ## 请求示例
 
-获取`user_id`为*3*的人员信息。
+获取`name`起始为*A*的 id 列表。
 
-> `/v1/user/id/3`
+> `/v1/user/search`
+
+```json
+{
+    "name":"A"
+}
+```
 
 ## 返回示例
 
 ```json
 {
-  "data": {
-        "user_id":3,
-        "name": "张三",
-        "avatar": "/9j/2wCEAAoHBwgHBgoICAgLCgoLDhgQDg0NDh0VFhEYIx8lJCIfIiEmKzcvJik0KSEiMEExNDk7Pj4",
-        "type": 1,
-        "ic_number":"",
-        "job_number":"",
-        "id_number":"",
-        "pin":"",
-        "groups": [1,2],
-        "is_admin":false,
-        "remark":"",
-        "create_at": 1660222970940,
-        "update_at": 1660222970940
-  },
-  "code": 200,
-  "msg": "OK"
+    "data": {
+        "items": [
+            2,
+            55,
+            117
+        ]
+    },
+    "code": 200,
+    "msg": "OK"
 }
 ```

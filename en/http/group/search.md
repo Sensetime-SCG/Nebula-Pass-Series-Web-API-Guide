@@ -1,32 +1,46 @@
-# Get information of a single group
+# Search
 
-Get the information of a single group.
+Search the 'id' list of related objects according to the specified fields.
+
 
 ## Request address
 
-> `/v1/group/id/{id}`
+> `/v1/group/search`
 
 ## Request method
 
-> GET
+> POST
 
-## Request example
+- Body Type: `application/json`
 
-Get access group information for which `group_id` is 1.
+## Request parameters
+|  Parameter name       | Type   | Required | Description               |
+| ---------- | ------ | ---- | ---------------------- |
+| name       | String | N    | Search related objects according to this field |
 
-> `/v1/group/id/1`
 
-## Response examples
+## Request example:
+
+
+> `/v1/group/search`
+
+```json
+{
+    "name":"A"
+}
+```
+
+
+## Response example
 
 ```json
 {
     "data": {
-        "name": "员工组",
-        "type": 1,
-        "group_id": 1,
-        "rule_id": 0,
-        "create_at": 1660284813955,
-        "update_at": 1660284813955
+        "items": [
+            2,
+            55,
+            117
+        ]
     },
     "code": 200,
     "msg": "OK"

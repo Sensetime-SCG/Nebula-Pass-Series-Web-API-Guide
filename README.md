@@ -12,10 +12,12 @@
 
 **Add:**
 
+- 接口 [POST] : `/v1/user/search`, 支持使用`name`,`job_number`,`ic_number`字段搜索.
+- 接口 [POST] : `/v1/group/search`, 支持使用`name`字段搜索
+- 接口 [POST] : `/v1/rule/search`, 支持使用`name`字段搜索
 - 接口 [POST] [GET] : `/v1/device/functions` 新增`remote_auth_timeout_to_local_auth`字段，用以支持远程认证服务器不可达时自动切换回本地认证.
-
-- 接口 [POST]: `/v1/event/records/` 支持事件历史记录搜索.
-- 接口 [POST]  [GET]: `/v1/auth/certificate` 支持获取与配置Web服务的证书.
+- 接口 [POST] : `/v1/event/records/` 支持事件历史记录搜索.
+- 接口 [POST]  [GET] : `/v1/auth/certificate` 支持获取与配置Web服务的证书.
 - 支持设备广播, 使用 *mDNS* 协议, 广播周期3秒, 服务名称`sensetime`,  `text-record` 条目包括`sn`与`model`.
 
 **Modify:**
@@ -31,10 +33,12 @@
 - 接口 [PUT]  `/v1/rule/id/{id}` 字段`name`长度限制改为128字节, 即最长42个中文字符.
 - 接口 [WSS] `v1/event` 以及事件订阅接口新增`ic_number`,`job_number`字段.
 - 接口 [POST] `/v1/device/custom` 字段`welcome_tip`,`verify_success_tip`,`verify_fault_tip`,`unauthorized_user_tip`添加64字节上限检查, `custom_picture_for_logo`,`custom_picture_for_idle`添加4MB大小上限检查.
-- 远程服务器认证推送数据新增`ic_number`,`job_number`,`remark`,`guest_time_start`,`guest_time_end`字段.
+- 远程服务器认证推送数据新增`recognizeScore`,`ic_number`,`job_number`,`remark`,`guest_time_start`,`guest_time_end`字段.
 - 设备配置相关接口错误返回值规范化.
 
 **Fix:**
+
+- 接口 [POST] `/v1/device/functions` 字段`mode` 7 与 8 模式设置未生效
 - 策略接口中对 `year`字段处理错误的修正.
 - 远程开门常闭模式语音播报错误修复.
 

@@ -24,7 +24,7 @@
 | alarm_record    | Boolean | Y    | 告警记录存储开关，false：关；true：开                        |
 | auth_mode       | Int     | N    | 认证类型：<br/>0: 本地认证, <br/>1: 本地认证+远程开门, <br/>2: 服务器认证, <br/>3: 本地认证+服务器认证(本地认证结果为陌生人时) <br/>默认 0|
 | remote_authentication_address | String | N | 当auth_mode非0时启用,启用服务器认证<br/>请求支持http和https,例：`http://host:port/you_auth_uri` 或者 `https://host:port/you_auth_uri` <br/>且须返回指定格式的 Body，如下[远程服务器认证响应Body格式](https://webapi.gitbook.io/nebula-pass-web-api-guide/zh/http/device/functions#jump-request-body)所示. |
-| remote_auth_timeout_to_local_auth    | Int | N    | 当auth_mode值非0时，该字段值则用于远程服务器不可达后的指定时间段后自动切换auth_mode为0(本地认证)模式.<br/>取值范围:0~60,单位分钟.<br/>默认: 0<br/>注: 远程认证服务需要实现`remote_authentication_address`同请求路径的`GET`请求方法,返回状态码`200`即可作为心跳判断,设备会每隔30秒请求一次 |
+| remote_auth_timeout_to_local_auth    | Int | N    | 当auth_mode值非0时，该字段值则用于远程服务器不可达后的指定时间段后自动切换auth_mode为0(本地认证)模式.<br/>取值范围:0~60,单位分钟.<br/>默认: 0, 即永不做切换<br/>注: 远程认证服务需要实现`remote_authentication_address`同请求路径的`GET`请求方法,返回状态码`200`即可作为心跳判断,设备会每隔30秒请求一次 |
 
 ### 请求示例:
 

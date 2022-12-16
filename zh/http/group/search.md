@@ -1,33 +1,42 @@
-# 查询通行组的信息
+# Search
 
-根据指定的`group_id`获取该通行组信息
+Search the 'id' list of related objects according to the specified fields
 
 ## 请求路径
 
-> `/v1/group/id/{id}`
+> `/v1/group/search`
 
 ## 请求方式
 
-> GET
+> POST
+
+| 字段     | 类型   | 必填 | 字段释义                                                 |
+| -------- | ------ | ---- | -------------------------------------------------------- |
+| name  | String    | N    | 根据该字段搜索相关对象 |
 
 
 ## 请求示例
 
-获取`group_id`为 1 的通行组信息。
+获取`name`起始为*A*的 id 列表。
 
-> `/v1/group/id/1`
+> `/v1/group/search`
+
+```json
+{
+    "name":"A"
+}
+```
 
 ## 返回示例
 
 ```json
 {
     "data": {
-        "name": "员工组",
-        "type": 1,
-        "group_id": 1,
-        "rule_id": 0,
-        "create_at": 1660284813955,
-        "update_at": 1660284813955
+        "items": [
+            2,
+            55,
+            117
+        ]
     },
     "code": 200,
     "msg": "OK"

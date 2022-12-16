@@ -1,119 +1,42 @@
-# 查询策略信息
+# 查询策略
 
-根据指定的`rule_id`获取该策略信息
+根据指定的字段搜索相关对象的`id`列表.
 
 ## 请求路径
 
-> `/v1/rule/id/{id}`
+> `/v1/rule/search`
 
 ## 请求方式
 
-> GET
+> POST
+
+| 字段 | 类型   | 必填 | 字段释义               |
+| ---- | ------ | ---- | ---------------------- |
+| name | String | N    | 根据该字段搜索相关对象 |
 
 
 ## 请求示例
 
-获取`rule_id`为 1 的策略信息。
+获取`name`起始为*A*的 id 列表。
 
-> `/v1/rule/id/1`
+> `/v1/rule/search`
+
+```json
+{
+    "name":"A"
+}
+```
 
 ## 返回示例
 
 ```json
 {
     "data": {
-        "rule_id": 1,
-        "name": "1",
-        "schedule": {
-            "onset_point": 1640966400000,
-            "expire_point": 1672502399000,
-            "mon_period": [
-                {
-                    "start_time": {
-                        "hour": 6,
-                        "min": 30,
-                        "sec": 0
-                    },
-                    "end_time": {
-                        "hour": 12,
-                        "min": 30,
-                        "sec": 0
-                    }
-                },
-                {
-                    "start_time": {
-                        "hour": 14,
-                        "min": 0,
-                        "sec": 0
-                    },
-                    "end_time": {
-                        "hour": 18,
-                        "min": 30,
-                        "sec": 30
-                    }
-                }
-            ],
-            "the_period": [],
-            "wed_period": [],
-            "thur_period": [],
-            "fri_period": [],
-            "sat_period": [],
-            "sun_period": [],
-            "special_days": [
-                {
-                    "year": 0,
-                    "month": 0,
-                    "day": 1,
-                    "today_period": [
-                        {
-                            "start_time": {
-                                "hour": 6,
-                                "min": 30,
-                                "sec": 0
-                            },
-                            "end_time": {
-                                "hour": 12,
-                                "min": 30,
-                                "sec": 0
-                            }
-                        }
-                    ]
-                },
-                {
-                    "year": 0,
-                    "month": 0,
-                    "day": 1,
-                    "today_period": [
-                        {
-                            "start_time": {
-                                "hour": 6,
-                                "min": 30,
-                                "sec": 0
-                            },
-                            "end_time": {
-                                "hour": 12,
-                                "min": 30,
-                                "sec": 0
-                            }
-                        },
-                        {
-                            "start_time": {
-                                "hour": 14,
-                                "min": 0,
-                                "sec": 0
-                            },
-                            "end_time": {
-                                "hour": 18,
-                                "min": 30,
-                                "sec": 30
-                            }
-                        }
-                    ]
-                }
-            ]
-        },
-        "create_at": 1660297993368,
-        "update_at": 1660297993368
+        "items": [
+            2,
+            55,
+            117
+        ]
     },
     "code": 200,
     "msg": "OK"
