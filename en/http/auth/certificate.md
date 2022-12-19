@@ -51,3 +51,22 @@ Can upload public certificate and private key, or get the current public certifi
     "msg": "OK"
 }
 ```
+
+## Restore Certificate
+
+### Request address
+
+> `/v1/auth/certificate`
+
+### Request method
+
+> DELETE 
+
+### Response example
+```json
+{
+    "data": null,
+    "code": 200,
+    "msg": "OK"
+}
+```

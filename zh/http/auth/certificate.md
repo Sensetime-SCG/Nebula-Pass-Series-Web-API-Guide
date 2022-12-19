@@ -57,3 +57,22 @@
     "msg": "OK"
 }
 ```
+## 还原证书配置
+
+### 请求路径
+
+> `/v1/auth/certificate`
+
+### 请求方式
+
+> DELETE
+
+### 返回示例
+
+```json
+{
+    "data": null,
+    "code": 200,
+    "msg": "OK"
+}
+```
