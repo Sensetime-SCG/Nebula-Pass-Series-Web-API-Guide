@@ -17,7 +17,7 @@
 - 接口 [POST] : `/v1/rule/search`, 支持使用`name`字段搜索,具体内容查看该接口描述
 - 接口 [POST] [GET] : `/v1/device/functions` 新增`remote_auth_timeout_to_local_auth`字段，用以支持远程认证服务器不可达时自动切换回本地认证.
 - 接口 [POST] : `/v1/event/records/` 支持事件历史记录搜索,具体内容查看该接口描述
-- 接口 [POST]  [GET] : `/v1/auth/certificate` 支持 获取 / 配置 / 还原 Web服务的证书,具体内容查看该接口描述
+- 接口 [POST]  [GET] [DELETE] : `/v1/auth/certificate` 支持 获取 / 配置 / 还原 Web服务的证书,具体内容查看该接口描述
 - 支持设备广播, 使用 *mDNS* 协议, 广播周期3秒, 服务名称`sensetime`,  `text-record` 条目包括`sn`与`model`.
 
 **Modify:**
