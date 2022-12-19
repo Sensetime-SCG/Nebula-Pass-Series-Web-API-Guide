@@ -23,8 +23,8 @@
 **Modify:**
 
 - 接口 [POST] `/v1/group` 总数上限改为256。
-- 接口 [POST] `/v1/rule` 字段 `period`相关字段的上限改为 12, 策略总数上限改为256.
-- 接口 [PUT] `/v1/rule/id/{id}` 字段 `period`相关字段的上限改为 12.
+- 接口 [POST] `/v1/rule` 字段 `period`相关字段的总数上限改为 12, 策略总数上限改为256.
+- 接口 [PUT] `/v1/rule/id/{id}` 字段 `period`相关字段的总数上限改为 12.
 - 接口 [POST]  `/v1/user` 字段`name`,`ic_number`,`id_number`,`job_number`长度限制改为128字节, 即最长42个中文字符, `remark`字段长度限制改为256字节.
 - 接口 [POST] `/v1/group` 字段`name`长度限制改为128字节, 即最长42个中文字符.
 - 接口 [POST] `/v1/rule` 字段`name`长度限制改为128字节, 即最长42个中文字符.
