@@ -12,9 +12,9 @@
 
 | 字段       | 类型   | 必填 | 字段释义               |
 | ---------- | ------ | ---- | ---------------------- |
-| name       | String | N    | 根据该字段搜索相关对象 |
-| ic_number  | String | N    | 根据该字段搜索相关对象 |
-| job_number | String | N    | 根据该字段搜索相关对象 |
+| name       | String | N    | 根据该字段搜索相关对象,支持模糊匹配 |
+| ic_number  | String | N    | 根据该字段搜索相关对象,仅支持全量匹配 |
+| job_number | String | N    | 根据该字段搜索相关对象,仅支持全量匹配 |
 
 > 注: 不支持`name`,`ic_number`,`job_number`同时填值搜索,若存在两者及以上的值,则按照此优先级取过滤条件 : `name` > `ic_number` > `job_number`
 
