@@ -17,7 +17,7 @@
 
 ## 请求示例
 
-获取`name`起始为*A*的 id 列表。
+获取`name`包含*A*的 id 列表。
 
 > `/v1/rule/search`
 
