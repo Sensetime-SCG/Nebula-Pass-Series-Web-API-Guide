@@ -22,7 +22,7 @@
 ```json
 {
   "data": {
-        "user_id":3,
+        "user_id":"3",
         "name": "张三",
         "avatar": "/9j/2wCEAAoHBwgHBgoICAgLCgoLDhgQDg0NDh0VFhEYIx8lJCIfIiEmKzcvJik0KSEiMEExNDk7Pj4",
         "type": 1,
@@ -30,7 +30,7 @@
         "job_number":"",
         "id_number":"",
         "pin":"",
-        "groups": [1,2],
+        "groups": ["1","2"],
         "is_admin":false,
         "remark":"",
         "create_at": 1660222970940,

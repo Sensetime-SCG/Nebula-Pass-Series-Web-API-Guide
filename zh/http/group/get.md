@@ -24,8 +24,8 @@
     "data": {
         "name": "员工组",
         "type": 1,
-        "group_id": 1,
-        "rule_id": 0,
+        "group_id": "1",
+        "rule_id": "",
         "create_at": 1660284813955,
         "update_at": 1660284813955
     },

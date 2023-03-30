@@ -1,6 +1,6 @@
 # 批量获取策略信息
 
-根据指定的`offset`与`limit`获取策略信息。要求 `offset`值范围是 0 到 100000；`limit`值范围是 0 到 10。
+根据指定的`offset`与`limit`获取策略信息。要求 `offset`值范围是 0 到 100000；`limit`值范围是 0 到 100。
 
 ## 请求路径
 
@@ -38,7 +38,7 @@
         "total": 2,
         "items": [
             {
-                "rule_id": 4,
+                "rule_id": "4",
                 "name": "4",
                 "schedule": {
                     "onset_point": 1660284813955,
@@ -56,7 +56,7 @@
                 "update_at": 1660293169267
             },
             {
-                "rule_id": 1,
+                "rule_id": "1",
                 "name": "1",
                 "schedule": {
                     "onset_point": 1640966400000,

@@ -1,6 +1,6 @@
-# Search
+# 搜索
 
-Search the 'id' list of related objects according to the specified fields
+根据指定的字段搜索相关对象的`id`列表.
 
 ## 请求路径
 
@@ -33,9 +33,9 @@ Search the 'id' list of related objects according to the specified fields
 {
     "data": {
         "items": [
-            2,
-            55,
-            117
+            "2",
+            "55",
+            "117"
         ]
     },
     "code": 200,

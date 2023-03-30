@@ -22,7 +22,7 @@
 ```json
 {
     "data": {
-        "rule_id": 1,
+        "rule_id": "1",
         "name": "1",
         "schedule": {
             "onset_point": 1640966400000,

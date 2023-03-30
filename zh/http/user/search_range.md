@@ -1,6 +1,6 @@
 # 批量获取人员的信息
 
-根据指定的`offset`与`limit`获取人员信息。要求 `offset`值范围是 0 到 100000；`limit`值范围是 0 到 10。
+根据指定的`offset`与`limit`获取人员信息。要求 `offset`值范围是 0 到 100000；`limit`值范围是 0 到 100。
 
 ## 请求路径
 
@@ -38,7 +38,7 @@
         "total": 10,
         "items": [
             {
-                "user_id": 2,
+                "user_id": "2",
                 "name": "张三",
                 "type": 1,
                 "avatar": "xxxxxxxx",
@@ -48,14 +48,14 @@
                 "pin":"",
                 "guest_time_start": 0,
                 "guest_time_end": 0,
-                "groups": [],
+                "groups": ["2"],
                 "is_admin": false,
                 "remark": "",
                 "create_at": 1660222970940,
                 "update_at": 1660222971252
             },
             {
-                "user_id": 1,
+                "user_id": "1",
                 "name": "管理员",
                 "type": 1,
                 "avatar": "xxxxxxxx",
@@ -65,7 +65,7 @@
                 "pin":"",
                 "guest_time_start": 0,
                 "guest_time_end": 0,
-                "groups": [],
+                "groups": ["1"],
                 "is_admin": true,
                 "remark": "",
                 "create_at": 1660222080940,

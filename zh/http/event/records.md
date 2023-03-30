@@ -18,11 +18,11 @@
 | ---------- | ---- | ---- | ---------------------------------------------------------- |
 | begin_time | Int  | N    | 起始时间,Unix时间戳(秒级),可为空或0                                      |
 | end_time       | Int  | N    | 结束时间,Unix时间戳(秒级),可为空或0,若存在则须大于等于 begin_time          |
-| user_id    | Int  | N    | 可为空或0,若存在则范围: 大于 0 小于 99999999 |
+| user_id    | String | N    | 可为空 |
 | job_number | String| N | 可为空 |
 | ic_number | String| N | 可为空 |
 | offset | Int | N | 起始偏移,默认0 |
-| limit | Int | N | 单次搜索限制获取条目,默认20,最大25 |
+| limit | Int | N | 单次搜索限制获取条目,默认100,最大200 |
 
 > 注: 不支持 `user_id`,`job_number`,`ic_number`同时填值搜索;  若`user_id`,`job_number`,`ic_number`其中存在两者或三者的值,则按照此优先级取过滤条件 :  `user_id` > `job_number` > `ic_number`
 
@@ -81,7 +81,7 @@
                 "mode": 9,
                 "user": {
                     "name": "aa",
-                    "user_id": 3,
+                    "user_id": "3",
                     "type": 1,
                     "ic_number": "2222",
                     "job_number": "1111"
@@ -98,7 +98,7 @@
                 "mode": 9,
                 "user": {
                     "name": "aa",
-                    "user_id": 3,
+                    "user_id": "3",
                     "type": 1,
                     "ic_number": "2222",
                     "job_number": "1111"

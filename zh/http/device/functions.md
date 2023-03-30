@@ -15,7 +15,7 @@
 | 字段            | 类型    | 必填 | 字段释义                                                     |
 | --------------- | ------- | ---- | ------------------------------------------------------------ |
 | device_run_type | Int     | N    | 设备运行状态配置， 1：运行；2：停机                          |
-| mode            | Int     | N    | 核验模式: <br/>0：刷脸 <br/>1：刷脸或刷卡 <br/>2：刷脸且刷卡 <br/>3：刷脸或刷卡或刷二维码 <br/>4：刷身份证 <br/>5：刷脸或刷身份证 <br/>6：刷脸且刷身份证 <br/>7：刷脸且输PIN <br/>8：刷脸且刷卡且输PIN <br/>默认 0<br/>注:7与8模式暂不支持与远程服务器验证 |
+| mode            | Int     | N    | 核验模式: <br/>0：刷脸 <br/>1：刷脸或刷卡 <br/>2：刷脸且刷卡 <br/>3：刷脸或刷卡或刷二维码或PIN <br/>4：刷身份证 <br/>5：刷脸或刷身份证 <br/>6：刷脸且刷身份证 <br/>7：刷脸且输PIN <br/>8：刷脸且刷卡且输PIN <br/>9：刷卡且输PIN<br/>默认 0<br/>注:7与8模式暂不支持与远程服务器验证 |
 | strong_hint     | Boolean | N    | 炫酷模式开关，false：关；true：开                            |
 | avatar_status   | Int     | N    | 头像展示模式: <br/>0：不展示头像 <br/>1：展示头像 <br/>2：展示个性化头像 <br/>默认 1 |
 | name_status     | Int     | N    | 展示姓名模式： <br/>0：不展示姓名 <br/>1：展示姓名 <br/>2：展示加密姓名 <br/>默认 1 |
@@ -111,9 +111,10 @@
 | bodyTemperature       | double     | 体温                                                    |
 | user            | Object | 事件用户对象                                                 |
 | --name          | String | 用户名称                                                     |
-| --user_id       | Int    | 用户id                                                       |
+| --user_id       | String | 用户id                                                       |
 | --type          | Int    | 用户类型                                                     |
 | --ic_number          | String    | IC 卡号                                                   |
+| --id_number | String | ID卡号 |
 | --job_number          | String    | 工号                                                     |
 | --remark          | String    | 备注                                                     |
 | --guest_time_start          | Int    | 访客开始时间                                                     |
@@ -129,7 +130,7 @@
         "rgb_image": "xxxxxxxxxxxxxx=",
         "user": {
             "name": "Q",
-            "user_id": 1,
+            "user_id": "1",
             "type": 1,
             "ic_number":"d144d33z95x",
             "job_number":"9833",
@@ -154,8 +155,8 @@
 | msg            | String  | Y    | 状态对应信息                                                 |
 | data           | Object  | Y    | 具体内容                                                     |
 | --pass         | Boolean | Y    | 权限是否允许                                                 |
-| --customtips   | Stringn | N    | 自定义提示信息(仅当开启个性化提示)                           |
-| --user_id      | Int     | N    | 当前用户id                                                   |
+| --customtips   | String  | N    | 自定义提示信息(仅当开启个性化提示)                           |
+| --user_id      | String  | N    | 当前用户id                                                   |
 | --user_name    | String  | N    | 当前用户名称                                                 |
 | --ic_number    | String  | N    | 门卡号                                                       |
 | --verify_score | Float   | N    | 远程识别的相似度分值                                         |
@@ -170,7 +171,7 @@
     "data": {
         "pass": false,
         "customtips": "Hello world",
-        "user_id":111,
+        "user_id":"111",
         "user_name":"xxx",
         "ic_number":"ic_123456",
         "verify_score":0.99,

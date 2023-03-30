@@ -21,47 +21,71 @@
 
 **识别事件数据**
 
-| 字段            | 类型    | 字段释义                                                     |
-| --------------- | ------- | ------------------------------------------------------------ |
-| deviceSN        | string  | 设备序列号                                                   |
-| recognitionType | Int     | 识别类型: 1:员工,2:访客,3:陌生人,4:非活体,5:黑名单 |
-| recognizeScore  | Float   | 识别精度分值                                                 |
-| mask            | Int     | 是否佩戴口罩: 0:未启用,1:未戴,2:佩戴                         |
-| mode            | Int     | 核验模式:  0：刷脸 1：刷脸或刷卡 2：刷脸且刷卡 3：刷脸或刷卡或刷二维码 4：刷身份证 5：刷脸或刷身份证 6：刷脸且刷身份证 |
-| rgb_image       | String  | Base64后的jpeg格式的人脸抓拍图                               |
-| pass            | Boolean | 是否允许通行                                                 |
-| timestamp       | Int     | 识别时间                                                     |
-| bodyTemperature       | double     | 体温                                                    |
-| user            | Object  | 事件用户对象                                                 |
-| --name          | String  | 用户名称                                                     |
-| --user_id       | Int     | 用户id                                                       |
-| --type          | Int     | 用户类型                                                     |
-| --ic_number          | String     | IC 卡号                                                |
-| --job_number          | String     | 工号                                                   |
+### 
+
+| 参数名称           | 类型         | 说明                                                         |
+| ------------------ | ------------ | ------------------------------------------------------------ |
+| deviceSN           | String       | 设备序列号                                                   |
+| recognitionType    | Int          | 识别类型: 1:员工,2:访客,3:陌生人,4:非活体,5:黑名单           |
+| uuid               | String       | 记录事件唯一标识                                             |
+| recognizeScore     | Float        | 识别精度分值                                                 |
+| mask               | Int          | 是否佩戴口罩： 0 未启用 1 未戴 2 佩戴                        |
+| mode               | Int          | 核验模式: 0：刷脸 1：刷脸或刷卡 2：刷脸且刷卡 3：刷脸或刷卡或刷二维码或PIN 4：刷身份证 5：刷脸或刷身份证 6：刷脸且刷身份证 7：刷脸且PIN 8：刷脸且刷卡且PIN 9：刷卡且PIN |
+| rgb_image          | String       | Base64 后的jpeg格式的人脸抓拍图                              |
+| pass               | Boolean      | 是否允许通行                                                 |
+| timestamp          | Int          | 识别时间                                                     |
+| bodyTemperature    | Double       | 体温                                                         |
+| user               | object       | 事件用户对象                                                 |
+| --name             | String       | 用户名称                                                     |
+| --user_id          | String       | 用户id                                                       |
+| --type             | Int          | 用户类型                                                     |
+| --ic_number        | String       | IC 卡号                                                      |
+| --job_number       | String       | 工号                                                         |
+| --id_number        | String       | ID卡号                                                       |
+| --guest_time_start | Int          | 访客开始时间，毫秒级Unix时间戳                               |
+| --guest_time_end   | Int          | 访客结束时间，毫秒级Unix时间戳                               |
+| -- remark          | String       | 备注,上限256字节                                             |
+| -- groups          | object array | user_id所在的组信息                                          |
+
+
 
 ## 返回示例
 
 ```json
 {
-    "type": 0,
-    "data": {
-        "recognitionType": 1,
-        "deviceSN":"PS71HD01MC22C00014",
-        "recognizeScore": 0.9837480783462524,
-        "mask": 1,
-        "rgb_image": "xxxxxxxxxxxxxx=",
-        "pass": true,
-        "mode": 0,
-        "user": {
-            "name": "Q",
-            "user_id": 1,
-            "type": 1,
-            "ic_number":"d144d33z95x",
-            "job_number":"9833"
-            
-        },
-        "timestamp": 1660625866,
-        "bodyTemperature": 36.53308868408203
+    "type":0,
+    "data":{
+        "deviceSN":"PS71HD01MC22B00003",
+        "recognitionType":1,
+        "uuid":"f63cad1a-e12c-4ea6-8098-01e8240bfa5b",
+        "recognizeScore":0.9499402046203613,
+        "mask":0,
+        "mode":3,
+        "rgb_image":" ",
+        "bodyTemperature":0,
+        "pass":true,
+        "timestamp":1678870602,
+        "user":{
+            "name":"张三",
+            "ic_number":"1234",
+            "id_number":"gO/i1UcxN3k=",
+            "job_number":"",
+            "user_id":"3",
+            "remark":"",
+            "guest_time_start":0,
+            "guest_time_end":0,
+            "type":1,
+            "groups":[
+                {
+                    "id":"1",
+                    "name":"测试1"
+                },
+                {
+                    "id":"2",
+                    "name":"测试2"
+                }
+            ]
+        }
     }
 }
 ```

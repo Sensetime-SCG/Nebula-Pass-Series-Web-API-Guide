@@ -2,6 +2,57 @@
 
 ---
 
+## v1.2.1 (2023-03-15)
+
+*Author: JinPingMi & LPC*
+
+**Adapted Devices:**
+
+- SenseNebula Pass S7 *V1.2.3*
+- SenseNebula Pass S8 *V1.2.3*
+
+**重要提醒:**
+- 人员管理：人员信息`user_id` 由 int 改为 string 类型, 人员组`group_id`由 int 改为 string 类型.
+- 组管理:   组信息 `group_id` 由 int 改为string 类型, 通行策略信息`rule_id` 由int 改为string 类型.
+- 策略管理: 通行策略信息`rule_id` 由 int 改为string 类型.
+
+**Add:**
+
+- 所有接口请求返回Header中新增设备型号`model`、设备SN号`sn`、时间戳`timestamp`、`account`信息.
+- [POST]`推送配置` 记录事件主动推送的HTTPS请求Header中新增设备型号`model`、设备SN号`sn`、时间戳`timestamp`、`account`信息.
+- [POST]`推送配置` 记录事件字段属性中新增记录id`uuid`字段,人员信息的`id_number`,`groups[]`字段.
+- 支持设备广播, 使用 *mDNS* 协议, 广播周期3秒, 服务名称`sensetime`,  `text-record` 条目包括`sn`与`model`.
+- 远程鉴权推送数据新增人员信息的`id_number`字段.
+- 接口 [POST] : `/v1/event/records/`  事件历史记录搜索中新增记录id`uuid`字段,人员信息的`id_number`,`groups[]`字段.
+- 接口 [GET] : `/v2/datasync/ping`, 设备心跳接口,该接口请求参数，无鉴权,具体内容查看该接口描述.
+- 接口 [GET] : `/v2/datasync/info`, 获取设备所有人员，组，策略简要信息，如`id`、`update_at`, 具体内容查看该接口描述.
+- 接口 [GET] : `/v2/datasync/clear`, 清除设备所有人员，组，策略数据,具体内容查看该接口描述.
+- 接口 [POST]：`/v2/user`, 批量新增或者修改人员信息,具体内容查看该接口描述.
+- 接口 [DELETE]：`/v2/user`, 批量删除人员信息,具体内容查看该接口描述.
+- 接口 [POST]：`/v2/group`, 批量新增或者修改组信息,具体内容查看该接口描述.
+- 接口 [DELETE]：`/v2/group`, 批量删除组信息,具体内容查看该接口描述.
+- 接口 [POST]：`/v2/rule`, 批量新增或者修改策略信息,具体内容查看该接口描述.
+- 接口 [DELETE]：`/v2/rule`, 批量删除策略信息,具体内容查看该接口描述.
+
+**Modify:**
+
+- 接口 [GET] `/v1/user/offset/{offset}/limit/{limit}`  人员管理分页搜索,limit值范围是 0 到 100.
+- 接口 [GET] `/v1/group/offset/{offset}/limit/{limit}` 组管理分页搜索,limit值范围是 0 到 100.
+- 接口 [GET] `/v1/rule/offset/{offset}/limit/{limit}`  策略管理分页搜索,limit值范围是 0 到 100.
+- 接口 [POST] `/v1/event/records`  事件历史搜索 ,limit值默认100，最大值200,.
+- 接口 [POST] `/v1/user` 支持创建和更新人员信息，如user_id不存在则创建人员信息，如user_id存在则更新人员信息.
+- 接口 [POST] `/v1/group` 支持创建和更新组信息，如gourp_id不存在则创建组信息，如roup_id存在则更新组信息.
+- 接口 [POST] `/v1/rule` 支持创建和更新策略信息，如rule_id不存在则创建策略信息，如rule_id存在则更新策略信息.
+- 接口 [POST] `/v1/user`,`/v1/group`,`/v1/rule`, 新增更新时间`update_at`和创建时间`create_at`参数,默认由设备系统维护.
+- 接口 [POST]  [GET] `/v1/device/functions`
+  - 字段 `mode` 核验模式值支持添加 9：刷卡且输PIN ，具体释义查看该接口描述
+  - 事件推送与远程服务器响应参数<br>人员信息`user_id` 由 int 改为 string 类型
+
+**Fix:**
+- 修复通行策略设置周日全天不可通行的缺陷
+- 修复服务器认证返回值 --verify_code = 2 设备显示信息不正确的缺陷
+
+
 ## v1.2.0 (2022-11-30)
 
 *Author: ChenYang*

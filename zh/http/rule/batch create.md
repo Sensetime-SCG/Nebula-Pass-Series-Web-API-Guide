@@ -1,6 +1,6 @@
-# 新建策略
+# 批量新建/更新策略
 
-最大可创建256个通行策略。
+批量新建策略， 最大可创建256个通行策略。
 
 需要注意，如果所有的时刻表都为空，则表示任何时间段都不可通行。
 
@@ -8,13 +8,21 @@
 
 ## 请求路径
 
-> `/v1/rule`
+> `/v2/rule`
 
 ## 请求方式
 
 > POST
 
 - 请求体: `application/json`
+
+| 字段      | 类型         | 必填 | 字段释义     |
+| --------- | ------------ | ---- | ------------ |
+| rule_list | Object array | N    | 策略信息列表 |
+
+
+
+策略字段
 
 | 字段     | 类型   | 必填 | 字段释义                                    |
 | -------- | ------ | ---- | ------------------------------------------- |
@@ -64,49 +72,20 @@
 
 ## 请求示例:
 
-新建一条策略，策略起效时间为*2022-1-1 0:0:0*，失效时间为*2022-12-31 23:59:59*,可通行的时间段为每周一的*6:30:0*到*12:30:0*与*14:0:0*到*18:30:30*,以及每月的*6:30:0*到*12:30:0*与*14:0:0*到*18:30:30*。
+新建两条策略，策略起效时间为*2022-1-1 0:0:0*，失效时间为*2022-12-31 23:59:59*,可通行的时间段为每周一的*6:30:0*到*12:30:0*与*14:0:0*到*18:30:30*,以及每月的*6:30:0*到*12:30:0*与*14:0:0*到*18:30:30*。
 
-> `/v1/rule`
+> `/v2/rule`
 
 ```json
 {
-    "rule_id": "1",
-    "name": "1",
-    "schedule": {
-        "onset_point": 1640966400000,
-        "expire_point": 1672502399000,
-        "mon_period": [
-            {
-                "start_time": {
-                    "hour": 6,
-                    "min": 30,
-                    "sec": 0
-                },
-                "end_time": {
-                    "hour": 12,
-                    "min": 30,
-                    "sec": 0
-                }
-            },
-            {
-                "start_time": {
-                    "hour": 14,
-                    "min": 0,
-                    "sec": 0
-                },
-                "end_time": {
-                    "hour": 18,
-                    "min": 30,
-                    "sec": 30
-                }
-            }
-        ],
-        "special_days": [
-            {
-                "year": 0,
-                "month": 0,
-                "day": 1,
-                "today_period": [
+    "rule_list": [
+        {
+            "rule_id": "1",
+            "name": "Rule 11",
+            "schedule": {
+                "onset_point": 1640966400000,
+                "expire_point": 1672502399000,
+                "mon_period": [
                     {
                         "start_time": {
                             "hour": 6,
@@ -131,10 +110,110 @@
                             "sec": 30
                         }
                     }
+                ],
+                "special_days": [
+                    {
+                        "year": 0,
+                        "month": 0,
+                        "day": 1,
+                        "today_period": [
+                            {
+                                "start_time": {
+                                    "hour": 6,
+                                    "min": 30,
+                                    "sec": 0
+                                },
+                                "end_time": {
+                                    "hour": 12,
+                                    "min": 30,
+                                    "sec": 0
+                                }
+                            },
+                            {
+                                "start_time": {
+                                    "hour": 14,
+                                    "min": 0,
+                                    "sec": 0
+                                },
+                                "end_time": {
+                                    "hour": 18,
+                                    "min": 30,
+                                    "sec": 30
+                                }
+                            }
+                        ]
+                    }
                 ]
             }
-        ]
-    }
+        },
+       {
+            "rule_id": "2",
+            "name": "Rule 12",
+            "schedule": {
+                "onset_point": 1640966400000,
+                "expire_point": 1672502399000,
+                "mon_period": [
+                    {
+                        "start_time": {
+                            "hour": 6,
+                            "min": 30,
+                            "sec": 0
+                        },
+                        "end_time": {
+                            "hour": 12,
+                            "min": 30,
+                            "sec": 0
+                        }
+                    },
+                    {
+                        "start_time": {
+                            "hour": 14,
+                            "min": 0,
+                            "sec": 0
+                        },
+                        "end_time": {
+                            "hour": 18,
+                            "min": 30,
+                            "sec": 30
+                        }
+                    }
+                ],
+                "special_days": [
+                    {
+                        "year": 0,
+                        "month": 0,
+                        "day": 1,
+                        "today_period": [
+                            {
+                                "start_time": {
+                                    "hour": 6,
+                                    "min": 30,
+                                    "sec": 0
+                                },
+                                "end_time": {
+                                    "hour": 12,
+                                    "min": 30,
+                                    "sec": 0
+                                }
+                            },
+                            {
+                                "start_time": {
+                                    "hour": 14,
+                                    "min": 0,
+                                    "sec": 0
+                                },
+                                "end_time": {
+                                    "hour": 18,
+                                    "min": 30,
+                                    "sec": 30
+                                }
+                            }
+                        ]
+                    }
+                ]
+            }
+        }
+    ]
 }
 ```
 
@@ -143,79 +222,7 @@
 ```json
 {
     "data": {
-        "rule_id": 1,
-        "name": "1",
-        "schedule": {
-            "onset_point": 1640966400000,
-            "expire_point": 1672502399000,
-            "mon_period": [
-                {
-                    "start_time": {
-                        "hour": 6,
-                        "min": 30,
-                        "sec": 0
-                    },
-                    "end_time": {
-                        "hour": 12,
-                        "min": 30,
-                        "sec": 0
-                    }
-                },
-                {
-                    "start_time": {
-                        "hour": 14,
-                        "min": 0,
-                        "sec": 0
-                    },
-                    "end_time": {
-                        "hour": 18,
-                        "min": 30,
-                        "sec": 30
-                    }
-                }
-            ],
-            "the_period": [],
-            "wed_period": [],
-            "thur_period": [],
-            "fri_period": [],
-            "sat_period": [],
-            "sun_period": [],
-            "special_days": [
-                {
-                    "year": 0,
-                    "month": 0,
-                    "day": 1,
-                    "today_period": [
-                        {
-                            "start_time": {
-                                "hour": 6,
-                                "min": 30,
-                                "sec": 0
-                            },
-                            "end_time": {
-                                "hour": 12,
-                                "min": 30,
-                                "sec": 0
-                            }
-                        },
-                        {
-                            "start_time": {
-                                "hour": 14,
-                                "min": 0,
-                                "sec": 0
-                            },
-                            "end_time": {
-                                "hour": 18,
-                                "min": 30,
-                                "sec": 30
-                            }
-                        }
-                    ]
-                }
-            ]
-        },
-        "create_at": 1660297993368,
-        "update_at": 1660297993368
+        "errors": []
     },
     "code": 200,
     "msg": "OK"
