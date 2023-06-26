@@ -23,6 +23,7 @@
 | ic_number | String| N | 可为空 |
 | offset | Int | N | 起始偏移,默认0 |
 | limit | Int | N | 单次搜索限制获取条目,默认100,最大200 |
+| sort | Int | N | 排序方式，0：asc正序:；1：desc倒序, 默认:0：正序 |
 
 > 注: 不支持 `user_id`,`job_number`,`ic_number`同时填值搜索;  若`user_id`,`job_number`,`ic_number`其中存在两者或三者的值,则按照此优先级取过滤条件 :  `user_id` > `job_number` > `ic_number`
 
@@ -35,10 +36,11 @@
 
 ```json
 {
-    "begin_time": 1669552210,
-    "end_time": 1669742085,
-    "job_number": "1111",
-    "limit": 3
+    "begin_time": 1678784160,
+    "end_time": 1778784400,
+    "offset": 3,
+    "limit": 3,
+    "sort": 0
 }
 ```
 
@@ -49,61 +51,89 @@
 ```json
 {
     "data": {
-        "offset": 0,
+        "offset": 3,
         "limit": 3,
         "count": 3,
-        "total": 8,
+        "total": 260,
         "items": [
             {
-                "recognitionType": 1,
-                "deviceSN": "PS71HD01MC22C00114",
-                "recognizeScore": 0.9225929379463196,
+                "recognitionType": 0,
+                "entry_mode": 1,
+                "deviceSN": "PSC700C0MC22F02542",
+                "abnormal_type": 0,
+                "uuid": "a969ec70-ce1f-4c8c-9b62-1cd5c6047dc7",
+                "recognizeScore": 0.9120988845825195,
+                "bodyTemperature": 0,
                 "mask": 0,
-                "rgb_image": "xxxxxxxx",
-                "pass": true,
-                "mode": 9,
+                "rgb_image":"",
+                "pass": false,
+                "mode": 10,
                 "user": {
-                    "name": "aa",
-                    "user_id": 3,
-                    "type": 1,
-                    "ic_number": "2222",
-                    "job_number": "1111"
+                    "name": null,
+                    "user_id": "",
+                    "type": null,
+                    "ic_number": "",
+                    "id_number": "",
+                    "job_number": ""
                 },
-                "timestamp": 1669552219
+                "timestamp": 1684379730,
+                "groups": []
             },
             {
                 "recognitionType": 1,
-                "deviceSN": "PS71HD01MC22C00114",
-                "recognizeScore": 0.9295129179954529,
+                "entry_mode": 1,
+                "deviceSN": "PSC700C0MC22F02542",
+                "abnormal_type": 20002,
+                "uuid": "461521f7-d963-4124-b615-f87e077f52c7",
+                "recognizeScore": 0.9401368498802185,
+                "bodyTemperature": 0,
                 "mask": 0,
-                "rgb_image": "xxxxxxxx",
-                "pass": true,
-                "mode": 9,
+                "rgb_image": "/57UwHgNgevX0qtqlx5FoW3ESOSBtPXNXFXZEtEZ1zP5lwQju0afKCT0/Cremr5l",
+                "pass": false,
+                "mode": 10,
                 "user": {
-                    "name": "aa",
-                    "user_id": "3",
+                    "name": "王五",
+                    "user_id": "5",
                     "type": 1,
-                    "ic_number": "2222",
-                    "job_number": "1111"
+                    "ic_number": "12345",
+                    "id_number": "",
+                    "job_number": "23385"
                 },
-                "timestamp": 1669690700
+                "timestamp": 1684379734,
+                "groups": [
+                    {
+                        "id": "2",
+                        "name": "测试2"
+                    }
+                ]
             },
             {
                 "recognitionType": 1,
-                "deviceSN": "PS71HD01MC22C00114",
-                "recognizeScore": 0.9219599366188049,
+                "entry_mode": 1,
+                "deviceSN": "PSC700C0MC22F02542",
+                "abnormal_type": 20002,
+                "uuid": "4e552d5a-6bd3-4f7b-bde0-2551e665afde",
+                "recognizeScore": 0.9471220374107361,
+                "bodyTemperature": 0,
                 "mask": 0,
-                "rgb_image": "xxxxxxxx",
-                "pass": true,
-                "mode": 9,
+                "rgb_image": "/9k=",
+                "pass": false,
+                "mode": 10,
                 "user": {
-                    "name": "aa",
-                    "user_id": "3",
+                    "name": "王五",
+                    "user_id": "5",
                     "type": 1,
-                    "ic_number": "2222",
-                    "job_number": "1111"
+                    "ic_number": "12345",
+                    "id_number": "",
+                    "job_number": "23385"
                 },
-                "timestamp": 1669690852
+                "timestamp": 1684379898,
+                "groups": [
+                    {
+                        "id": "2",
+                        "name": "测试2"
+                    }
+                ]
             }
         ]
     },

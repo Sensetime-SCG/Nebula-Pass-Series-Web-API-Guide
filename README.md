@@ -1,6 +1,45 @@
 # Web Component Change Log
 
 ---
+## v1.3.0 (2023-05-15)
+
+*Author: JinPingMi & LPC*
+
+**Adapted Devices:**
+
+- SenseNebula Pass S7 *V1.3.0*
+- SenseNebula Pass S8 *V1.3.0*
+
+**重要提醒:**
+- 人员管理：人员信息`user_id` 为 string 类型, 人员组`group_id`为 string 类型.
+- 组管理:   组信息 `group_id` 为string 类型, 通行策略信息`rule_id` 为string 类型.
+- 策略管理: 通行策略信息`rule_id`为string 类型.
+
+**Add:**
+- [POST]`推送配置` 记录事件字段属性中新增开门方式`entry_mode`字段,异常事件类型`abnormal_type`字段，开门密码`pin`字段,更新事件推送示例。
+- [POST]`推送配置` 新增设备告警事件，事件类型字段 type =1 ，具体内容查看该接口描述.
+- 接口 [POST]  [GET] `/v1/device/functions`   `auth_mode = 1` 本地认证+远程开门事件推送与远程服务器响应参数：
+  - 新增二维码信息`qrcode_content`字段，识别精度分值`recognizeScore`字段,开门方式`entry_mode`字段；
+  - 新增人员信息开门密码`pin`字段,user_id所在的组信息`groups`字段。
+- 接口 [POST] `/v1/user`  ,`/v2/user` 创建/修改人员，字段` avatar` ，` feature` 为非必填项。支持无图片人员信息下发。当字段` avatar` ，` feature` 同时为空字符串或者为NULL时，清除人员特征数据。
+- 接口 [POST] : `/v1/event/records/`  事件历史记录搜索：
+  - 新增排序方式`sort`字段；
+  - 返回字段新增开门方式`entry_mode`字段,异常事件类型`abnormal_type`字段.
+- 接口 [GET] : `/v2/device/logs`, 获取设备系统日志,具体内容查看该接口描述.
+- 接口 [POST]  [GET]  : `/v1/device/access/`  设备门禁参数中新增重复识别间隔`resign_interval`字段,串口开关`serial_port`字段，串口波特率`serial_port_baudrate`字段.<br>新增韦根通讯接口参数 `wiegand_settings` 对象， 刷卡设置接口参数 `rfid_settings`对象，具体内容查看该接口描述.
+- 接口 [POST]  [GET]   : `/v1/device/custom/`  设备自定义参数中新增自定义待机屏保 `custom_screensavers` 对象，具体内容查看该接口描述.
+
+**Modify:**
+
+- 接口 [POST] `/v1/user`  ,`/v2/user` 创建/修改人员，人员类型字段: 黑名单由数值 `3` 修改为 `5`
+- 接口 [POST] `/v1/group`  ,`/v2/group` 创建/修改人员组，人员类型字段: 黑名单由数值 `3` 修改为 `5`.
+- 接口 [POST]  [GET]  : `/v1/device/access/`  设备门禁参数中修改开门方式 `open_door_type`字段。删除韦根输入口: `wigan_input`字段
+- 接口 [POST]  [GET]   : `/v1/device/custom/`  设备自定义参数中修改是否展示logo `show_custom_logo`字段由Boolean 改为Int 类型，数值0:展示默认logo，1：展示自定义logo，2：关闭 ；默认 ：2  .<br>删除定义待机图片`custom_picture_for_idle`字段
+- 接口 [POST]  [GET] `/v1/device/functions`  字段 `auth_mode` 认证类型值删除 2: 服务器认证 ，具体查看该接口描述和应用示例。
+
+**Fix:**
+
+- 修复通行策略设置例外时间段优先策略。
 
 ## v1.2.1 (2023-03-15)
 

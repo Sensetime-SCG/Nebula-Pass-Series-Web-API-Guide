@@ -2,7 +2,7 @@
 
 ## 概要
 
-本文档用于为 SenseNebula Pass 设备集成 API V1.2.1 接口使用说明指引。
+本文档用于为 SenseNebula Pass 设备集成 API V1.3.0 接口使用说明指引。
 
 ## 适用读者对象
 
@@ -50,4 +50,11 @@
 | --- |  --- |
 | SenseNubula Pass S7 | V1.2.3 |
 | SenseNubula Pass S8 | V1.2.3 |
+
+### Pass 设备集成API V1.3.0版本
+
+| 产品 | 固件版本（最低要求） |
+| --- |  --- |
+| SenseNubula Pass S7 | V1.3.0 |
+| SenseNubula Pass S8 | V1.3.0 |
 ---

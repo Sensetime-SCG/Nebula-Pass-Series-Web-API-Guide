@@ -50,6 +50,7 @@
       - [设备重启](./zh/http/device/reboot.md)
       - [设备还原](./zh/http/device/restore.md)
       - [设备升级](./zh/http/device/upgrade.md)
+      - [设备日志](./zh/http/device/log.md)
     - [事件推送](./zh/http/event/README.md)
       - [订阅](./zh/http/event/event.md)
       - [推送配置](./zh/http/event/push.md)
